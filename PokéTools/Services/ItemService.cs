@@ -8,7 +8,7 @@ namespace PokéTools.Services
     {
         private readonly List<Item> _items;
         public List<Item> Items => _items;
-        private static readonly string _filePath = "E:\\Bureau\\CODE\\PokéTools\\Data\\items.tsv";
+        private static readonly string _filePath = "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\items.tsv";
 
         public ItemService()
         {

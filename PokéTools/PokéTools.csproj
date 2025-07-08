@@ -13,6 +13,7 @@
 
   <ItemGroup>
 	  <ProjectReference Include="..\..\PokéToolsThèque\PokéToolsThèque.csproj" />
+	  <ProjectReference Include="..\PokéToolsThèque\PokéToolsThèque.csproj" />
   </ItemGroup>
 
 </Project>

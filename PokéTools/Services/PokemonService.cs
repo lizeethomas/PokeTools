@@ -9,7 +9,7 @@ namespace PokéTools.Services
         private readonly List<Pokemon> _pokemons;
         public List<Pokemon> Pokemons => _pokemons;
 
-        private readonly string _filePath = "E:\\Bureau\\CODE\\PokéTools\\Data\\pokemons.tsv";
+        private readonly string _filePath = "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\pokemons.tsv";
         private readonly AbilityService _abilityService;
 
         public PokemonService()
