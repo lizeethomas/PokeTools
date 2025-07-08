@@ -1,0 +1,46 @@
+﻿@using System.Globalization
+
+<div style="height: 10px; width:@Length; background-color:@ColorHex; border: 1px solid #000; border-radius: 4px; padding:3px"></div>
+
+@code {
+    [Parameter]
+    public int Value { get; set; } = 1;
+
+    public int MaxWidthPx { get; set; } = 255;
+
+    private string ColorHex => GetColorHex(Value);
+    private string Length => $"{Value}px";
+
+    private readonly (double pos, (int r, int g, int b))[] gradientPoints = new[]
+    {
+        (0.00, (245, 0, 0)),
+        (0.27, (255, 184, 77)),
+        (0.52, (255, 248, 38)),
+        (0.77, (38, 237, 74)),
+        (1.00, (83, 237, 222))
+    };
+
+    private string GetColorHex(int value)
+    {
+        double pos = (value - 5) / 200.0;
+
+        for (int i = 0; i < gradientPoints.Length - 1; i++)
+        {
+            if (pos >= gradientPoints[i].pos && pos <= gradientPoints[i + 1].pos)
+            {
+                double localT = (pos - gradientPoints[i].pos) / (gradientPoints[i + 1].pos - gradientPoints[i].pos);
+                var c1 = gradientPoints[i].Item2;
+                var c2 = gradientPoints[i + 1].Item2;
+
+                int r = (int)(c1.r + (c2.r - c1.r) * localT);
+                int g = (int)(c1.g + (c2.g - c1.g) * localT);
+                int b = (int)(c1.b + (c2.b - c1.b) * localT);
+
+                return $"#{r:X2}{g:X2}{b:X2}";
+            }
+        }
+
+        var last = gradientPoints[^1].Item2;
+        return $"#{last.r:X2}{last.g:X2}{last.b:X2}";
+    }
+}

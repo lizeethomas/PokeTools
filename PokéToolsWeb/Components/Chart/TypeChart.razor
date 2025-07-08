@@ -1,0 +1,63 @@
+﻿@using PokéToolsThèque;
+@using PokéToolsWeb.Components
+
+<div class="content-box team-builder-container">
+    <div class="team-builder-container-header">Defensive Cover</div>
+    <table id="team-builder-table" class="team-builder-table">
+        <thead>
+            <tr class="rowH">
+                <th scope="col" class="rowH tb-type-header"></th>
+                @foreach (var x in pokemons.Select((value, index) => new { value, index }))
+                {
+                    <th data-slot="@(x.index)" scope="col" class="rowH tb-pokemon">
+                        <div class="slot-pokemon">
+                            <img src="@(x.value.IconUrl)" alt="@x.value.Name">
+                            <div class="tb-pokemon-name">@(x.value.Name)</div>
+                        </div>
+                    </th>
+                }
+                <th scope="col" class="rowH tb-weak-header">Total<br>Weak</th>
+                <th scope="col" class="rowH tb-resist-header">Total<br>Resist</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(teamDefensiveTypeCharts.Any())
+            {
+                @foreach (var x in allTypes.Select((value, index) => new { value, index }))
+                {
+                    <TypeRow type="@(x.value)" defensiveScores="@(defensiveScores[x.index])"></TypeRow>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    [Parameter]
+    public List<Pokemon>? pokemons { get; set; }
+
+    [Parameter]
+    public List<Dictionary<string, double>> teamDefensiveTypeCharts { get; set; } = new();
+
+    private List<List<double>> defensiveScores = new();
+    private List<string> allTypes = new();
+
+    protected override void OnParametersSet()
+    {
+        if (teamDefensiveTypeCharts.Any())
+        {
+            allTypes = teamDefensiveTypeCharts.First().Keys.ToList();
+            defensiveScores = new();
+
+            foreach (var type in allTypes)
+            {
+                var row = new List<double>();
+                foreach (var chart in teamDefensiveTypeCharts)
+                {
+                    row.Add(chart[type]);
+                }
+                defensiveScores.Add(row);
+            }
+        }
+    }
+}

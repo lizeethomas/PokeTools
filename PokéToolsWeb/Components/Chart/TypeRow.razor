@@ -1,0 +1,78 @@
+﻿@using PokéToolsThèque;
+
+<tr class='@($"row tb-row tb-row-{type}")' data-tb-type="@(type)">
+    <th scope="row" class="rowH">
+        <span class="tb-type-icon @GetTypeClass(type)">@type</span>
+    </th>
+    @foreach (var x in defensiveScores.Select((value, index) => new { value, index }))
+    {
+        <td data-slot="@(x.index)" class="@GetMultiplierClass(x.value)">
+            @if (x.value != 1.0) {
+                @($"x{x.value}");
+            }
+        </td>
+    }
+    <td class="tb-total-weak @GetWeakClass(totalWeak)">@totalWeak</td>
+    <td class="tb-total-resist @GetResistClass(totalResist)">@totalResist</td>
+</tr>
+
+@code {
+    [Parameter]
+    public List<double> defensiveScores { get; set; }
+
+    [Parameter]
+    public string type { get; set; }
+
+    public int totalWeak = 0;
+    public int totalResist = 0;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        totalWeak = 0;
+        totalResist = 0;
+
+        foreach (var score in defensiveScores)
+        {
+            if (score > 1.0)
+            {
+                totalWeak++;
+            }
+            if(score < 1.0)
+            {
+                totalResist++;
+            }
+        }
+    }
+
+    string GetTypeClass(string type)
+    {
+        return $"tb-type-{type.ToLower()}";
+    }
+
+    string GetWeakClass(int value)
+    {
+        return value >= 6 ? "weak-max" : $"weak-{value}";
+    }
+
+    string GetResistClass(int value)
+    {
+        return value >= 6 ? "resist-max" : $"resist-{value}";
+    }
+
+    string GetMultiplierClass(double value)
+    {
+        return value switch
+        {
+            4.0 => "type-x4",
+            3.0 => "type-x3",
+            2.0 => "type-x2",
+            1.5 => "type-x15",
+            0.5 => "type-x0-5",
+            0.25 => "type-x0-25",
+            0.0 => "type-x0",
+            _ => ""
+        };
+    }
+}

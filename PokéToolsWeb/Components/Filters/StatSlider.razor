@@ -1,0 +1,39 @@
+﻿
+
+<div class="stat-slider">
+    <div class="slider-line">
+        <span class="stat-label">@Title:</span>
+        <span class="stat-values">@CurrentMin – @CurrentMax</span>
+    </div>
+    <div class="slider-container">
+        <input type="range" min="@Min" max="@Max" value="@CurrentMin" @oninput="OnMinChanged" class="range-input" />
+        <input type="range" min="@Min" max="@Max" value="@CurrentMax" @oninput="OnMaxChanged" class="range-input" />
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public string StatName { get; set; }
+    [Parameter] public string Title { get; set; }
+    [Parameter] public int Min { get; set; }
+    [Parameter] public int Max { get; set; }
+    [Parameter] public int CurrentMin { get; set; }
+    [Parameter] public int CurrentMax { get; set; }
+    [Parameter] public EventCallback<(string stat, int min, int max)> OnRangeChanged { get; set; }
+
+    private async Task OnMinChanged(ChangeEventArgs e)
+    {
+        CurrentMin = int.Parse(e.Value?.ToString() ?? "0");
+        if (CurrentMin > CurrentMax)
+            CurrentMin = CurrentMax;
+        await OnRangeChanged.InvokeAsync((StatName, CurrentMin, CurrentMax));
+    }
+
+    private async Task OnMaxChanged(ChangeEventArgs e)
+    {
+        CurrentMax = int.Parse(e.Value?.ToString() ?? "0");
+        if (CurrentMax < CurrentMin)
+            CurrentMax = CurrentMin;
+        await OnRangeChanged.InvokeAsync((StatName, CurrentMin, CurrentMax));
+    }
+}

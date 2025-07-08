@@ -1,0 +1,822 @@
+Name	PP	Power	Accuracy	DamageClass	Type	Description
+absorb	25	20	100	special	grass	Steals 1/2 of the damage inflicted.
+accelerock	20	40	100	physical	rock	The user smashes into the target at high speed. This move always goes first.
+acid	30	40	100	special	poison	An attack that may lower DEFENSE.
+acid-armor	20	0		status	poison	Sharply raises the user's DEFENSE.
+acid-spray	20	40	100	special	poison	The user spits fluid that works to melt the target. This harshly reduces the target’s Sp. Def stat.
+acrobatics	15	55	100	physical	flying	The user nimbly strikes the target. If the user is not holding an item, this attack inflicts massive damage.
+acupressure	30	0		status	normal	The user applies pressure to stress points, sharply boosting one of its stats.
+aerial-ace	20	60		physical	flying	An extremely speedy and unavoidable attack.
+aeroblast	5	100	95	special	flying	Has a high criti­ cal hit ratio.
+after-you	15	0		status	normal	The user helps the target and makes it use its move right after the user.
+agility	30	0		status	psychic	Sharply increases the user's SPEED.
+air-cutter	25	60	95	special	flying	Hacks with razorlike wind. High critical-hit ratio.
+air-slash	15	75	95	special	flying	The user attacks with a blade of air that slices even the sky. It may also make the target flinch.
+alluring-voice	10	80	100	special	fairy	The user attacks the target using its angelic voice. This also confuses the target if its stats have been boosted during the turn.
+ally-switch	15	0		status	psychic	The user teleports using a strange power and switches its place with one of its allies.
+amnesia	20	0		status	psychic	Sharply raises the user's SPCL.DEF.
+anchor-shot	20	80	100	physical	steel	The user entangles the target with its anchor chain while attacking. The target becomes unable to flee.
+ancient-power	5	60	100	special	rock	An attack that may raise all stats.
+apple-acid	10	80	100	special	grass	The user attacks the target with an acidic liquid created from tart apples. This also lowers the target’s Sp. Def stat.
+aqua-cutter	20	70	100	physical	water	The user expels pressurized water to cut at the target like a blade. This move has a heightened chance of landing a critical hit.
+aqua-jet	20	40	100	physical	water	The user lunges at the foe at a speed that makes it almost invisible. It is sure to strike first.
+aqua-ring	20	0		status	water	The user envelops itself in a veil made of water. It regains some HP on every turn.
+aqua-step	10	80	100	physical	water	The user toys with the target and attacks it using light and fluid dance steps. This also boosts the user's Speed stat.
+aqua-tail	10	90	90	physical	water	The user attacks by swinging its tail as if it were a vicious wave in a raging storm. 
+arm-thrust	20	15	100	physical	fighting	Straight-arm punches that strike the foe 2 to 5 times.
+armor-cannon	5	120	100	special	fire	The user shoots its own armor out as blazing projectiles. This also lowers the user’s Defense and Sp. Def stats.
+aromatherapy	5	0		status	grass	Heals all status problems with a soothing scent.
+aromatic-mist	20	0		status	fairy	The user raises the Sp. Def stat of an ally Pokémon by using a mysterious aroma.
+assist	20	0		status	normal	Attacks randomly with one of the partner’s moves.
+assurance	10	60	100	physical	dark	If the foe has already taken some damage in the same turn, this attack’s power is doubled.
+astonish	15	30	100	physical	ghost	An attack that may shock the foe into flinching.
+astral-barrage	5	120	100	special	ghost	The user attacks by sending a frightful amount of small ghosts at opposing Pokémon.
+attack-order	15	90	100	physical	bug	The user calls out its underlings to pummel the target. Critical hits land more easily.
+attract	15	0	100	status	normal	Makes the opposite gender infatuated.
+aura-sphere	20	80		special	fighting	The user looses a blast of aura power from deep within its body. This move is certain to hit.
+aura-wheel	10	110	100	physical	electric	Morpeko attacks and raises its Speed with the energy stored in its cheeks. This move’s type changes depending on the user’s form.
+aurora-beam	20	65	100	special	ice	An attack that may lower ATTACK.
+aurora-veil	20	0		status	ice	This move reduces damage from physical and special moves for five turns. This can be used only in a hailstorm.
+autotomize	15	0		status	steel	The user sheds part of its body to make itself lighter and sharply raise its Speed stat.
+avalanche	10	60	100	physical	ice	An attack move that inflicts double the damage if the user has been hurt by the foe in the same turn.
+axe-kick	10	120	90	physical	fighting	The user attacks by kicking up into the air and slamming its heel down upon the target. This may also confuse the target. If it misses, the user takes damage instead.
+baby-doll-eyes	30	0	100	status	fairy	The user stares at the target with its baby-doll eyes, which lowers its Attack stat. This move always goes first.
+baneful-bunker	10	0		status	poison	In addition to protecting the user from attacks, this move also poisons any attacker that makes direct contact.
+barb-barrage	10	60	100	physical	poison	The user launches countless toxic barbs to inflict damage. This may also poison the target. This move’s power is doubled if the target has a status condition.
+barrage	20	15	85	physical	normal	Throws orbs to hit 2-5 times.
+barrier	20	0		status	psychic	Sharply increases user's DEFENSE.
+baton-pass	40	0		status	normal	Switches while keeping effects.
+beak-blast	15	100	100	physical	flying	The user first heats up its beak, and then it attacks the target. Making direct contact with the Pokémon while it’s heating up its beak results in a burn.
+beat-up	10	0	100	physical	dark	Party POKéMON join in the attack. 
+belch	10	120	90	special	poison	The user lets out a damaging belch at the target. The user must eat a held Berry to use this move.
+belly-drum	10	0		status	normal	Reduces own HP to maximize ATTACK.
+bestow	15	0		status	normal	The user passes its held item to the target when the target isn’t holding an item.
+bide	10	0		physical	normal	Waits 2-3 turns & hits back double.
+bind	20	15	85	physical	normal	Binds the target for 2-5 turns.
+bite	25	60	100	physical	dark	An attack that may cause flinching.
+bitter-blade	10	90	100	physical	fire	The user focuses its bitter feelings toward the world of the living into a slashing attack. The user's HP is restored by up to half the damage taken by the target.
+bitter-malice	10	75	100	special	ghost	The user attacks its target with spine-chilling resentment. This may also leave the target with frostbite. This move's power is doubled if the target has a status condition.
+blast-burn	5	150	90	special	fire	Powerful, but leaves the user immobile the next turn.
+blaze-kick	10	85	90	physical	fire	A kick with a high critical- hit ratio. May cause a burn.
+bleakwind-storm	10	100	80	special	flying	The user attacks with savagely cold winds that cause both body and spirit to tremble. This may also leave the target with frostbite.
+blizzard	5	110	70	special	ice	An attack that may freeze the foe.
+block	5	0		status	normal	Blocks the foe’s way to prevent escape.
+blood-moon	5	140	100	special	normal	The user unleashes the full brunt of its spirit from a full moon that shines as red as blood. This move can't be used twice in a row.
+blue-flare	5	130	85	special	fire	The user attacks by engulfing the target in an intense, yet beautiful, blue flame. It may leave the target with a burn.
+body-press	10	80	100	physical	fighting	The user attacks by slamming its body into the target. The higher the user’s Defense, the more damage it can inflict on the target.
+body-slam	15	85	100	physical	normal	An attack that may cause paralysis.
+bolt-beak	10	85	100	physical	electric	The user stabs the target with its electrified beak. If the user attacks before the target, the power of this move is doubled.
+bolt-strike	5	130	85	physical	electric	The user charges its target, surrounding itself with a great amount of electricity. It may leave the target with paralysis.
+bone-club	20	65	85	physical	ground	An attack that may cause flinching.
+bone-rush	10	25	90	physical	ground	An attack that hits 2-5 times.
+bonemerang	10	50	90	physical	ground	An attack that strikes twice.
+boomburst	10	140	100	special	normal	The user attacks everything around it with the destructive power of a terrible, explosive sound.
+bounce	5	85	85	physical	flying	Bounces up, then down the next turn. May paralyze.
+branch-poke	40	40	100	physical	grass	The user attacks the target by poking it with a sharply pointed branch.
+brave-bird	15	120	100	physical	flying	The user tucks in its wings and charges from a low altitude. The user also takes serious damage.
+breaking-swipe	15	60	100	physical	dragon	The user swings its tough tail wildly and attacks opposing Pokémon. This also lowers their Attack stats.
+brick-break	15	75	100	physical	fighting	Destroys barriers such as REFLECT and causes damage.
+brine	10	65	100	special	water	If the foe’s HP is down to about half, this attack will hit with double the power.
+brutal-swing	20	60	100	physical	dark	The user swings its body around violently to inflict damage on everything in its vicinity.
+bubble	30	40	100	special	water	An attack that may reduce SPEED.
+bubble-beam	20	65	100	special	water	An attack that may lower SPEED.
+bug-bite	20	60	100	physical	bug	The user bites the foe. If the foe is holding a Berry, the user eats it and gains its effect.
+bug-buzz	10	90	100	special	bug	The user vibrates its wings to generate a damaging sound wave. It may also lower the foe’s Sp. Def stat.
+bulk-up	20	0		status	fighting	Bulks up the body to boost both ATTACK and DEFENSE.
+bulldoze	20	60	100	physical	ground	The user stomps down on the ground and attacks everything in the area. Hit Pokémon’s Speed stat is reduced.
+bullet-punch	30	40	100	physical	steel	The user strikes with a tough punch as fast as a bullet. This move always goes first.
+bullet-seed	30	25	100	physical	grass	Shoots 2 to 5 seeds in a row to strike the foe.
+burn-up	5	130	100	special	fire	To inflict massive damage, the user burns itself out. After using this move, the user will no longer be Fire type.
+burning-bulwark	10	0	0	status	fire	The user's intensely hot fur protects it from attacks and also burns any attacker that makes direct contact with it.
+burning-jealousy	5	70	100	special	fire	The user attacks with energy from jealousy. This leaves all opposing Pokémon that have had their stats boosted during the turn with a burn.
+calm-mind	20	0		status	psychic	Raises SP. ATK and SP. DEF by focusing the mind.
+camouflage	20	0		status	normal	Alters the POKéMON’s type depending on the location.
+captivate	20	0	100	status	normal	If it is the opposite gender of the user, the foe is charmed into sharply lowering its Sp. Atk stat.
+ceaseless-edge	15	65	90	physical	dark	The user slashes its shell blade at the target, aiming to land a critical hit. Shell splinters left behind by this attack will continue to damage the target for several turns.
+charge	20	0		status	electric	Charges power to boost the electric move used next.
+charge-beam	10	50	90	special	electric	The user fires a concentrated bundle of electricity. It may also raise the user’s Sp. Atk stat.
+charm	20	0	100	status	fairy	Sharply lowers the foe's ATTACK.
+chatter	20	65	100	special	flying	The user attacks using a sound wave based on words it has learned. It may also confuse the foe.
+chilling-water	20	50	100	special	water	The user attacks the target by showering it with water that's so cold it saps the target's power. This also lowers the target's Attack stat.
+chilly-reception	10	0		status	ice	
+chip-away	20	70	100	physical	normal	Looking for an opening, the user strikes continually. The target’s stat changes don’t affect this attack’s damage.
+chloroblast	5	150	95	special	grass	The user launches its amassed chlorophyll to inflict damage on the target. This also damages the user and lowers the user's action speed.
+circle-throw	10	60	90	physical	fighting	The user throws the target and drags out another Pokémon in its party. In the wild, the battle ends.
+clamp	15	35	85	physical	water	Traps the foe for 2-5 turns.
+clanging-scales	5	110	100	special	dragon	The user rubs the scales on its entire body and makes a huge noise to attack the opposing Pokémon. The user’s Defense stat goes down after the attack.
+clangorous-soul	5	0	100	status	dragon	The user raises all its stats by using some of its HP.
+clear-smog	15	50		special	poison	The user attacks by throwing a clump of special mud. All status changes are returned to normal.
+close-combat	5	120	100	physical	fighting	The user fights the foe in close without guarding itself. It also cuts the user’s Defense and Sp. Def.
+coaching	10	0		status	fighting	The user properly coaches its ally Pokémon, boosting their Attack and Defense stats.
+coil	20	0		status	poison	The user coils up and concentrates. This raises its Attack and Defense stats as well as its accuracy.
+collision-course	5	100	100	physical	fighting	The user transforms and crashes to the ground, causing a massive prehistoric explosion. This move's power is boosted more than usual if it’s a supereffective hit.
+comet-punch	15	18	85	physical	normal	Repeatedly punches 2-5 times.
+comeuppance	10	1	100	physical	dark	The user retaliates with much greater force against the opponent that last inflicted damage on it.
+confide	20	0		status	normal	The user tells the target a secret, and the target loses its ability to concentrate. This lowers the target’s Sp. Atk stat.
+confuse-ray	10	0	100	status	ghost	A move that causes confusion.
+confusion	25	50	100	special	psychic	The foe is hit by a weak telekinetic force. It may also leave the foe confused.
+constrict	35	10	100	physical	normal	An attack that may lower SPEED.
+conversion	30	0		status	normal	Change user's type to a move's type.
+conversion-2	30	0		status	normal	The user's type is made resistant.
+copycat	20	0		status	normal	The user mimics the move used immediately before it. The move fails if no other move has been used yet.
+core-enforcer	10	100	100	special	dragon	If the Pokémon the user has inflicted damage on have already used their moves, this move eliminates the effect of the target’s Ability.
+corrosive-gas	40	0	100	status	poison	The user surrounds everything around it with highly acidic gas and melts away items they hold.
+cosmic-power	20	0		status	psychic	Raises DEFENSE and SP. DEF with a mystic power.
+cotton-guard	10	0		status	grass	The user protects itself by wrapping its body in soft cotton, drastically raising the user’s Defense stat.
+cotton-spore	40	0	100	status	grass	Sharply reduces the foe's SPEED.
+counter	20	0	100	physical	fighting	Returns a physical blow double.
+court-change	10	0	100	status	normal	With its mysterious power, the user swaps the effects on either side of the field.
+covet	25	60	100	physical	normal	Cutely begs to obtain an item held by the foe.
+crabhammer	10	100	90	physical	water	Has a high criti­ cal hit ratio.
+crafty-shield	10	0		status	fairy	The user protects itself and its allies from status moves with a mysterious power. This does not stop moves that do damage.
+cross-chop	5	100	80	physical	fighting	Has a high criti­ cal hit ratio.
+cross-poison	20	70	100	physical	poison	A slashing attack that may also leave the target poisoned. It has a high critical-hit ratio.
+crunch	15	80	100	physical	dark	An attack that may lower SPCL.DEF.
+crush-claw	10	75	95	physical	normal	Tears at the foe with sharp claws. May lower DEFENSE.
+crush-grip	5	0	100	physical	normal	The foe is crushed with great force. The attack is more powerful the more HP the foe has left.
+curse	10	0		status	ghost	Works differently for ghost-types.
+cut	30	50	95	physical	normal	Cuts using claws, scythes, etc.
+dark-pulse	15	80	100	special	dark	The user releases a horrible aura imbued with dark thoughts. It may also make the target flinch.
+dark-void	10	0	50	status	dark	The foe is dragged into a world of total darkness that puts it to sleep. 
+darkest-lariat	10	85	100	physical	dark	The user swings both arms and hits the target. The target’s stat changes don’t affect this attack’s damage.
+dazzling-gleam	10	80	100	special	fairy	The user damages opposing Pokémon by emitting a powerful flash.
+decorate	15	0		status	fairy	The user sharply raises the target’s Attack and Sp. Atk stats by decorating the target.
+defend-order	10	0		status	bug	The user calls out its underlings to make a living shield, raising its Defense and Sp. Def stats.
+defense-curl	40	0		status	normal	Heightens the user's DEFENSE.
+defog	15	0		status	flying	Obstacles are moved, reducing the foe’s evasion stat. It can also be used to clear deep fog, etc.
+destiny-bond	5	0		status	ghost	The foe faints if the user does.
+detect	5	0		status	fighting	Evades attack that turn. It may fail.
+diamond-storm	5	100	95	physical	rock	The user whips up a storm of diamonds to damage opposing Pokémon. This may also raise the user’s Defense stat.
+dig	10	80	100	physical	ground	1st turn: Burrow 2nd turn: Attack
+dire-claw	15	80	100	physical	poison	The user lashes out at the target with ruinous claws, aiming to land a critical hit. This may also leave the target poisoned, paralyzed, or drowsy.
+disable	20	0	100	status	normal	Disables the foe's most recent move.
+disarming-voice	15	40		special	fairy	Letting out a charming cry, the user does emotional damage to opposing Pokémon. This attack never misses.
+discharge	15	80	100	special	electric	A flare of electricity is loosed to strike all Pokémon in battle. It may also cause paralysis.
+dive	10	80	100	physical	water	Dives underwater the first turn and strikes next turn.
+dizzy-punch	10	70	100	physical	normal	An attack that may cause confusion.
+doodle	10	0	100	status	normal	The user captures the very essence of the target in a sketch. This changes the Abilities of the user and its ally Pokémon to that of the target.
+doom-desire	5	140	100	special	steel	Summons strong sunlight to attack 2 turns later.
+double-edge	15	120	100	physical	normal	A tackle that also hurts the user.
+double-hit	10	35	90	physical	normal	The user slams the foe with a tail, etc. The target is hit twice in a row. 
+double-iron-bash	5	60	100	physical	steel	The user rotates, centering the hex nut in its chest, and then strikes with its arms twice in a row. This may also make the target flinch.
+double-kick	30	30	100	physical	fighting	A double kicking attack.
+double-shock	5	120	100	physical	electric	The user discharges all the electricity from its body to perform a high-damage attack. After using this move, the user will no longer be Electric type.
+double-slap	10	15	85	physical	normal	Repeatedly slaps 2-5 times.
+double-team	15	0		status	normal	Heightens evasive­ ness.
+draco-meteor	5	130	90	special	dragon	Comets are summoned down from the sky. The attack’s recoil sharply reduces the user’s Sp. Atk stat.
+dragon-ascent	5	120	100	physical	flying	After soaring upward, the user attacks its target by dropping out of the sky at high speeds, although it lowers its own Defense and Sp. Def in the process.
+dragon-breath	20	60	100	special	dragon	A strong breath attack.
+dragon-cheer	15	0	0	status	dragon	The user raises its allies’ morale with a draconic cry so that their future attacks have a heightened chance of landing critical hits. This rouses Dragon types more.
+dragon-claw	15	80	100	physical	dragon	Slashes the foe with sharp claws.
+dragon-dance	20	0		status	dragon	A mystical dance that ups ATTACK and SPEED.
+dragon-darts	10	50	100	physical	dragon	The user attacks twice using Dreepy. If there are two targets, this move hits each target once.
+dragon-energy	5	150	100	special	dragon	Converting its life-force into power, the user attacks opposing Pokémon. The lower the user’s HP, the lower the move’s power.
+dragon-hammer	15	90	100	physical	dragon	The user uses its body like a hammer to attack the target and inflict damage.
+dragon-pulse	10	85	100	special	dragon	The foe is attacked with a shock wave generated by the user’s gaping mouth. 
+dragon-rage	10	0	100	special	dragon	Always inflicts 40HP damage.
+dragon-rush	10	100	75	physical	dragon	The user tackles the foe while exhibiting overwhelming menace. It may also make the target flinch.
+dragon-tail	10	60	90	physical	dragon	The user knocks away the target and drags out another Pokémon in its party. In the wild, the battle ends.
+drain-punch	10	75	100	physical	fighting	An energy-draining punch. The user’s HP is restored by half the damage taken by the target.
+draining-kiss	10	50	100	special	fairy	The user steals the target’s energy with a kiss. The user’s HP is restored by over half of the damage taken by the target.
+dream-eater	15	100	100	special	psychic	Steals HP from a sleeping victim.
+drill-peck	20	80	100	physical	flying	A strong, spin­ ning-peck attack.
+drill-run	10	80	95	physical	ground	The user crashes into its target while rotating its body like a drill. Critical hits land more easily.
+drum-beating	10	80	100	physical	grass	The user plays its drum, controlling the drum’s roots to attack the target. This also lowers the target’s Speed stat.
+dual-chop	15	40	90	physical	dragon	The user attacks its target by hitting it with brutal strikes. The target is hit twice in a row.
+dual-wingbeat	10	40	90	physical	flying	The user slams the target with its wings. The target is hit twice in a row.
+dynamax-cannon	5	100	100	special	dragon	The user unleashes a strong beam from its core. This move deals twice the damage if the target is Dynamaxed.
+dynamic-punch	5	100	50	physical	fighting	An attack that always confuses.
+earth-power	10	90	100	special	ground	The user makes the ground under the foe erupt with power. It may also lower the target’s Sp. Def.
+earthquake	10	100	100	physical	ground	Tough but useless vs. flying foes.
+echoed-voice	15	40	100	special	normal	The user attacks the target with an echoing voice. If this move is used every turn, it does greater damage.
+eerie-impulse	15	0	100	status	electric	The user’s body generates an eerie impulse. Exposing the target to it harshly lowers the target’s Sp. Atk stat.
+eerie-spell	5	80	100	special	psychic	The user attacks with its tremendous psychic power. This also removes 3 PP from the target’s last move.
+egg-bomb	10	100	75	physical	normal	Eggs are hurled at the foe.
+electric-terrain	10	0		status	electric	The user electrifies the ground under everyone’s feet for five turns. Pokémon on the ground no longer fall asleep.
+electrify	20	0		status	electric	If the target is electrified before it uses a move during that turn, the target’s move becomes Electric type.
+electro-ball	10	0	100	special	electric	The user hurls an electric orb at the target. The faster the user is than the target, the greater the damage.
+electro-drift	5	100	100	special	electric	The user races forward at ultrafast speeds, piercing its target with futuristic electricity. This move's power is boosted more than usual if it's a supereffective hit.
+electro-shot	10	130	100	special	electric	The user gathers electricity on the first turn, boosting its Sp. Atk stat, then fires a high-voltage shot on the next turn. The shot will be fired immediately in rain.
+electroweb	15	55	95	special	electric	The user captures and attacks opposing Pokémon by using an electric net. It reduces the targets’ Speed stat.
+embargo	15	0	100	status	dark	It prevents the foe from using its held item. Its Trainer is also prevented from using items on it.
+ember	25	40	100	special	fire	The foe is attacked with small flames. The foe may suffer a burn.
+encore	5	0	100	status	normal	Makes the foe re­ peat 2-6 times.
+endeavor	5	0	100	physical	normal	Gains power if the user’s HP is lower than the foe’s HP.
+endure	10	0		status	normal	Always leaves at least 1HP.
+energy-ball	10	90	100	special	grass	The user draws power from nature and fires it at the foe. It may also lower the target’s Sp. Def.
+entrainment	15	0	100	status	normal	The user dances with an odd rhythm that compels the target to mimic it, making the target’s Ability the same as the user’s.
+eruption	5	150	100	special	fire	The higher the user’s HP, the more damage caused.
+esper-wing	10	80	100	special	psychic	The user slashes the target with aura-enriched wings. This also raises the user's action speed. This move has a heightened chance of landing a critical hit.
+eternabeam	5	160	90	special	dragon	This is Eternatus’s most powerful attack in its original form. The user can’t move on the next turn.
+expanding-force	10	80	100	special	psychic	The user attacks the target with its psychic power. This move’s power goes up and damages all opposing Pokémon on Psychic Terrain.
+explosion	5	250	100	physical	normal	Very powerful but makes user faint.
+extrasensory	20	80	100	special	psychic	Attacks with a peculiar power. May cause flinching.
+extreme-speed	5	80	100	physical	normal	A powerful first- strike move.
+facade	20	70	100	physical	normal	Boosts ATTACK when burned, paralyzed, or poisoned.
+fairy-lock	10	0		status	fairy	By locking down the battlefield, the user keeps all Pokémon from fleeing during the next turn.
+fairy-wind	30	40	100	special	fairy	The user stirs up a fairy wind and strikes the target with it.
+fake-out	10	40	100	physical	normal	A 1st-turn, 1st-strike move that causes flinching.
+fake-tears	20	0	100	status	dark	Feigns crying to sharply lower the foe’s SP. DEF.
+false-surrender	10	80		physical	dark	The user pretends to bow its head, but then it stabs the target with its disheveled hair. This attack never misses.
+false-swipe	40	40	100	physical	normal	Leaves the foe with at least 1HP.
+feather-dance	15	0	100	status	flying	Envelops the foe with down to sharply reduce ATTACK.
+feint	10	30	100	physical	normal	An attack that hits a foe using Protect or Detect. It also lifts the effects of those moves.
+feint-attack	20	60		physical	dark	An attack that never misses.
+fell-stinger	25	50	100	physical	bug	When the user knocks out a target with this move, the user’s Attack stat rises sharply.
+fickle-beam	5	80	100	special	dragon	The user shoots a beam of light to inflict damage. Sometimes all the user's heads shoot beams in unison, doubling the move's power.
+fiery-dance	10	80	100	special	fire	Cloaked in flames, the user dances and flaps its wings. It may also raise the user’s Sp. Atk stat.
+fiery-wrath	10	90	100	special	dark	The user transforms its wrath into a fire-like aura to attack. This may also make opposing Pokémon flinch.
+fillet-away	10	0		status	normal	The user sharply boosts its Attack, Sp. Atk, and Speed stats by using its own HP.
+final-gambit	5	0	100	special	fighting	The user risks everything to attack its target. The user faints but does damage equal to the user’s HP.
+fire-blast	5	110	85	special	fire	An attack that may cause a burn.
+fire-fang	15	65	95	physical	fire	The user bites with flame-cloaked fangs. It may also make the foe flinch or sustain a burn.
+fire-lash	15	80	100	physical	fire	The user strikes the target with a burning lash. This also lowers the target’s Defense stat.
+fire-pledge	10	80	100	special	fire	A column of fire hits opposing Pokémon. When used with its Grass equivalent, its damage increases into a vast sea of fire.
+fire-punch	15	75	100	physical	fire	A fiery punch. May cause a burn.
+fire-spin	15	35	85	special	fire	Traps foe in fire for 2-5 turns.
+first-impression	10	90	100	physical	bug	Although this move has great power, it only works the first turn the user is in battle.
+fishious-rend	10	85	100	physical	water	The user rends the target with its hard gills. If the user attacks before the target, the power of this move is doubled.
+fissure	5	0	30	physical	ground	A ground-type, one-hit KO attack.
+flail	15	0	100	physical	normal	Stronger if the user's HP is low.
+flame-burst	15	70	100	special	fire	The user attacks the target with a bursting flame. The bursting flame damages Pokémon next to the target as well.
+flame-charge	20	50	100	physical	fire	The user cloaks itself with flame and attacks. Building up more power, it raises the user’s Speed stat.
+flame-wheel	25	60	100	physical	fire	An attack that may cause a burn.
+flamethrower	15	90	100	special	fire	An attack that may inflict a burn.
+flare-blitz	15	120	100	physical	fire	The user cloaks itself in fire and charges at the foe. The user sustains serious damage, too.
+flash	20	0	100	status	normal	Blinds the foe to reduce accuracy.
+flash-cannon	10	80	100	special	steel	The user gathers all its light energy and releases it at once. It may also lower the foe’s Sp. Def stat.
+flatter	15	0	100	status	dark	Confuses the foe, but raises its SP. ATK.
+fleur-cannon	5	130	90	special	fairy	The user unleashes a strong beam. The attack’s recoil harshly lowers the user’s Sp. Atk stat.
+fling	10	0	100	physical	dark	The user flings its held item at the foe to attack. Its power and effects depend on the item.
+flip-turn	20	60	100	physical	water	After making its attack, the user rushes back to switch places with a party Pokémon in waiting.
+floral-healing	10	0		status	fairy	The user restores the target’s HP by up to half of its max HP. It restores more HP when the terrain is grass.
+flower-shield	10	0		status	fairy	The user raises the Defense stat of all Grass-type Pokémon in battle with a mysterious power.
+flower-trick	10	70		physical	grass	The user throws a rigged bouquet of flowers at the target. This attack never misses and always lands a critical hit.
+fly	15	90	95	physical	flying	1st turn: Fly 2nd turn: Attack
+flying-press	10	100	95	physical	fighting	The user dives down onto the target from the sky. This move is Fighting and Flying type simultaneously.
+focus-blast	5	120	70	special	fighting	The user heightens its mental focus and unleashes its power. It may also lower the target’s Sp. Def.
+focus-energy	30	0		status	normal	Raises the criti­ cal hit ratio.
+focus-punch	20	150	100	physical	fighting	A powerful loyalty attack. The user flinches if hit.
+follow-me	20	0		status	normal	Draws attention to make foes attack only the user.
+force-palm	10	60	100	physical	fighting	The foe is attacked with a shock wave. It may also leave the target paralyzed. 
+foresight	40	0		status	normal	Negates accuracy reduction moves.
+forests-curse	20	0	100	status	grass	The user puts a forest curse on the target. Afflicted targets are now Grass type as well.
+foul-play	15	95	100	physical	dark	The user turns the target’s power against it. The higher the target’s Attack stat, the greater the damage.
+freeze-dry	20	70	100	special	ice	The user rapidly cools the target. This may also leave the target frozen. This move is super effective on Water types.
+freeze-shock	5	140	90	physical	ice	On the second turn, the user hits the target with electrically charged ice. It may leave the target with paralysis.
+freezing-glare	10	90	100	special	psychic	The user shoots its psychic power from its eyes to attack. This may also leave the target frozen.
+frenzy-plant	5	150	90	special	grass	Powerful, but leaves the user immobile the next turn.
+frost-breath	10	60	90	special	ice	The user blows a cold breath on the target. This attack always results in a critical hit.
+frustration	20	0	100	physical	normal	An attack based on lack of loyalty.
+fury-attack	20	15	85	physical	normal	Jabs the target 2-5 times.
+fury-cutter	20	40	95	physical	bug	Successive hits raise power.
+fury-swipes	15	18	80	physical	normal	Quickly scratches 2-5 times.
+fusion-bolt	5	100	100	physical	electric	The user throws down a giant thunderbolt. This attack does greater damage when influenced by an enormous flame.
+fusion-flare	5	100	100	special	fire	The user brings down a giant flame. This attack does greater damage when influenced by an enormous thunderbolt.
+future-sight	10	120	100	special	psychic	An attack that hits on 3rd turn.
+gastro-acid	10	0	100	status	poison	The user hurls up its stomach acids on the foe. The fluid eliminates the effect of the foe’s ability.
+gear-grind	15	50	85	physical	steel	The user attacks by throwing two steel gears at its target.
+gear-up	20	0		status	steel	The user engages its gears to raise the Attack and Sp. Atk stats of ally Pokémon with the Plus or Minus Ability.
+geomancy	10	0		status	fairy	The user absorbs energy and sharply raises its Sp. Atk, Sp. Def, and Speed stats on the next turn.
+giga-drain	10	75	100	special	grass	Steals 1/2 of the damage inflicted.
+giga-impact	5	150	90	physical	normal	The user charges at the foe using every bit of its power. The user must rest on the next turn.
+gigaton-hammer	5	160	100	physical	steel	The user swings its whole body around to attack with its huge hammer. This move can't be used twice in a row.
+glacial-lance	5	120	100	physical	ice	The user attacks by hurling a blizzard-cloaked icicle lance at opposing Pokémon.
+glaciate	10	65	95	special	ice	The user attacks by blowing freezing cold air at opposing Pokémon. This attack reduces the targets’ Speed stat.
+glaive-rush	5	120	100	physical	dragon	The user throws its entire body into a reckless charge. After this move is used, attacks on the user cannot miss and will inflict double damage until the user’s next turn.
+glare	30	0	100	status	normal	A move that may cause paralysis.
+grass-knot	20	0	100	special	grass	The user snares the foe with grass and trips it. The heavier the foe, the greater the damage.
+grass-pledge	10	80	100	special	grass	A column of grass hits opposing Pokémon. When used with its water equivalent, its damage increases into a vast swamp.
+grass-whistle	15	0	55	status	grass	Lulls the foe into sleep with a pleasant melody.
+grassy-glide	20	55	100	physical	grass	Gliding on the ground, the user attacks the target. This move always goes first on Grassy Terrain.
+grassy-terrain	10	0		status	grass	The user turns the ground under everyone’s feet to grass for five turns. This restores the HP of Pokémon on the ground a little every turn.
+grav-apple	10	80	100	physical	grass	The user inflicts damage by dropping an apple from high above. This also lowers the target’s Defense stat.
+gravity	5	0		status	psychic	Gravity is intensified for five turns, making moves involving flying unusable and negating Levitation.
+growl	40	0	100	status	normal	Reduces the foe's ATTACK.
+growth	20	0		status	normal	Raises the SPCL. ATK rating.
+grudge	5	0		status	ghost	If the user faints, deletes the PP of the final move.
+guard-split	10	0		status	psychic	The user employs its psychic power to average its Defense and Sp. Def stats with those of its target’s.
+guard-swap	10	0		status	psychic	The user employs its psychic power to switch changes to its Defense and Sp. Def with the foe.
+guillotine	5	0	30	physical	normal	A one-hit KO, pincer attack.
+gunk-shot	5	120	80	physical	poison	The user shoots filthy garbage at the foe to attack. It may also poison the target.
+gust	35	40	100	special	flying	Whips up a strong gust of wind.
+gyro-ball	5	0	100	physical	steel	The user tackles the foe with a high-speed spin. The slower the user, the greater the damage.
+hail	10	0		status	ice	Summons a hailstorm that strikes every turn.
+hammer-arm	10	100	90	physical	fighting	The user swings and hits with its strong and heavy fist. It lowers the user’s Speed, however.
+hard-press	10	0	100	physical	steel	The target is crushed with an arm, a claw, or the like to inflict damage. The more HP the target has left, the greater the move's power.
+harden	30	0		status	normal	Stiffens the body’s  muscles to raise DEFENSE.
+haze	30	0		status	ice	Eliminates all stat changes.
+head-charge	15	120	100	physical	normal	The user charges its head into its target, using its powerful guard hair. It also damages the user a little.
+head-smash	5	150	80	physical	rock	The user delivers a life-endangering head butt at full power. The user also takes terrible damage.
+headbutt	15	70	100	physical	normal	An attack that may make foe flinch.
+headlong-rush	5	120	100	physical	ground	The user smashes into the target in a full-body tackle. This also lowers the user’s defensive stats.
+heal-bell	5	0		status	normal	Eliminates all status problems.
+heal-block	15	0	100	status	psychic	The user prevents the foe from using any HP-recovery moves for five turns. 
+heal-order	10	0		status	bug	The user calls out its underlings to heal it. The user regains up to half of its max HP.
+heal-pulse	10	0		status	psychic	The user emits a healing pulse which restores the target’s HP by up to half of its max HP.
+healing-wish	10	0		status	psychic	The user faints. In return, the Pokémon taking its place will have its HP restored and status cured.
+heart-stamp	25	60	100	physical	psychic	The user unleashes a vicious blow after its cute act makes the target less wary. It may also make the target flinch.
+heart-swap	10	0		status	psychic	The user employs its psychic power to switch stat changes with the foe. 
+heat-crash	10	0	100	physical	fire	The user slams its target with its flame- covered body. The more the user outweighs the target, the greater the damage.
+heat-wave	10	95	90	special	fire	Exhales a hot breath on the foe. May inflict a burn.
+heavy-slam	10	0	100	physical	steel	The user slams into the target with its heavy body. The more the user outweighs the target, the greater its damage.
+helping-hand	20	0		status	normal	A move that boosts the power of the ally’s attack in a Double Battle. 
+hex	10	65	100	special	ghost	This relentless attack does massive damage to a target affected by status problems.
+hidden-power	15	60	100	special	normal	The power varies with the POKéMON.
+high-horsepower	10	95	95	physical	ground	The user fiercely attacks the target using its entire body.
+high-jump-kick	10	130	90	physical	fighting	May miss and hurt the user.
+hone-claws	15	0		status	dark	The user sharpens its claws to boost its Attack stat and accuracy.
+horn-attack	25	65	100	physical	normal	An attack using a horn to jab.
+horn-drill	5	0	30	physical	normal	A one-hit KO, drill attack.
+horn-leech	10	75	100	physical	grass	The user drains the target’s energy with its horns. The user’s HP is restored by half the damage taken by the target.
+howl	40	0		status	normal	Howls to raise the spirit and boosts ATTACK.
+hurricane	10	110	70	special	flying	The user attacks by wrapping its opponent in a fierce wind that flies up into the sky. It may also confuse the target.
+hydro-cannon	5	150	90	special	water	Powerful, but leaves the user immobile the next turn.
+hydro-pump	5	110	80	special	water	A powerful water- type attack.
+hydro-steam	15	80	100	special	water	The user blasts the target with boiling-hot water. This move's power is not lowered in harsh sunlight but rather boosted by 50 percent.
+hyper-beam	5	150	90	special	normal	1st turn: Attack 2nd turn: Rest
+hyper-drill	5	100	100	physical	normal	The user spins the pointed part of its body at high speed to pierce the target. This attack can hit a target using a move such as Protect or Detect.
+hyper-fang	15	80	90	physical	normal	An attack that may cause flinching.
+hyper-voice	10	90	100	special	normal	A loud attack that uses sound waves to injure.
+hyperspace-fury	5	100		physical	dark	Using its many arms, the user unleashes a barrage of attacks that ignore the effects of moves like Protect and Detect. This attack lowers the user’s Defense.
+hyperspace-hole	5	80		special	psychic	Using a hyperspace hole, the user appears right next to the target and strikes. This also hits a target using Protect or Detect.
+hypnosis	20	0	60	status	psychic	May put the foe to sleep.
+ice-ball	20	30	90	physical	ice	A 5-turn attack that gains power on successive hits.
+ice-beam	10	90	100	special	ice	An attack that may freeze the foe.
+ice-burn	5	140	90	special	ice	On the second turn, an ultracold, freezing wind surrounds the target. This may leave the target with a burn.
+ice-fang	15	65	95	physical	ice	The user bites with cold-infused fangs. It may also make the foe flinch or freeze. 
+ice-hammer	10	100	90	physical	ice	The user swings and hits with its strong, heavy fist. It lowers the user’s Speed, however.
+ice-punch	15	75	100	physical	ice	An icy punch. May cause freezing.
+ice-shard	30	40	100	physical	ice	The user flash freezes chunks of ice and hurls them. This move always goes first.
+ice-spinner	15	80	100	physical	ice	The user covers its feet in thin ice and twirls around, slamming into the target. This move's spinning motion also destroys the terrain.
+icicle-crash	10	85	90	physical	ice	The user attacks by harshly dropping an icicle onto the target. It may also make the target flinch.
+icicle-spear	30	25	100	physical	ice	Attacks the foe by firing 2 to 5 icicles in a row.
+icy-wind	15	55	95	special	ice	An icy attack that lowers SPEED.
+imprison	10	0		status	psychic	Prevents foes from using moves known by the user.
+incinerate	15	60	100	special	fire	The user attacks the target with fire. If the target is holding a Berry, the Berry becomes burnt up and unusable.
+infernal-parade	15	60	100	special	ghost	The user attacks with myriad fireballs. This may also leave the target with a burn. This move's power is doubled if the target has a status condition.
+inferno	5	100	50	special	fire	The user attacks by engulfing the target in an intense fire. It leaves the target with a burn.
+infestation	20	20	100	special	bug	The target is infested and attacked for four to five turns. The target can’t flee during this time.
+ingrain	20	0		status	grass	Lays roots that restore HP. The user can’t switch out.
+instruct	15	0		status	psychic	The user instructs the target to use the target’s last move again.
+ion-deluge	25	0		status	electric	The user disperses electrically charged particles, which changes Normal-type moves to Electric-type moves.
+iron-defense	15	0		status	steel	Hardens the body’s surface to sharply raise DEFENSE.
+iron-head	15	80	100	physical	steel	The foe slams the target with its steel-hard head. It may also make the target flinch.
+iron-tail	15	100	75	physical	steel	An attack that may reduce DEFENSE.
+ivy-cudgel	10	100	100	physical	grass	The user strikes with an ivy-wrapped cudgel. This move's type changes depending on the mask worn by the user, and it has a heightened chance of landing a critical hit.
+jaw-lock	10	80	100	physical	dark	This move prevents the user and the target from switching out until either of them faints. The effect goes away if either of the Pokémon leaves the field.
+jet-punch	15	60	100	physical	water	The user summons a torrent around its fist and punches at blinding speed. This move always goes first.
+judgment	10	100	100	special	normal	The user releases countless shots of light. Its type varies with the kind of Plate the user is holding.
+jump-kick	10	100	95	physical	fighting	May miss, damaging the user.
+jungle-healing	10	0		status	grass	The user becomes one with the jungle, restoring HP and healing any status conditions of itself and its ally Pokémon in battle.
+karate-chop	25	50	100	physical	fighting	Has a high criti­ cal hit ratio.
+kinesis	15	0	80	status	psychic	Reduces the foe's accuracy.
+kings-shield	10	0		status	steel	The user takes a defensive stance while it protects itself from damage. It also harshly lowers the Attack stat of any attacker who makes direct contact.
+knock-off	20	65	100	physical	dark	Knocks down the foe’s held item to prevent its use.
+kowtow-cleave	10	85		physical	dark	The user slashes at the target after kowtowing to make the target let down its guard. This attack never misses.
+lands-wrath	10	90	100	physical	ground	The user gathers the energy of the land and focuses that power on opposing Pokémon to damage them.
+laser-focus	30	0		status	normal	The user concentrates intensely. The attack on the next turn always results in a critical hit.
+lash-out	5	75	100	physical	dark	The user lashes out to vent its frustration toward the target. If the user’s stats were lowered during this turn, the power of this move is doubled.
+last-resort	5	140	100	physical	normal	This move can be used only after the user has used all the other moves it knows in the battle.
+last-respects	10	50	100	physical	ghost	The user attacks to avenge its allies. The more defeated allies there are in the user's party, the greater the move's power.
+lava-plume	15	80	100	special	fire	An inferno of scarlet flames washes over all Pokémon in battle. It may also inflict burns.
+leaf-blade	15	90	100	physical	grass	Slashes with a sharp leaf. High critical-hit ratio.
+leaf-storm	5	130	90	special	grass	A storm of sharp leaves is whipped up. The attack’s recoil sharply reduces the user’s Sp. Atk stat.
+leaf-tornado	10	65	90	special	grass	The user attacks its target by encircling it in sharp leaves. This attack may also lower the target’s accuracy.
+leafage	40	40	100	physical	grass	The user attacks by pelting the target with leaves.
+leech-life	10	80	100	physical	bug	Steals 1/2 of the damage inflicted.
+leech-seed	10	0	90	status	grass	Steals HP from the foe on every turn.
+leer	30	0	100	status	normal	Reduces the foe's DEFENSE.
+lick	30	30	100	physical	ghost	An attack that may cause paralysis.
+life-dew	10	0		status	water	The user scatters mysterious water around and restores the HP of itself and its ally Pokémon in the battle.
+light-screen	30	0		status	psychic	Ups SPCL.DEF with a wall of light.
+liquidation	10	85	100	physical	water	The user slams into the target using a full-force blast of water. This may also lower the target’s Defense stat.
+lock-on	5	0		status	normal	Ensures the next attack will hit.
+lovely-kiss	10	0	75	status	normal	May cause the foe to fall asleep.
+low-kick	20	0	100	physical	fighting	An attack that may cause flinching.
+low-sweep	20	65	100	physical	fighting	The user attacks the target’s legs swiftly, reducing the target’s Speed stat.
+lucky-chant	30	0		status	normal	The user chants an incantation toward the sky, preventing the foe from landing critical hits.
+lumina-crash	10	80	100	special	psychic	The user attacks by unleashing a peculiar light that even affects the mind. This also harshly lowers the target's Sp. Def stat.
+lunar-blessing	5	0		status	psychic	The user heals its own status conditions and restores its HP. Incoming moves also become more likely to miss.
+lunar-dance	10	0		status	psychic	The user faints. In return, the Pokémon taking its place will have its status and HP fully restored.
+lunge	15	80	100	physical	bug	The user makes a lunge at the target, attacking with full force. This also lowers the target’s Attack stat.
+luster-purge	5	95	100	special	psychic	Attacks with a burst of light. May lower SP. DEF.
+mach-punch	30	40	100	physical	fighting	A fast punch that lands first.
+magic-coat	15	0		status	psychic	Reflects special effects back to the attacker.
+magic-powder	20	0	100	status	psychic	The user scatters a cloud of magic powder that changes the target to Psychic type.
+magic-room	10	0		status	psychic	The user creates a bizarre area in which Pokémon’s held items lose their effects for five turns.
+magical-leaf	20	60		special	grass	Attacks with a strange leaf that cannot be evaded.
+magma-storm	5	100	75	special	fire	The foe becomes trapped within a maelstrom of fire that rages for two to five turns.
+magnet-bomb	20	60		physical	steel	The user launches a steel bomb that sticks to the target. This attack will not miss.
+magnet-rise	10	0		status	electric	The user levitates using electrically generated magnetism for five turns.
+magnetic-flux	20	0		status	electric	The user manipulates magnetic fields, which raises the Defense and Sp. Def stats of ally Pokémon with the Plus or Minus Ability.
+magnitude	30	0	100	physical	ground	A ground attack with random power.
+make-it-rain	5	120	100	special	steel	The user attacks by throwing out a mass of coins. This also lowers the user's Sp. Atk stat. Money is earned after the battle.
+malignant-chain	5	100	100	special	poison	The user pours toxins into the target by wrapping them in a toxic, corrosive chain. This may also leave the target badly poisoned.
+mat-block	10	0		status	fighting	Using a pulled-up mat as a shield, the user protects itself and its allies from damaging moves. This does not stop status moves.
+matcha-gotcha	15	80	90	special	grass	The user fires a blast of tea that it mixed. The user's HP is restored by up to half the damage taken by the target. This may also leave the target with a burn.
+me-first	20	0		status	normal	The user tries to cut ahead of the foe to steal and use the foe’s intended move with greater power.
+mean-look	5	0		status	normal	Prevents fleeing or switching.
+meditate	40	0		status	psychic	Raises the user's ATTACK.
+mega-drain	15	40	100	special	grass	Steals 1/2 of the damage inflicted.
+mega-kick	5	120	75	physical	normal	The target is attacked by a kick launched with muscle-packed power.
+mega-punch	20	80	85	physical	normal	A powerful punch thrown very hard.
+megahorn	10	120	85	physical	bug	A powerful charge attack.
+memento	10	0	100	status	dark	The user faints and lowers the foe’s abilities.
+metal-burst	10	0	100	physical	steel	The user retaliates against the foe that last inflicted damage on it with much greater power.
+metal-claw	35	50	95	physical	steel	An attack that may up user's ATTACK.
+metal-sound	40	0	85	status	steel	Emits a horrible screech that sharply lowers SP. DEF.
+meteor-assault	5	150	100	physical	fighting	The user attacks wildly with its thick leek. The user can’t move on the next turn, because the force of this move makes it stagger.
+meteor-beam	10	120	90	special	rock	In this two-turn attack, the user gathers space power and boosts its Sp. Atk stat, then attacks the target on the next turn.
+meteor-mash	10	90	90	physical	steel	Fires a meteor-like punch. May raise ATTACK.
+metronome	10	0		status	normal	Randomly uses any POKéMON move.
+mighty-cleave	5	95	100	physical	rock	The user wields the light that has accumulated atop its head to cleave the target. This move hits even if the target protects itself.
+milk-drink	5	0		status	normal	Restores HP by 1/2 the max HP.
+mimic	10	0		status	normal	Copies a move used by the foe.
+mind-blown	5	150	100	special	fire	The user attacks everything around it by causing its own head to explode. This also damages the user.
+mind-reader	5	0		status	normal	Ensures the next attack will hit.
+minimize	10	0		status	normal	Heightens evasive­ ness.
+miracle-eye	40	0		status	psychic	Enables a Dark-type target to be hit by Psychic-type attacks. This also enables an evasive target to be hit.
+mirror-coat	20	0	100	special	psychic	Counters a SPCL. ATK. move double.
+mirror-move	20	0		status	flying	Counters with the same move.
+mirror-shot	10	65	85	special	steel	The user looses a flash of energy from its polished body. It may also lower the target’s accuracy.
+mist	30	0		status	ice	Prevents stat reduction.
+mist-ball	5	95	100	special	psychic	Attacks with a flurry of down. May lower SP. ATK.
+misty-explosion	5	100	100	special	fairy	The user attacks everything around it and faints upon using this move. This move’s power is increased on Misty Terrain.
+misty-terrain	10	0		status	fairy	The user covers the ground under everyone’s feet with mist for five turns. This protects Pokémon on the ground from status conditions.
+moonblast	15	95	100	special	fairy	Borrowing the power of the moon, the user attacks the target. This may also lower the target’s Sp. Atk stat.
+moongeist-beam	5	100	100	special	ghost	The user emits a sinister ray to attack the target. This move can be used on the target regardless of  its Abilities.
+moonlight	5	0		status	fairy	Restores HP (varies by time).
+morning-sun	5	0		status	normal	Restores HP (varies by time).
+mortal-spin	15	30	100	physical	poison	The user performs a spin attack that can also eliminate the effects of such moves as Bind, Wrap, and Leech Seed. This also poisons opposing Pokémon.
+mountain-gale	10	100	85	physical	ice	The user hurls giant chunks of ice at the target to inflict damage.
+mud-bomb	10	65	85	special	ground	The user launches a hard-packed mud ball to attack. It may also lower the target’s accuracy.
+mud-shot	15	55	95	special	ground	Hurls mud at the foe and reduces SPEED.
+mud-slap	10	20	100	special	ground	Reduces the foe's accuracy.
+mud-sport	15	0		status	ground	Covers the user in mud to raise electrical resistance.
+muddy-water	10	90	85	special	water	Attacks with muddy water. May lower accuracy.
+multi-attack	10	120	100	physical	normal	Cloaking itself in high energy, the user slams into the target. The memory held determines the move’s type.
+mystical-fire	10	75	100	special	fire	The user attacks by breathing a special, hot fire. This also lowers the target’s Sp. Atk stat.
+mystical-power	10	70	90	special	psychic	The user strengthens itself with a mysterious power. If it excels in offense, its offensive stats are raised. If it excels in defense, its defensive stats are raised.
+nasty-plot	20	0		status	dark	The user stimulates its brain by thinking bad thoughts. It sharply raises the user’s Sp. Atk.
+natural-gift	15	0	100	physical	normal	The user draws power to attack by using its held Berry. The Berry determines its type and power.
+nature-power	20	0		status	normal	The type of attack varies depending on the location.
+natures-madness	10	0	90	special	fairy	The user hits the target with the force of nature. It halves the target’s HP.
+needle-arm	15	60	100	physical	grass	Attacks with thorny arms. May cause flinching.
+night-daze	10	85	95	special	dark	The user lets loose a pitch-black shock wave at its target. It may also lower the target’s accuracy.
+night-shade	15	0	100	special	ghost	The user's level equals damage HP.
+night-slash	15	70	100	physical	dark	The user slashes the foe the instant an opportunity arises. It has a high critical-hit ratio.
+nightmare	15	0	100	status	ghost	A sleeper loses 1/4 HP every turn.
+no-retreat	5	0		status	fighting	This move raises all the user’s stats but prevents the user from switching out or fleeing.
+noble-roar	30	0	100	status	normal	Letting out a noble roar, the user intimidates the target and lowers its Attack and Sp. Atk stats.
+nuzzle	20	20	100	physical	electric	The user attacks by nuzzling its electrified cheeks against the target. This also leaves the target with paralysis.
+oblivion-wing	10	80	100	special	flying	The user absorbs its target’s HP. The user’s HP is restored by over half of the damage taken by the target.
+obstruct	10	0	100	status	dark	This move enables the user to protect itself from all attacks. Its chance of failing rises if it is used in succession. Direct contact harshly lowers the attacker’s Defense stat.
+octazooka	10	65	85	special	water	An attack that may reduce accuracy.
+octolock	15	0	100	status	fighting	The user locks the target in and prevents it from fleeing. This move also lowers the target’s Defense and Sp. Def every turn.
+odor-sleuth	40	0		status	normal	Negates the foe’s efforts to heighten evasiveness.
+ominous-wind	5	60	100	special	ghost	The user creates a gust of repulsive wind. It may also raise all the user’s stats at once.
+order-up	10	80	100	physical	dragon	The user attacks with elegant poise. If the user has a Tatsugiri in its mouth, this move boosts one of the user's stats based on the Tatsugiri's form.
+origin-pulse	10	110	85	special	water	The user attacks opposing Pokémon with countless beams of light that glow a deep and brilliant blue.
+outrage	10	120	100	physical	dragon	Works 2-3 turns and confuses user.
+overdrive	10	80	100	special	electric	The user attacks opposing Pokémon by twanging a guitar or bass guitar, causing a huge echo and strong vibration.
+overheat	5	130	90	special	fire	Allows a full-power attack, but sharply lowers SP. ATK.
+pain-split	20	0		status	normal	Adds user & foe's HPs. Shares total.
+parabolic-charge	20	65	100	special	electric	The user attacks everything around it. The user’s HP is restored by half the damage taken by those hit.
+parting-shot	20	0	100	status	dark	With a parting threat, the user lowers the target’s Attack and Sp. Atk stats. Then it switches with a party Pokémon.
+pay-day	20	40	100	physical	normal	Throws coins. Gets them back later.
+payback	10	50	100	physical	dark	If the user can use this attack after the foe attacks, its power is doubled. 
+peck	35	35	100	physical	flying	Jabs the foe with a beak, etc.
+perish-song	5	0		status	normal	Both user and foe faint in 3 turns.
+petal-blizzard	15	90	100	physical	grass	The user stirs up a violent petal blizzard and attacks everything around it.
+petal-dance	10	120	100	special	grass	Works 2-3 turns and confuses user.
+phantom-force	10	90	100	physical	ghost	The user vanishes somewhere, then strikes the target on the next turn. This move hits even if the target protects itself.
+photon-geyser	5	100	100	special	psychic	The user attacks a target with a pillar of light. This move inflicts Attack or Sp. Atk damage—whichever stat is higher for the user.
+pin-missile	20	25	95	physical	bug	Fires pins that strike 2-5 times.
+plasma-fists	15	100	100	physical	electric	The user attacks with electrically charged fists. This move changes Normal-type moves to Electric-type moves.
+play-nice	20	0		status	normal	The user and the target become friends, and the target loses its will to fight. This lowers the target’s Attack stat.
+play-rough	10	90	90	physical	fairy	The user plays rough with the target and attacks it. This may also lower the target’s Attack stat.
+pluck	20	60	100	physical	flying	The user pecks the foe. If the foe is holding a Berry, the user plucks it and gains its effect.
+poison-fang	15	50	100	physical	poison	A sharp-fanged attack. May badly poison the foe.
+poison-gas	40	0	90	status	poison	A move that may poison the foe.
+poison-jab	20	80	100	physical	poison	The foe is stabbed with a tentacle or arm steeped in poison. It may also poison the foe.
+poison-powder	35	0	75	status	poison	A move that may poison the foe.
+poison-sting	35	15	100	physical	poison	An attack that may poison the target.
+poison-tail	25	50	100	physical	poison	Has a high critical-hit ratio. May also poison.
+pollen-puff	15	90	100	special	bug	The user attacks the enemy with a pollen puff that explodes. If the target is an ally, it gives the ally a pollen puff that restores its HP instead.
+poltergeist	5	110	90	physical	ghost	The user attacks the target by controlling the target’s item. The move fails if the target doesn’t have an item.
+population-bomb	10	20	90	physical	normal	The user’s fellows gather in droves to perform a combo attack that hits the target one to ten times in a row.
+pounce	20	50	100	physical	bug	The user attacks by pouncing on the target. This also lowers the target's Speed stat.
+pound	35	40	100	physical	normal	Pounds with fore­ legs or tail.
+powder	20	0	100	status	bug	The user covers the target in a powder that explodes and damages the target if it uses a Fire-type move.
+powder-snow	25	40	100	special	ice	An attack that may cause freezing.
+power-gem	20	80	100	special	rock	The user attacks with a ray of light that sparkles as if it were made of gemstones. 
+power-shift	10	0		status	normal	
+power-split	10	0		status	psychic	The user employs its psychic power to average its Attack and Sp. Atk stats with those of the target’s.
+power-swap	10	0		status	psychic	The user employs its psychic power to switch changes to its Attack and Sp. Atk with the foe.
+power-trick	10	0		status	psychic	The user employs its psychic power to switch its Attack stat with its Defense stat.
+power-trip	10	20	100	physical	dark	The user boasts its strength and attacks the target. The more the user’s stats are raised, the greater the move’s power.
+power-up-punch	20	40	100	physical	fighting	Striking opponents over and over makes the user’s fists harder. Hitting a target raises the Attack stat.
+power-whip	10	120	85	physical	grass	The user violently whirls its vines or tentacles to harshly lash the foe. 
+precipice-blades	10	120	85	physical	ground	The user attacks opposing Pokémon by manifesting the power of the land in fearsome blades of stone.
+present	15	0	90	physical	normal	A bomb that may restore HP.
+prismatic-laser	10	160	100	special	psychic	The user shoots powerful lasers using the power of a prism. The user can’t move on the next turn.
+protect	10	0		status	normal	Foils attack that turn. It may fail.
+psybeam	20	65	100	special	psychic	An attack that may confuse the foe.
+psyblade	15	80	100	physical	psychic	The user rends the target with an ethereal blade. This move's power is boosted by 50 percent if the user is on Electric Terrain.
+psych-up	10	0		status	normal	Copies the foe's stat changes.
+psychic	10	90	100	special	psychic	An attack that may lower SPCL.DEF.
+psychic-fangs	10	85	100	physical	psychic	The user bites the target with its psychic capabilities. This can also destroy Light Screen and Reflect.
+psychic-noise	10	75	100	special	psychic	The user attacks the target with unpleasant sound waves. For two turns, the target is prevented from recovering HP through moves, Abilities, or held items.
+psychic-terrain	10	0		status	psychic	This protects Pokémon on the ground from priority moves and powers up Psychic-type moves for five turns.
+psycho-boost	5	140	90	special	psychic	Allows a full-power attack, but sharply lowers SP. ATK.
+psycho-cut	20	70	100	physical	psychic	The user tears at the foe with blades formed by psychic power. It has a high critical-hit ratio.
+psycho-shift	10	0	100	status	psychic	Using its psychic power of suggestion, the user transfers its status problems to the target.
+psyshield-bash	10	70	90	physical	psychic	Cloaking itself in psychic energy, the user slams into the target. This may also raise the user’s defensive stats.
+psyshock	10	80	100	special	psychic	The user materializes an odd psychic wave to attack the target. This attack does physical damage.
+psystrike	10	100	100	special	psychic	The user materializes an odd psychic wave to attack the target. This attack does physical damage.
+psywave	15	0	100	special	psychic	An attack with variable power.
+punishment	5	0	100	physical	dark	This attack’s power increases the more the foe has powered up with stat changes. 
+purify	20	0		status	poison	The user heals the target’s status condition. If the move succeeds, it also restores the user’s own HP.
+pursuit	20	40	100	physical	dark	Heavily strikes switching POKéMON.
+pyro-ball	5	120	90	physical	fire	The user attacks by igniting a small stone and launching it as a fiery ball at the target. This may also leave the target with a burn.
+quash	15	0	100	status	dark	The user suppresses the target and makes its move go last.
+quick-attack	30	40	100	physical	normal	Lets the user get in the first hit.
+quick-guard	15	0		status	fighting	The user protects itself and its allies from priority moves. If used in succession, its chance of failing rises.
+quiver-dance	20	0		status	bug	The user lightly performs a beautiful, mystic dance. It boosts the user’s Sp. Atk, Sp. Def, and Speed stats.
+rage	20	20	100	physical	normal	Raises ATTACK if the user is hit.
+rage-fist	10	50	100	physical	ghost	The user converts its rage into energy to attack. The more times the user has been hit by attacks, the greater the move's power.
+rage-powder	20	0		status	bug	The user scatters a cloud of irritating powder to draw attention to itself. Opponents aim only at the user.
+raging-bull	10	90	100	physical	normal	The user performs a tackle like a raging bull. This move's type depends on the user's form. It can also break barriers, such as Light Screen and Reflect.
+raging-fury	10	120	100	physical	fire	The user rampages and spews vicious flames to inflict damage on the target, then becomes fixated on using this move.
+rain-dance	5	0		status	water	Boosts the power of WATER- type moves for 5 turns.
+rapid-spin	40	50	100	physical	normal	A high-speed spinning attack.
+razor-leaf	25	55	95	physical	grass	A sharp-edged leaf is launched to slash at the foe. It has a high critical-hit ratio.
+razor-shell	10	75	95	physical	water	The user cuts its target with sharp shells. This attack may also lower the target’s Defense stat.
+razor-wind	10	80	100	special	normal	1st turn: Prepare 2nd turn: Attack
+recover	5	0		status	normal	Recovers up to half the user’s maximum HP.
+recycle	10	0		status	normal	Recycles a used item for one more use.
+reflect	20	0		status	psychic	Raises DEFENSE with a barrier.
+reflect-type	15	0		status	normal	The user reflects the target’s type, making it the same type as the target.
+refresh	20	0		status	normal	Heals poisoning, paralysis, or a burn.
+relic-song	10	75	100	special	normal	The user sings an ancient song and attacks by appealing to the hearts of those listening. It may also induce sleep.
+rest	5	0		status	psychic	Sleep for 2 turns to fully recover.
+retaliate	5	70	100	physical	normal	The user gets revenge for a fainted ally. If an ally fainted in the previous turn, this attack’s damage increases.
+return	20	0	100	physical	normal	An attack that is based on loyalty.
+revelation-dance	15	90	100	special	normal	The user attacks the target by dancing very hard. The user’s type determines the type of this move.
+revenge	10	60	100	physical	fighting	An attack that gains power if injured by the foe.
+reversal	15	0	100	physical	fighting	Stronger if the user's HP is low.
+revival-blessing	1	0		status	normal	The user bestows a loving blessing, reviving a party Pokémon that has fainted and restoring half that Pokémon's max HP.
+rising-voltage	20	70	100	special	electric	The user attacks with electric voltage rising from the ground. This move’s power doubles when the target is on Electric Terrain.
+roar	20	0		status	normal	Scares wild foes to end battle.
+roar-of-time	5	150	90	special	dragon	The user blasts the foe with power that distorts even time. The user must rest on the next turn.
+rock-blast	10	25	90	physical	rock	Hurls boulders at the foe 2 to 5 times in a row.
+rock-climb	20	90	85	physical	normal	A charging attack that may also leave the foe confused. It can also be used to scale rocky walls.
+rock-polish	20	0		status	rock	The user polishes its body to reduce drag. It can sharply raise the Speed stat. 
+rock-slide	10	75	90	physical	rock	An attack that may cause flinching.
+rock-smash	15	40	100	physical	fighting	An attack that may lower DEFENSE.
+rock-throw	15	50	90	physical	rock	Drops rocks on the enemy.
+rock-tomb	15	60	95	physical	rock	Stops the foe from moving with rocks and cuts SPEED.
+rock-wrecker	5	150	90	physical	rock	The user launches a huge boulder at the foe to attack. It must rest on the next turn, however.
+role-play	10	0		status	psychic	Mimics the target and copies its special ability.
+rolling-kick	15	60	85	physical	fighting	A fast, spinning kick.
+rollout	20	30	90	physical	rock	Attacks 5 turns with rising power.
+roost	5	0		status	flying	The user lands and rests its body. It restores the user’s HP by up to half of its max HP.
+rototiller	10	0		status	ground	Tilling the soil, the user makes it easier for plants to grow. This raises the Attack and Sp. Atk stats of Grass-type Pokémon.
+round	15	60	100	special	normal	The user attacks the target with a song. Others can join in the Round and make the attack do greater damage.
+ruination	10	1	90	special	dark	The user summons a ruinous disaster. This cuts the target’s HP in half.
+sacred-fire	5	100	95	physical	fire	An attack that may inflict a burn.
+sacred-sword	15	90	100	physical	fighting	The user attacks by slicing with its long horns. The target’s stat changes don’t affect this attack’s damage.
+safeguard	25	0		status	normal	Prevents all status problems.
+salt-cure	15	40	100	physical	rock	The user salt cures the target, inflicting damage every turn. Steel and Water types are more strongly affected by this move.
+sand-attack	15	0	100	status	ground	Reduces accuracy by throwing sand.
+sand-tomb	15	35	85	physical	ground	Traps and hurts the foe in quicksand for 2 to 5 turns.
+sandsear-storm	10	100	80	special	ground	The user attacks by wrapping the target in fierce winds and searingly hot sand. This also leaves the target with a burn.
+sandstorm	10	0		status	rock	Inflicts damage every turn.
+scald	15	80	100	special	water	The user shoots boiling hot water at its target. It may also leave the target with a burn.
+scale-shot	20	25	90	physical	dragon	The user attacks by shooting scales two to five times in a row. This move boosts the user’s Speed stat but lowers its Defense stat.
+scary-face	10	0	100	status	normal	Sharply reduces the foe's SPEED.
+scorching-sands	10	70	100	special	ground	The user throws scorching sand at the target to attack. This may also leave the target with a burn.
+scratch	35	40	100	physical	normal	Scratches with sharp claws.
+screech	40	0	85	status	normal	Sharply reduces the foe's DEFENSE.
+searing-shot	5	100	100	special	fire	An inferno of scarlet flames torches everything around the user. It may leave targets with a burn.
+secret-power	20	70	100	physical	normal	An attack with effects that vary by location.
+secret-sword	10	85	100	special	fighting	The user cuts with its long horn. The odd power contained in the horn does physical damage to the target.
+seed-bomb	15	80	100	physical	grass	The user slams a barrage of hard- shelled seeds down on the foe from above.
+seed-flare	5	120	85	special	grass	The user generates a shock wave from within its body. It may also lower the target’s Sp. Def.
+seismic-toss	20	0	100	physical	fighting	The user's level equals damage HP.
+self-destruct	5	200	100	physical	normal	Powerful but makes the user faint.
+shadow-ball	15	80	100	special	ghost	An attack that may lower SPCL.DEF.
+shadow-bone	10	85	100	physical	ghost	The user attacks by beating the target with a bone that contains a spirit. This may also lower the target’s Defense stat.
+shadow-claw	15	70	100	physical	ghost	The user slashes with a sharp claw made from shadows. It has a high critical-hit ratio.
+shadow-force	5	120	100	physical	ghost	The user disappears, then strikes the foe on the second turn. It hits even if the foe used Protect.
+shadow-punch	20	60		physical	ghost	An unavoidable punch that is thrown from shadows.
+shadow-sneak	30	40	100	physical	ghost	The user extends its shadow and attacks the foe from behind. This move always goes first.
+sharpen	30	0		status	normal	A move that raises the user's ATTACK.
+shed-tail	10	0		status	normal	The user creates a substitute for itself using its own HP before switching places with a party Pokémon in waiting.
+sheer-cold	5	0	30	special	ice	A chilling attack that causes fainting if it hits.
+shell-side-arm	10	90	100	special	poison	This move inflicts physical or special damage, whichever will be more effective. This may also poison the target.
+shell-smash	15	0		status	normal	The user breaks its shell, lowering its Defense and Sp. Def stats but sharply raising Attack, Sp. Atk, and Speed stats.
+shell-trap	5	150	100	special	fire	The user sets a shell trap. If the user is hit by a physical move, the trap will explode and inflict damage on the opposing Pokémon.
+shelter	10	0		status	steel	The user makes its skin as hard as an iron shield, raising its defensive stats. Incoming moves also become more likely to miss.
+shift-gear	10	0		status	steel	The user rotates its gears, raising its Attack and sharply raising its Speed.
+shock-wave	20	60		special	electric	A fast and unavoidable electric attack.
+shore-up	5	0		status	ground	The user regains up to half of its max HP. It restores more HP in a sandstorm.
+signal-beam	15	75	100	special	bug	A strange beam attack that may confuse the foe.
+silk-trap	10	0		status	bug	The user spins a silken trap, protecting itself from damage while lowering the Speed stat of any attacker that makes direct contact.
+silver-wind	5	60	100	special	bug	A powdery attack that may raise abilities.
+simple-beam	15	0	100	status	normal	The user’s mysterious psychic wave changes the target’s Ability to Simple.
+sing	15	0	55	status	normal	May cause the foe to fall asleep.
+sketch	1	0		status	normal	Copies the foe's move permanently.
+skill-swap	10	0		status	psychic	The user swaps special abilities with the target.
+skitter-smack	10	70	90	physical	bug	The user skitters behind the target to attack. This also lowers the target’s Sp. Atk stat.
+skull-bash	10	130	100	physical	normal	1st turn: Prepare 2nd turn: Attack
+sky-attack	5	140	90	physical	flying	1st turn: Prepare 2nd turn: Attack
+sky-drop	10	60	100	physical	flying	The user takes the target into the sky, then drops it during the next turn. The target cannot attack while in the sky.
+sky-uppercut	15	85	90	physical	fighting	An uppercut thrown as if leaping into the sky.
+slack-off	5	0		status	normal	Slacks off and restores half the maximum HP.
+slam	20	80	75	physical	normal	Slams the foe with a tail, vine, etc.
+slash	20	70	100	physical	normal	Has a high criti­ cal hit ratio.
+sleep-powder	15	0	75	status	grass	May cause the foe to fall asleep.
+sleep-talk	10	0		status	normal	Randomly attacks while asleep.
+sludge	20	65	100	special	poison	An attack that may poison the foe.
+sludge-bomb	10	90	100	special	poison	An attack that may poison the foe.
+sludge-wave	10	95	100	special	poison	It swamps the area around the user with a giant sludge wave. It may also poison those hit.
+smack-down	15	50	100	physical	rock	The user throws a stone or projectile to attack an opponent. A flying Pokémon will fall to the ground when hit.
+smart-strike	10	70		physical	steel	The user stabs the target with a sharp horn. This attack never misses.
+smelling-salts	10	70	100	physical	normal	Powerful against paralyzed foes, but also heals them.
+smog	20	30	70	special	poison	An attack that may poison the foe.
+smokescreen	20	0	100	status	normal	Lowers the foe's accuracy.
+snap-trap	15	35	100	physical	grass	The user snares the target in a snap trap for four to five turns.
+snarl	15	55	95	special	dark	The user yells as if it is ranting about something, making the target’s Sp. Atk stat decrease.
+snatch	10	0		status	dark	Steals the effects of the move the foe uses next.
+snipe-shot	15	80	100	special	water	The user ignores the effects of opposing Pokémon’s moves and Abilities that draw in moves, allowing this move to hit the chosen target.
+snore	15	50	100	special	normal	An attack useable only while asleep.
+snowscape	10	0		status	ice	The user summons a snowstorm lasting five turns. This boosts the Defense stats of Ice types.
+soak	20	0	100	status	water	The user shoots a torrent of water at the target and changes the target’s type to Water.
+soft-boiled	5	0		status	normal	Restores HP by 1/2 the user's max HP.
+solar-beam	10	120	100	special	grass	1st turn: Prepare 2nd turn: Attack
+solar-blade	10	125	100	physical	grass	In this two-turn attack, the user gathers light and fills a blade with the light’s energy, attacking the target on the next turn.
+sonic-boom	20	0	90	special	normal	Always inflicts 20HP damage.
+spacial-rend	5	100	95	special	dragon	The user tears the foe along with the space around it. This move has a high critical-hit ratio.
+spark	20	65	100	physical	electric	An attack that may cause paralysis.
+sparkling-aria	10	90	100	special	water	The user bursts into song, emitting many bubbles. Any Pokémon suffering from a burn will be healed by the touch of these bubbles.
+spectral-thief	10	90	100	physical	ghost	The user hides in the target’s shadow, steals the target’s stat boosts, and then attacks.
+speed-swap	10	0		status	psychic	The user exchanges Speed stats with the target.
+spicy-extract	15	0		status	grass	The user emits an incredibly spicy extract, sharply boosting the target's Attack stat and harshly lowering the target's Defense stat.
+spider-web	10	0		status	bug	Prevents fleeing or switching.
+spike-cannon	15	20	100	physical	normal	Fires spikes to hit 2-5 times.
+spikes	20	0		status	ground	Hurts foes when they switch out.
+spiky-shield	10	0		status	grass	In addition to protecting the user from attacks, this move also damages any attacker who makes direct contact.
+spin-out	5	100	100	physical	steel	The user spins furiously by straining its legs, inflicting damage on the target. This also harshly lowers the user's Speed stat.
+spirit-break	15	75	100	physical	fairy	The user attacks the target with so much force that it could break the target’s spirit. This also lowers the target’s Sp. Atk stat.
+spirit-shackle	10	80	100	physical	ghost	The user attacks while simultaneously stitching the target’s shadow to the ground to prevent the target from escaping.
+spit-up	10	0	100	special	normal	Releases stockpiled power (the more the better).
+spite	10	0	100	status	ghost	Cuts the PP of the foe's last move.
+splash	40	0		status	normal	Has no effect whatsoever.
+spore	15	0	100	status	grass	A move that induces sleep.
+spotlight	15	0		status	normal	The user shines a spotlight on the target so that only the target will be attacked during the turn.
+springtide-storm	5	100	80	special	fairy	The user attacks by wrapping the target in fierce winds brimming with love and hate. This move’s additional effects depend on the user’s form.
+stealth-rock	20	0		status	rock	The user lays a trap of levitating stones around the foe. The trap hurts foes that switch into battle.
+steam-eruption	5	110	95	special	water	The user immerses the target in superheated steam. This may also leave the target with a burn.
+steamroller	20	65	100	physical	bug	The user crushes its targets by rolling over them with its rolled-up body. This attack may make the target flinch.
+steel-beam	5	140	95	special	steel	The user fires a beam of steel that it collected from its entire body. This also damages the user.
+steel-roller	5	130	100	physical	steel	The user attacks while destroying the terrain. This move fails when the ground hasn’t turned into a terrain.
+steel-wing	25	70	90	physical	steel	Stiff wings strike the foe.
+sticky-web	20	0		status	bug	The user weaves a sticky net around the opposing team, which lowers their Speed stat upon switching into battle.
+stockpile	20	0		status	normal	Charges up power for up to 3 turns.
+stomp	20	65	100	physical	normal	An attack that may cause flinching.
+stomping-tantrum	10	75	100	physical	ground	Driven by frustration, the user attacks the target. If the user’s previous move has failed, the power of this move doubles.
+stone-axe	15	65	90	physical	rock	The user swings its stone axes at the target, aiming to land a critical hit. Stone splinters left behind by this attack continue to damage the target for several turns.
+stone-edge	5	100	80	physical	rock	The user stabs the foe with a sharpened stone. It has a high critical-hit ratio. 
+stored-power	10	20	100	special	psychic	The user attacks the target with stored power. The more the user’s stats are raised, the greater the damage.
+storm-throw	10	60	100	physical	fighting	The user strikes the target with a fierce blow. This attack always results in a critical hit.
+strange-steam	10	90	95	special	fairy	The user attacks the target by emitting steam. This may also confuse the target.
+strength	15	80	100	physical	normal	A powerful physi­ cal attack.
+strength-sap	10	0	100	status	grass	The user restores its HP by the same amount as the target’s Attack stat. It also lowers the target’s Attack stat.
+string-shot	40	0	95	status	bug	A move that lowers the foe's SPEED.
+struggle-bug	20	50	100	special	bug	While resisting, the user attacks the opposing Pokémon. The targets’ Sp. Atk stat is reduced.
+stuff-cheeks	10	0		status	normal	The user eats its held Berry, then sharply raises its Defense stat.
+stun-spore	30	0	75	status	grass	A move that may paralyze the foe.
+submission	20	80	80	physical	fighting	An attack that al­ so hurts the user.
+substitute	10	0		status	normal	Makes a decoy with 1/4 user's max HP.
+sucker-punch	5	70	100	physical	dark	This move enables the user to attack first. It fails if the foe is not readying an attack, however.
+sunny-day	5	0		status	fire	Boosts fire-type moves for 5 turns.
+sunsteel-strike	5	100	100	physical	steel	The user slams into the target with the force of a meteor. This move can be used on the target  regardless of its Abilities.
+super-fang	10	0	90	physical	normal	Cuts the foe's HP by 1/2.
+supercell-slam	15	100	95	physical	electric	The user electrifies its body and drops onto the target to inflict damage. If this move misses, the user takes damage instead.
+superpower	5	120	100	physical	fighting	Boosts strength sharply, but lowers abilities.
+supersonic	20	0	55	status	normal	Sound waves that cause confusion.
+surf	15	90	100	special	water	A strong water- type attack.
+surging-strikes	5	25	100	physical	water	The user, having mastered the Water style, strikes the target with a flowing motion three times in a row. This attack always results in a critical hit.
+swagger	15	0	85	status	normal	Causes confusion and raises ATTACK.
+swallow	10	0		status	normal	Absorbs stockpiled power and restores HP.
+sweet-kiss	10	0	75	status	fairy	A move that causes confusion.
+sweet-scent	20	0	100	status	normal	Reduces the foe's evasiveness.
+swift	20	60		special	normal	Sprays star-shaped rays that never miss.
+switcheroo	10	0	100	status	dark	The user trades held items with the foe faster than the eye can follow. 
+swords-dance	20	0		status	normal	A dance that in­ creases ATTACK.
+synchronoise	10	120	100	special	psychic	Using an odd shock wave, the user inflicts damage on any Pokémon of the same type in the area around it.
+synthesis	5	0		status	grass	Restores HP (varies by time).
+syrup-bomb	10	60	85	special	grass	The user sets off an explosion of sticky candy syrup, which coats the target and causes the target's Speed stat to drop each turn for three turns.
+tachyon-cutter	10	50	0	special	steel	The user attacks by launching particle blades at the target twice in a row. This attack never misses.
+tackle	35	40	100	physical	normal	A full-body charge attack.
+tail-glow	20	0		status	bug	Flashes a light that sharply raises SP. ATK.
+tail-slap	10	25	85	physical	normal	The user attacks by striking the target with its hard tail. It hits the target two to five times in a row.
+tail-whip	30	0	100	status	normal	Lowers the foe's DEFENSE.
+tailwind	15	0		status	flying	The user whips up a turbulent whirlwind that ups the Speed of all party Pokémon for three turns.
+take-down	20	90	85	physical	normal	A tackle that also hurts the user.
+take-heart	10	0		status	psychic	The user lifts its spirits, healing its own status conditions and raising its offensive and defensive stats.
+tar-shot	15	0	100	status	rock	The user pours sticky tar over the target, lowering the target’s Speed stat. The target becomes weaker to Fire-type moves.
+taunt	20	0	100	status	dark	Taunts the foe into only using attack moves.
+tearful-look	20	0		status	normal	The user gets teary eyed to make the target lose its combative spirit. This lowers the target’s Attack and Sp. Atk stats.
+teatime	10	0		status	normal	The user has teatime with all the Pokémon in the battle. Each Pokémon eats its held Berry.
+techno-blast	5	120	100	special	normal	The user fires a beam of light at its target. The type changes depending on the Drive the user holds.
+teeter-dance	20	0	100	status	normal	Confuses all POKéMON on the scene.
+telekinesis	15	0		status	psychic	The user makes the target float with its psychic power. The target is easier to hit for three turns.
+teleport	20	0		status	psychic	A move for fleeing from battle.
+temper-flare	10	75	100	physical	fire	Spurred by desperation, the user attacks the target. This move's power is doubled if the user's previous move failed.
+tera-blast	10	80	100	special	normal	If the user has Terastallized, it unleashes energy of its Tera Type. This move inflicts damage using the Attack or Sp. Atk stat—whichever is higher for the user.
+tera-starstorm	5	120	100	special	normal	With the power of its crystals, the user bombards and eliminates the target. When used by Terapagos in its Stellar Form, this move damages all opposing Pokémon.
+terrain-pulse	10	50	100	special	normal	The user utilizes the power of the terrain to attack. This move’s type and power changes depending on the terrain when it’s used.
+thief	25	60	100	physical	dark	While attacking, it may steal the foe’s held item.
+thousand-arrows	10	90	100	physical	ground	This move also hits opposing Pokémon that are in the air. Those Pokémon are knocked down to the ground.
+thousand-waves	10	90	100	physical	ground	The user attacks with a wave that crawls along the ground. Those hit can’t flee from battle.
+thrash	10	120	100	physical	normal	Works 2-3 turns and confuses user.
+throat-chop	15	80	100	physical	dark	The user attacks the target’s throat, and the resultant suffering prevents the target from using moves that emit sound for two turns.
+thunder	10	110	70	special	electric	An attack that may cause paralysis.
+thunder-cage	15	80	90	special	electric	The user traps the target in a cage of sparking electricity for four to five turns.
+thunder-fang	15	65	95	physical	electric	The user bites with electrified fangs. It may also make the foe flinch or become paralyzed.
+thunder-punch	15	75	100	physical	electric	An electric punch. It may paralyze.
+thunder-shock	30	40	100	special	electric	An electrical attack that may paralyze the foe.
+thunder-wave	20	0	90	status	electric	A move that may cause paralysis.
+thunderbolt	15	90	100	special	electric	An attack that may cause paralysis.
+thunderclap	5	70	100	special	electric	This move enables the user to attack first with a jolt of electricity. This move fails if the target is not readying an attack.
+thunderous-kick	10	90	100	physical	fighting	The user overwhelms the target with lightning-like movement before delivering a kick. This also lowers the target’s Defense stat.
+tickle	20	0	100	status	normal	Makes the foe laugh to lower ATTACK and DEFENSE.
+tidy-up	10	0		status	normal	The user tidies up and removes the effects of Spikes, Stealth Rock, Sticky Web, Toxic Spikes, and Substitute. This also boosts the user’s Attack and Speed stats.
+topsy-turvy	20	0		status	dark	All stat changes affecting the target turn topsy-turvy and become the opposite of what they were.
+torch-song	10	80	100	special	fire	The user blows out raging flames as if singing a song, scorching the target. This also boosts the user's Sp. Atk stat.
+torment	15	0	100	status	dark	Torments the foe and stops successive use of a move.
+toxic	10	0	90	status	poison	A poison move with increasing damage.
+toxic-spikes	20	0		status	poison	The user lays a trap of poison spikes at the foe’s feet. They poison foes that switch into battle.
+toxic-thread	20	0	100	status	poison	The user shoots poisonous threads to poison the target and lower the target’s Speed stat.
+trailblaze	20	50	100	physical	grass	The user attacks suddenly as if leaping out from tall grass. The user's nimble footwork boosts its Speed stat.
+transform	10	0		status	normal	The user assumes the foe's guise.
+tri-attack	10	80	100	special	normal	Fires three kinds of beams at once.
+trick	10	0	100	status	psychic	Tricks the foe into trading held items.
+trick-or-treat	20	0	100	status	ghost	The user takes the target trick-or-treating. This adds Ghost type to the target’s type.
+trick-room	5	0		status	psychic	The user creates a bizarre area in which slower Pokémon get to move first for five turns.
+triple-arrows	10	90	100	physical	fighting	The user delivers an axe kick, then fires three arrows. This raises the chance of its future attacks landing critical hits and also lowers the target's defensive stats.
+triple-axel	10	20	90	physical	ice	A consecutive three-kick attack that becomes more powerful with each successful hit.
+triple-dive	10	30	95	physical	water	The user performs a perfectly timed triple dive, hitting the target with splashes of water three times in a row.
+triple-kick	10	10	90	physical	fighting	Hits three times with rising power.
+trop-kick	15	70	100	physical	grass	The user lands an intense kick of tropical origins on the target. This also lowers the target’s Attack stat.
+trump-card	5	0		special	normal	The fewer PP this move has, the more power it has for attack. 
+twin-beam	10	40	100	special	psychic	The user shoots mystical beams from its eyes to inflict damage. The target is hit twice in a row.
+twineedle	20	25	100	physical	bug	Jabs the foe twice using stingers.
+twister	20	40	100	special	dragon	Whips up a tornado to attack.
+u-turn	20	70	100	physical	bug	After making its attack, the user rushes back to switch places with a party Pokémon in waiting.
+upper-hand	15	65	100	physical	fighting	The user reacts to the target's movement and strikes with the heel of its palm, making the target flinch. This move fails if the target is not readying a priority move.
+uproar	10	90	100	special	normal	Causes an uproar for 2 to 5 turns and prevents sleep.
+v-create	5	180	95	physical	fire	With a hot flame on its forehead, the user hurls itself at its target. It lowers the user’s Defense, Sp. Def, and Speed stats.
+vacuum-wave	30	40	100	special	fighting	The user whirls its fists to send a wave of pure vacuum at the foe. This move always goes first.
+venom-drench	20	0	100	status	poison	Opposing Pokémon are drenched in an odd poisonous liquid. This lowers the Attack, Sp. Atk, and Speed stats of a poisoned target.
+venoshock	10	65	100	special	poison	The user drenches the target in a special poisonous liquid. Its power is doubled if the target is poisoned.
+vice-grip	30	55	100	physical	normal	Grips with power­ ful pincers.
+victory-dance	10	0		status	fighting	The user performs a dance to usher in victory. This raises the user’s offensive and defensive stats and increases the damage dealt by the user’s moves by 50 percent.
+vine-whip	25	45	100	physical	grass	Whips the foe with slender vines.
+vital-throw	10	70		physical	fighting	A 2nd-strike move that never misses.
+volt-switch	20	70	100	special	electric	After making its attack, the user rushes back to switch places with a party Pokémon in waiting.
+volt-tackle	15	120	100	physical	electric	A life-risking tackle that slightly hurts the user.
+wake-up-slap	10	70	100	physical	fighting	This attack inflicts high damage on a sleeping foe. It also wakes the foe up, however.
+water-gun	25	40	100	special	water	Squirts water to attack.
+water-pledge	10	80	100	special	water	A column of water strikes the target. When combined with its fire equivalent, the damage increases and a rainbow appears.
+water-pulse	20	60	100	special	water	Attacks with ultrasonic waves. May confuse the foe
+water-shuriken	20	15	100	special	water	The user hits the target with throwing stars two to five times in a row. This move always goes first.
+water-sport	15	0		status	water	The user becomes soaked to raise resistance to fire.
+water-spout	5	150	100	special	water	Inflicts more damage if the user’s HP is high.
+waterfall	15	80	100	physical	water	An aquatic charge attack.
+wave-crash	10	120	100	physical	water	The user shrouds itself in water and slams into the target with its whole body to inflict damage. This also damages the user and raises the user’s action speed.
+weather-ball	10	50	100	special	normal	The move’s type and power change with the weather.
+whirlpool	15	35	85	special	water	Traps the foe for 2-5 turns.
+whirlwind	20	0		status	normal	Blows away the foe & ends battle.
+wicked-blow	5	75	100	physical	dark	The user, having mastered the Dark style, strikes the target with a fierce blow. This attack always results in a critical hit.
+wide-guard	10	0		status	rock	The user and its allies are protected from wide-ranging attacks for one turn. If used in succession, its chance of failing rises.
+wild-charge	15	90	100	physical	electric	The user shrouds itself in electricity and smashes into its target. It also damages the user a little.
+wildbolt-storm	10	100	80	special	electric	The user summons a thunderous tempest and savagely attacks with lightning and wind. This may also leave the target with paralysis.
+will-o-wisp	15	0	85	status	fire	Inflicts a burn on the foe with intense fire.
+wing-attack	35	60	100	physical	flying	Strikes the target with wings.
+wish	10	0		status	normal	A wish that restores HP. It takes time to work.
+withdraw	40	0		status	water	Heightens the user's DEFENSE.
+wonder-room	10	0		status	psychic	The user creates a bizarre area in which Pokémon’s Defense and Sp. Def stats are swapped for five turns.
+wood-hammer	15	120	100	physical	grass	The user slams its rugged body into the foe to attack. The user also sustains serious damage.
+work-up	30	0		status	normal	The user is roused, and its Attack and Sp. Atk stats increase.
+worry-seed	10	0	100	status	grass	A seed that causes worry is planted on the foe. It prevents sleep by making its ability Insomnia.
+wrap	20	15	90	physical	normal	Squeezes the foe for 2-5 turns.
+wring-out	5	0	100	special	normal	The user powerfully wrings the foe. The more HP the foe has, the greater this attack’s power.
+x-scissor	15	80	100	physical	bug	The user slashes at the foe by crossing its scythes or claws as if they were a pair of scissors.
+yawn	10	0		status	normal	Lulls the foe into yawning, then sleeping next turn.
+zap-cannon	5	120	50	special	electric	An attack that always paralyzes.
+zen-headbutt	15	80	90	physical	psychic	The user focuses its willpower to its head and rams the foe. It may also make the target flinch.
+zing-zap	10	80	100	physical	electric	A strong electric blast crashes down on the target, giving it an electric shock. This may also make the target flinch.

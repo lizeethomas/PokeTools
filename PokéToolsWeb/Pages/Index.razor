@@ -1,0 +1,465 @@
+﻿@page "/"
+@inject HttpClient Http
+@using PokéToolsThèque;
+@using PokéToolsWeb.Components
+@using PokéToolsWeb.Components.Stats
+@using PokéToolsWeb.Components.Filters
+@using PokéToolsWeb.Components.Chart
+@using PokéToolsWeb.Components.Team
+
+<div class="header-bar">
+    <img src="https://www.pokepedia.fr/images/0/01/Porygon-RFVF.png?20200407174707" />
+    <h1><span class="poke">Poké</span><span class="tool">Tool</span></h1>
+</div>
+
+@if (pokemons is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="picker-section">
+        <div class="left-panel">
+
+            <div class="filters">
+                <SearchBar SearchText="@SearchText"
+                           SearchTextChanged="@OnSearchTextChanged"
+                           SelectedCategories="@selectedCategories"
+                           OnToggleCategory="@ToggleCategory"
+                           ShowFullyEvolved="@showFullyEvolved"
+                           OnToggleFullyEvolved="@ToggleFullyEvolved" />
+
+                <TypeFilter AvailableTypes="availableTypes"
+                            SelectedTypes="selectedTypes"
+                            OnToggleType="@(type => ToggleTypeFilter(type, !selectedTypes.Contains(type)))"
+                            OnClearTypes="ClearAllTypes"
+                            GetTypeClass="GetTypeClass" />
+
+                <GenFilter AvailableGens="availableGens"
+                           SelectedGens="selectedGens"
+                           OnToggleGen="@(gen => ToggleGenFilter(gen, !selectedGens.Contains(gen)))"
+                           OnSelectAll="SelectAllGens"
+                           OnClearAll="ClearAllGens" />
+
+
+                <StatsFilter StatFilters="@statFilters"
+                             StatBounds="@statBounds"
+                             OnRangeChanged="FilterPokemonsByStat" />
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <Pokedex Pokemons="pokemons"
+                     OnPokemonSelected="OnPokemonSelected"
+                     StartHover="StartHover"
+                     CancelHover="CancelHover"
+                     UpdateMousePosition="UpdateMousePosition" />
+        </div>
+    </div>
+
+    @if (team.Any())
+    {
+        <div class="showdown-section">
+            <div class="team-section">
+                <TeamBuilder Team="team"
+                             OnPokemonDeselected="OnPokemonDeselected"
+                             StartHover="StartHover"
+                             CancelHover="CancelHover"
+                             UpdateMousePosition="UpdateMousePosition" 
+                             Items="@Items"/>
+            </div>
+            @if (team.Any() && team.Count == teamDefensiveTypeCharts.Count)
+            {
+                <div class="type-chart-section">
+                    <TypeChart pokemons="@(team)"
+                               teamDefensiveTypeCharts="@(teamDefensiveTypeCharts)">
+                    </TypeChart>
+                </div>
+            }
+        </div>
+    }
+
+    <div id="popup-layer">
+        @if (hoveredPokemon is not null)
+        {
+            <StatsHover pokemon="hoveredPokemon"
+                   topPx="@popupTopPx"
+                   leftPx="@popupLeftPx"
+                   typeClass="GetTypeClass">
+            </StatsHover>
+        }
+    </div>
+
+}
+
+@code {
+    private List<Pokemon> allPokemons = new();
+    private List<Pokemon> pokemons = new();
+    private List<Pokemon> team = new();
+
+    private List<Item> Items = new();
+
+    private List<Dictionary<string, double>> teamDefensiveTypeCharts = new();
+
+    private HashSet<string> selectedTypes = new();
+    private List<string> availableTypes = new();
+    private HashSet<int> selectedGens = new();
+    private List<int> availableGens = Enumerable.Range(1, 9).ToList();
+
+    private HashSet<string> selectedCategories = new() { "Non-Legendary", "Legendary & Mythical"};
+    private bool showFullyEvolved = false;
+
+
+    private Dictionary<string, (int min, int max)> statFilters = new()
+    {
+        { "Total", (200, 720) },
+        { "HP", (1, 255) },
+        { "Attack", (5, 190) },
+        { "Defense", (5, 230) },
+        { "SpAtk", (10, 194) },
+        { "SpDef", (20, 230) },
+        { "Speed", (5, 200) },
+    };
+
+    private Dictionary<string, (int min, int max)> statBounds = new()
+    {
+        { "Total", (200, 720) },
+        { "HP", (1, 255) },
+        { "Attack", (5, 190) },
+        { "Defense", (5, 230) },
+        { "SpAtk", (10, 194) },
+        { "SpDef", (20, 230) },
+        { "Speed", (5, 200) },
+    };
+
+    private string searchText = string.Empty;
+    private string SearchText
+    {
+        get => searchText;
+        set
+        {
+            if (searchText != value)
+            {
+                searchText = value;
+                ApplyFilters();
+            }
+        }
+    }
+
+    private Pokemon? hoveredPokemon;
+    private bool showPopup = false;
+    private Timer? hoverTimer;
+    private string popupTopPx = "0px";
+    private string popupLeftPx = "0px";
+
+    protected override async Task OnInitializedAsync()
+    {
+        allPokemons = await GetPokemons();
+
+        availableTypes = allPokemons
+            .SelectMany(p => new[] { p.Type1, p.Type2 })
+            .Where(t => !string.IsNullOrWhiteSpace(t))
+            .Distinct()
+            .OrderBy(t => t)
+            .ToList();
+
+        selectedGens = new HashSet<int>(availableGens);
+        Items = (await GetItems()).OrderBy(i => i.Name).ToList();
+
+        ApplyFilters();
+    }
+
+    private async Task<List<Item>> GetItems()
+    {
+        return await Http.GetFromJsonAsync<List<Item>>($"https://localhost:7206/api/Items") ?? new List<Item>();
+    }
+
+
+    private async Task<List<Pokemon>> GetPokemons()
+    {
+        return await Http.GetFromJsonAsync<List<Pokemon>>("https://localhost:7206/api/Pokemons") ?? new List<Pokemon>();
+    }
+
+    private async Task<List<Move>> GetMoves(Pokemon p)
+    {
+        return await Http.GetFromJsonAsync<List<Move>>($"https://localhost:7206/api/Pokemon/{p.PokeApiIdentifier}/Moves") ?? new List<Move>();
+    }
+
+    private Task OnSearchTextChanged(string newText)
+    {
+        SearchText = newText;
+        return Task.CompletedTask;
+    }
+
+    private void StartHover(Pokemon p)
+    {
+        CancelHover(); 
+        hoverTimer = new Timer(_ =>
+        {
+            hoveredPokemon = p;
+            showPopup = true;
+            InvokeAsync(StateHasChanged);
+        }, null, 400, Timeout.Infinite); 
+    }
+
+    private void CancelHover()
+    {
+        hoverTimer?.Dispose();
+        hoverTimer = null;
+        hoveredPokemon = null;
+        showPopup = false;
+        StateHasChanged();
+    }
+
+    private void UpdateMousePosition(MouseEventArgs e)
+    {
+        popupLeftPx = $"{e.ClientX + 15}px";
+        popupTopPx = $"{e.ClientY + 15}px";
+
+        if (showPopup)
+        {
+            StateHasChanged();
+        }
+    }
+
+    private Task ToggleCategory(string category)
+    {
+        if (selectedCategories.Contains(category))
+            selectedCategories.Remove(category);
+        else
+            selectedCategories.Add(category);
+
+        ApplyFilters();
+        return Task.CompletedTask;
+    }
+
+    private Task ToggleFullyEvolved(bool show)
+    {
+        showFullyEvolved = show;
+        ApplyFilters();
+        return Task.CompletedTask;
+    }
+
+    private async Task OnPokemonSelected(Pokemon p)
+    {
+        if(team.Count() < 6)
+        {
+            allPokemons.Remove(p);
+            await GetDefensiveTypeChart(p.PokeApiIdentifier);
+            p.Moves = await GetMoves(p);
+            TalentEffects(p);
+            CancelHover();
+            ApplyFilters();
+            team.Add(p);
+            StateHasChanged();
+        }
+    }
+
+    private void TalentEffects(Pokemon p)
+    {
+        List<string> values = p.Abilities.Select(a => a.PokeApiIdentifier).ToList();
+
+        if (values.Any(a => a == "levitate" || a == "earth-eater"))
+        {
+            teamDefensiveTypeCharts.Last()["Ground"] = 0.0;
+        }
+        if (values.Any(a => a == "dry-skin" || a == "water-absorb" || a == "storm-drain"))
+        {
+            teamDefensiveTypeCharts.Last()["Water"] = 0.0;
+        }
+        if (values.Any(a => a == "sap-sipper"))
+        {
+            teamDefensiveTypeCharts.Last()["Grass"] = 0.0;
+        }
+        if (values.Any(a => a == "lightning-rod" || a == "volt-absorb" || a == "motor-drive"))
+        {
+            teamDefensiveTypeCharts.Last()["Electric"] = 0.0;
+        }
+        if (values.Any(a => a == "wonder-guard"))
+        {
+            var weakTypes = new HashSet<string> { "Fire", "Flying", "Ghost", "Dark", "Rock" };
+
+            foreach (var type in availableTypes)
+            {
+                if (!weakTypes.Contains(type))
+                {
+                    teamDefensiveTypeCharts.Last()[type] = 0.0;
+                }
+            }
+        } 
+        if (values.Any(a => a == "solid-rock" || a == "filter" || a == "prism-armor" ))
+        {
+            teamDefensiveTypeCharts.Last().Keys
+            .Where(k => teamDefensiveTypeCharts.Last()[k] == 2.0)
+            .ToList()
+            .ForEach(k => teamDefensiveTypeCharts.Last()[k] = 1.5);
+
+            teamDefensiveTypeCharts.Last().Keys
+            .Where(k => teamDefensiveTypeCharts.Last()[k] == 4.0)
+            .ToList()
+            .ForEach(k => teamDefensiveTypeCharts.Last()[k] = 3.0);
+        }
+    }
+
+    private void OnPokemonDeselected(Pokemon p)
+    {
+        var index = team.IndexOf(p);
+        if (index >= 0)
+        {
+            team.RemoveAt(index);
+            teamDefensiveTypeCharts.RemoveAt(index);
+        }
+        allPokemons.Add(p);
+        allPokemons = allPokemons.OrderBy(pkm => pkm.Dex).ToList();
+        CancelHover();
+        ApplyFilters();
+        StateHasChanged();
+    }
+
+    private void ClearTeam()
+    {
+        team.Clear();
+        teamDefensiveTypeCharts.Clear();
+    }
+
+    private async Task GetDefensiveTypeChart(string pokeId)
+    {
+        teamDefensiveTypeCharts.Add(await Http.GetFromJsonAsync<Dictionary<string, double>>($"https://localhost:7206/api/Type/defensiveById/{pokeId}") ?? new Dictionary<string, double>());
+    }
+
+    string GetTypeClass(string type)
+    {
+        if(string.IsNullOrEmpty(type))
+        {
+            return $"tb-no-type";
+        } 
+        else
+        {
+            return $"tb-type-{type.ToLower()}";
+        }
+
+    }
+
+    private void ToggleTypeFilter(string type, bool isChecked)
+    {
+        if (isChecked)
+        {
+            if (selectedTypes.Count < 2)
+                selectedTypes.Add(type);
+        }
+        else
+        {
+            selectedTypes.Remove(type);
+        }
+
+        ApplyFilters();
+    }
+
+    private void ClearAllTypes()
+    {
+        selectedTypes.Clear();
+        ApplyFilters();
+    }
+
+    private void ToggleGenFilter(int gen, bool isChecked)
+    {
+        if (isChecked)
+            selectedGens.Add(gen);
+        else
+            selectedGens.Remove(gen);
+
+        ApplyFilters();
+    }
+
+    private void ClearAllGens()
+    {
+        selectedGens.Clear();
+        ApplyFilters();
+    }
+
+    private void SelectAllGens()
+    {
+        selectedGens = new HashSet<int>(availableGens);
+        ApplyFilters();
+    }
+
+    private void FilterPokemonsByStat((string stat, int min, int max) range)
+    {
+        statFilters[range.stat] = (range.min, range.max);
+        ApplyFilters();
+    }
+
+    private void ApplyFilters()
+    {
+        IEnumerable<Pokemon> filtered = allPokemons;
+
+        if (selectedTypes.Count == 1)
+        {
+            var type = selectedTypes.First();
+            filtered = filtered.Where(p => p.Type1 == type || p.Type2 == type);
+        }
+        else if (selectedTypes.Count == 2)
+        {
+            var typePair = selectedTypes.ToHashSet();
+            filtered = filtered.Where(p =>
+            {
+                var pokemonTypes = new HashSet<string> { p.Type1, p.Type2 };
+                return pokemonTypes.SetEquals(typePair);
+            });
+        }
+
+        if (selectedGens.Count > 0)
+        {
+            filtered = filtered.Where(p => selectedGens.Contains(p.Gen));
+        }
+        else
+        {
+            filtered = Enumerable.Empty<Pokemon>();
+        }
+
+        if (!string.IsNullOrWhiteSpace(searchText))
+        {
+            filtered = filtered.Where(p => p.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase) 
+            || p.Nom.Contains(searchText, StringComparison.OrdinalIgnoreCase)
+            || p.PokeApiIdentifier.Contains(searchText, StringComparison.OrdinalIgnoreCase)
+            || p.Form.Contains(searchText, StringComparison.OrdinalIgnoreCase));
+        }
+
+        foreach (var (stat, (min, max)) in statFilters)
+        {
+            filtered = stat switch
+            {
+                "Total" => filtered.Where(p => p.Total >= min && p.Total <= max),
+                "HP" => filtered.Where(p => p.HP >= min && p.HP <= max),
+                "Attack" => filtered.Where(p => p.Attack >= min && p.Attack <= max),
+                "Defense" => filtered.Where(p => p.Defense >= min && p.Defense <= max),
+                "SpAtk" => filtered.Where(p => p.SpAtk >= min && p.SpAtk <= max),
+                "SpDef" => filtered.Where(p => p.SpDef >= min && p.SpDef <= max),
+                "Speed" => filtered.Where(p => p.Speed >= min && p.Speed <= max),
+                _ => filtered
+            };
+        }
+
+        if (selectedCategories.Count > 0)
+        {
+            filtered = filtered.Where(p =>
+            {
+                if (selectedCategories.Contains("Non-Legendary") && (p.Category == "Normal" || p.Category == "Baby"))
+                    return true;
+                if (selectedCategories.Contains("Legendary & Mythical") && (p.Category == "Legendary" || p.Category == "Mythical"))
+                    return true;
+                return false;
+            });
+        }
+
+
+        if (showFullyEvolved)
+        {
+            filtered = filtered.Where(p => p.IsFullyEvolved);
+        }
+
+        var filteredList = filtered.ToList();
+        pokemons = filteredList;
+    }
+
+}

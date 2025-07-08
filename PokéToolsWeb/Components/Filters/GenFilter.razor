@@ -1,0 +1,28 @@
+﻿@code {
+    [Parameter] public List<int> AvailableGens { get; set; } = new();
+    [Parameter] public HashSet<int> SelectedGens { get; set; } = new();
+    [Parameter] public EventCallback<int> OnToggleGen { get; set; }
+    [Parameter] public EventCallback OnSelectAll { get; set; }
+    [Parameter] public EventCallback OnClearAll { get; set; }
+
+    private Task HandleGenClick(int gen) => OnToggleGen.InvokeAsync(gen);
+}
+
+<div class="filter-section">
+    <div class="filter-header">
+        <h3>Filter by Gen</h3>
+            <button @onclick="OnSelectAll">Select all</button>
+            <button @onclick="OnClearAll">Unselect all</button>
+    </div>
+    <div class="gen-checkboxes">
+        @foreach (var gen in AvailableGens)
+        {
+            <label>
+                <input type="checkbox"
+                       checked="@SelectedGens.Contains(gen)"
+                @onchange="@(() => HandleGenClick(gen))" />
+                Gen @gen
+            </label>
+        }
+    </div>
+</div>

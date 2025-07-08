@@ -1,0 +1,48 @@
+﻿
+<div class="filter-section">
+    <div class="filter-header">
+        <h3>Filter by Stats</h3>
+        <button class="filters-button" @onclick="ResetAllSliders">Reset all</button>
+    </div>
+
+    <div class="stat-sliders">
+        @foreach (var kvp in StatFilters)
+        {
+            var stat = kvp.Key;
+            var current = kvp.Value;
+            var bounds = StatBounds[stat];
+
+            <StatSlider StatName="@stat"
+                        Title="@stat"
+                        Min="@bounds.min"
+                        Max="@bounds.max"
+                        CurrentMin="@current.min"
+                        CurrentMax="@current.max"
+                        OnRangeChanged="HandleSliderChange" />
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public Dictionary<string, (int min, int max)> StatFilters { get; set; } = new();
+    [Parameter] public Dictionary<string, (int min, int max)> StatBounds { get; set; } = new();
+
+    [Parameter] public EventCallback<(string stat, int min, int max)> OnRangeChanged { get; set; }
+
+    private async Task HandleSliderChange((string stat, int min, int max) range)
+    {
+        var (stat, min, max) = range;
+        StatFilters[stat] = (min, max);
+        await OnRangeChanged.InvokeAsync(range);
+    }
+
+    private async Task ResetAllSliders()
+    {
+        foreach (var stat in StatBounds.Keys)
+        {
+            var bounds = StatBounds[stat];
+            StatFilters[stat] = bounds;
+            await OnRangeChanged.InvokeAsync((stat, bounds.min, bounds.max));
+        }
+    }
+}

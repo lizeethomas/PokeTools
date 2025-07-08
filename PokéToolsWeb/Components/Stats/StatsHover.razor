@@ -1,0 +1,278 @@
+﻿@using PokéToolsThèque;
+@inject IJSRuntime JS
+
+<div class="popup" id="popup" style="top:@(topPx); left:@(leftPx);">
+    <div class="popup-header">
+        <div class="dex-number">#@pokemon.Dex</div>
+        <div class="pokemon-name">@pokemon.Name</div>
+    </div>
+
+    <div class="popup-types">
+        <span class="tb-type-icon @typeClass(pokemon.Type1)">@pokemon.Type1</span>
+        @if (!string.IsNullOrEmpty(pokemon.Type2) && pokemon.Type2 != "None")
+        {
+            <span class="tb-type-icon @typeClass(pokemon.Type2)">@pokemon.Type2</span>
+        }
+    </div>
+
+    <hr class="separator" />
+
+    @stat("HP", pokemon.HP, pokemon.Tiers.Bulk, true)
+    @stat("Atk", pokemon.Attack, pokemon.Tiers.PhysicalPower, false)
+    @stat("Def", pokemon.Defense, pokemon.Tiers.PhysicalBulk, true)
+    @stat("SpA", pokemon.SpAtk, pokemon.Tiers.SpecialPower, false)
+    @stat("SpD", pokemon.SpDef, pokemon.Tiers.SpecialBulk, true)
+    @stat("Spe", pokemon.Speed, pokemon.Tiers.SpeedTier, false)
+
+    <hr class="separator" />
+
+    <div class="tier-summary">
+        <div class="tier-line">
+            <span class="tier-label">Bulk</span>
+            <span class="tier-value @($"bulk-tier-{pokemon.Tiers.Bulk}")">@pokemon.Tiers.Bulk</span>
+
+            <span class="tier-label">Att</span>
+            <span class="tier-value @($"bulk-tier-{pokemon.Tiers.PhysicalPower}")">@pokemon.Tiers.PhysicalPower</span>
+        </div>
+
+        <div class="tier-line">
+            <span class="tier-label">Phy.Bulk</span>
+            <span class="tier-value @($"bulk-tier-{pokemon.Tiers.PhysicalBulk}")">@pokemon.Tiers.PhysicalBulk</span>
+
+            <span class="tier-label">Spe.Att</span>
+            <span class="tier-value @($"power-tier-{pokemon.Tiers.SpecialPower}")">@pokemon.Tiers.SpecialPower</span>
+        </div>
+
+        <div class="tier-line">
+            <span class="tier-label">Spe.Bulk</span>
+            <span class="tier-value @($"power-tier-{pokemon.Tiers.SpecialBulk}")">@pokemon.Tiers.SpecialBulk</span>
+
+            <span class="tier-label">Speed</span>
+            <span class="tier-value @($"power-tier-{pokemon.Tiers.SpeedTier}")">@pokemon.Tiers.SpeedTier</span>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Pokemon pokemon { get; set; }
+    [Parameter] public string topPx { get; set; }
+    [Parameter] public string leftPx { get; set; }
+    [Parameter] public Func<string, string> typeClass { get; set; } = _ => "";
+
+    private bool _positionAdjusted = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_positionAdjusted)
+        {
+            _positionAdjusted = true;
+            await AdjustPopupPositionAsync();
+        }
+    }
+
+    private async Task AdjustPopupPositionAsync()
+    {
+        var rect = await JS.InvokeAsync<BoundingClientRect>("getBoundingClientRectById", "popup");
+
+        if (rect is null) return;
+
+        int left = int.Parse(leftPx.Replace("px", ""));
+        int top = int.Parse(topPx.Replace("px", ""));
+
+        if (rect.Left + rect.Width > rect.WindowWidth)
+        {
+            left = left - (int)rect.Width - 20;
+            left = Math.Max(left, 0);
+        }
+
+        if (rect.Top + rect.Height > rect.WindowHeight)
+        {
+            top = top - (int)rect.Height - 20;
+            top = Math.Max(top, 0);
+        }
+
+        leftPx = $"{left}px";
+        topPx = $"{top}px";
+
+        StateHasChanged();
+    }
+
+    public class BoundingClientRect
+    {
+        public double Left { get; set; }
+        public double Top { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
+        public double WindowWidth { get; set; }
+        public double WindowHeight { get; set; }
+    }
+
+    RenderFragment stat(string label, int value, char tier, bool isBulk) => __builder =>
+    {
+        __builder.OpenElement(0, "div");
+        __builder.AddAttribute(1, "class", "stat-row");
+
+        __builder.OpenElement(2, "span");
+        __builder.AddAttribute(3, "class", "stat-name");
+        __builder.AddContent(4, label);
+        __builder.CloseElement();
+
+        __builder.OpenElement(5, "span");
+        __builder.AddAttribute(6, "class", "stat-value");
+        __builder.AddContent(7, value);
+        __builder.CloseElement();
+
+        __builder.OpenElement(8, "div");
+        __builder.AddAttribute(9, "class", "stat-bar");
+        __builder.OpenComponent<ColorBar>(10);
+        __builder.AddAttribute(11, "Value", value);
+        __builder.CloseComponent();
+        __builder.CloseElement();
+
+        __builder.CloseElement(); 
+    };
+}
+
+<style>
+
+.popup {
+    position: fixed;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    padding: 16px 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+    .popup-header {
+        position: relative;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .dex-number {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #999;
+    }
+
+    .pokemon-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .popup-types {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .separator {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 10px 0;
+    }
+
+    .stat-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+
+    .stat-name {
+        width: 32px;
+        text-align: right;
+        font-weight: 600;
+        flex-shrink: 0;
+    }
+
+    .stat-value {
+        width: 36px;
+        text-align: right;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .stat-bar {
+        flex-grow: 1;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .stat-row .bulk-tier-letter,
+    .stat-row .power-tier-letter {
+        width: 24px;
+        text-align: right;
+        font-size: 1.2rem;
+        font-weight: 900;
+        flex-shrink: 0;
+    }
+
+    .tier-summary {
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 8px;
+    }
+
+    .tier-line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+    }
+
+    .tier-label {
+        width: 70px;
+        text-align: right;
+        color: #555;
+        flex-shrink: 0;
+    }
+
+    .tier-value {
+        width: 20px;
+        text-align: left;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .bulk-tier-S, .power-tier-S {
+        color: #4be7f1;
+    }
+
+    .bulk-tier-A, .power-tier-A {
+        color: #2ecc71;
+    }
+
+    .bulk-tier-B, .power-tier-B {
+        color: #27ae60;
+    }
+
+    .bulk-tier-C, .power-tier-C {
+        color: #f1c40f;
+    }
+
+    .bulk-tier-D, .power-tier-D {
+        color: #e67e22;
+    }
+
+    .bulk-tier-E, .power-tier-E {
+        color: #e74c3c;
+    }
+
+    .bulk-tier-F, .power-tier-F {
+        color: #c0392b;
+    }
+</style>

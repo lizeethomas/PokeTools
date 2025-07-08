@@ -1,0 +1,109 @@
+﻿@using PokéToolsThèque;
+@inject HttpClient Http;
+
+<div class="team">
+    <div class="team-header">
+        <h3>Team (@(Team.Count)/6)</h3>
+        <button @onclick="ExportFullTeamToShowdown" class="export-team-button">Copy to Showdown !</button>
+    </div>
+    <div class="mini-team full-team-preview">
+        @for (int i = 0; i < 6; i++)
+        {
+            if (i < Team.Count && Items.Count() > 0)
+            {
+                <TeamBuilderSlot Pokemon="Team[i]"
+                                 OnPokemonDeselected="OnPokemonDeselected"
+                                 StartHover="StartHover"
+                                 CancelHover="CancelHover"
+                                 UpdateMousePosition="UpdateMousePosition" 
+                                 Items="@Items"/>
+            }
+            else
+            {
+                <div class="team-slot empty-slot">
+                    <span><img src="https://tinyurl.com/mrw7z944" /></span>
+                </div>
+            }
+        }
+    </div>
+
+</div>
+
+
+@code {
+    [Parameter] public List<Pokemon> Team { get; set; } = new();
+    [Parameter] public List<Item> Items { get; set; } = new();
+    [Parameter] public EventCallback<Pokemon> OnPokemonDeselected { get; set; }
+    [Parameter] public EventCallback<Pokemon> StartHover { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> UpdateMousePosition { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> CancelHover { get; set; }
+
+    private string ImgUrl = "https://tinyurl.com/mrw7z944";
+
+    private async Task HandleClick(Pokemon p) => await OnPokemonDeselected.InvokeAsync(p);
+    private async Task HandleHover(Pokemon p) => await StartHover.InvokeAsync(p);
+    private async Task HandleMouse(MouseEventArgs e) => await UpdateMousePosition.InvokeAsync(e);
+    private async Task HandleCancel(MouseEventArgs e) => await CancelHover.InvokeAsync(e);
+
+    private string GetTypeClass(string type)
+    {
+        if (string.IsNullOrEmpty(type))
+        {
+            return $"tb-no-type";
+        }
+        else
+        {
+            return $"tb-type-{type.ToLower()}";
+        }
+
+    }
+
+    [Inject] private IJSRuntime JS { get; set; }
+
+    private async Task ExportFullTeamToShowdown()
+    {
+        var showdownExport = new System.Text.StringBuilder();
+
+        foreach (var pokemon in Team)
+        {
+            if (pokemon is null) continue;
+
+            string selectedItem = pokemon.SelectedItem ?? "";
+            string selectedAbility = pokemon.SelectedAbility ?? "";
+            string selectedNature = pokemon.SelectedNature ?? "";
+            var evs = pokemon.EVs ?? new Dictionary<string, int>();
+            var moves = pokemon.SelectedMoves ?? new List<string>();
+
+            showdownExport.Append(pokemon.Name);
+            if (!string.IsNullOrEmpty(selectedItem))
+                showdownExport.Append(" @ ").Append(selectedItem);
+            showdownExport.AppendLine();
+
+            if (!string.IsNullOrEmpty(selectedAbility))
+                showdownExport.AppendLine($"Ability: {selectedAbility}");
+
+            showdownExport.AppendLine("Level: 100");
+
+            if (!string.IsNullOrEmpty(selectedNature))
+                showdownExport.AppendLine($"{selectedNature} Nature");
+
+            var evParts = evs.Where(ev => ev.Value > 0)
+                             .Select(ev => $"{ev.Value} {ev.Key}");
+            if (evParts.Any())
+                showdownExport.AppendLine("EVs: " + string.Join(" / ", evParts));
+
+            showdownExport.Replace("Speed", "Spe");
+            showdownExport.Replace("Defense", "Def");
+            showdownExport.Replace("SpDef", "SpD");
+            showdownExport.Replace("Attack", "Atk");
+            showdownExport.Replace("SpAtk", "SpA");
+
+            foreach (var move in moves.Where(m => !string.IsNullOrWhiteSpace(m)))
+                showdownExport.AppendLine($"- {move}");
+
+            showdownExport.AppendLine(); 
+        }
+
+        await JS.InvokeVoidAsync("copyToClipboard", showdownExport.ToString());
+    }
+}

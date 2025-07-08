@@ -1,0 +1,277 @@
+﻿@using PokéToolsThèque;
+@using Microsoft.AspNetCore.Components.Web
+
+<div class="team-slot">
+    <div class="slot-header">
+        <div class="card-wrapper">
+            <PokemonCard Pokemon="@Pokemon"
+                         CancelHover="CancelHover"
+                         OnClick="HandleClick"
+                         StartHover="HandleHover"
+                         UpdateMousePosition="HandleMouse" />
+        </div>
+
+        <div class="poke-header-info">
+            <div class="info-name">@Pokemon.Name</div>
+            <div class="info-types">
+                <span class="tb-type-icon @GetTypeClass(Pokemon.Type1)">@Pokemon.Type1</span>
+                @if (!string.IsNullOrEmpty(Pokemon.Type2) && Pokemon.Type2 != "None")
+                {
+                    <span class="tb-type-icon @GetTypeClass(Pokemon.Type2)">@Pokemon.Type2</span>
+                }
+            </div>
+        </div>
+
+        <div class="export-button-container">
+            <button @onclick="ExportToShowdown" class="export-button">Copy</button>
+        </div>
+    </div>
+    <div class="info-below-card">
+        <div class="slot-details">
+            <div class="ev-selectors">
+                <label>EVs:</label>
+                @foreach (var stat in StatNames)
+                {
+                    <div class="ev-input">
+                        <label>@stat:</label>
+                        <input type="number" min="0" max="252" step="4"
+                               value="@EVs[stat]"
+                        @onchange="(e) => UpdateEV(stat, e.Value?.ToString())" />
+                    </div>
+                }
+                <div class="ev-remaining">@TotalEVs / 510</div>
+            </div>
+
+            <div class="nature-selector">
+                <label>Nature:</label>
+                <select @bind="SelectedNature">
+                    <option value="">---</option>
+                    @foreach (var nature in NatureEffects)
+                    {
+                        var label = string.IsNullOrEmpty(nature.Value.Up)
+                        ? $"{nature.Key} (neutral)"
+                        : $"{nature.Key} (+{nature.Value.Up}, -{nature.Value.Down})";
+
+                        <option value="@nature.Key">@label</option>
+                    }
+                </select>
+
+                <label style="margin-top: 8px;">Ability:</label>
+                <select @bind="SelectedAbility">
+                    <option value="">---</option>
+                    @foreach (var ability in Pokemon.Abilities)
+                    {
+                        <option value="@ability.Name">@ability.Name</option>
+                    }
+                </select>
+
+                <label style="margin-top: 8px;">Held Item:</label>
+                <select @bind="SelectedItem">
+                    <option value="">---</option>
+                    @foreach (var item in Items.OrderBy(i => i.Name))
+                    {
+                        <option value="@item.Name">@item.Name</option>
+                    }
+                </select>
+            </div>
+
+
+            <div class="move-selectors">
+                <label>Moves:</label>
+
+                <select @bind="Move1Name">
+                    <option value="">---</option>
+                    @foreach (var move in AllMoves)
+                    {
+                        <option value="@move.Name">@move.Name</option>
+                    }
+                </select>
+
+
+                <select @bind="Move2Name">
+                    <option value="">---</option>
+                    @foreach (var move in AllMoves)
+                    {
+                        <option value="@move.Name">@move.Name</option>
+                    }
+                </select>
+
+
+                <select @bind="Move3Name">
+                    <option value="">---</option>
+                    @foreach (var move in AllMoves)
+                    {
+                        <option value="@move.Name">@move.Name</option>
+                    }
+                </select>
+
+
+                <select @bind="Move4Name">
+                    <option value="">---</option>
+                    @foreach (var move in AllMoves)
+                    {
+                        <option value="@move.Name">@move.Name</option>
+                    }
+                </select>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Pokemon Pokemon { get; set; } = new();
+    [Parameter] public List<Item> Items { get; set; } = new();
+    [Parameter] public EventCallback<Pokemon> OnPokemonDeselected { get; set; }
+    [Parameter] public EventCallback<Pokemon> StartHover { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> UpdateMousePosition { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> CancelHover { get; set; }
+
+    private string Move1Name { get; set; } = "";
+    private string Move2Name { get; set; } = "";
+    private string Move3Name { get; set; } = "";
+    private string Move4Name { get; set; } = "";
+
+    private Move? Move1 => Pokemon.Moves.FirstOrDefault(m => m.Name == Move1Name);
+    private Move? Move2 => Pokemon.Moves.FirstOrDefault(m => m.Name == Move2Name);
+    private Move? Move3 => Pokemon.Moves.FirstOrDefault(m => m.Name == Move3Name);
+    private Move? Move4 => Pokemon.Moves.FirstOrDefault(m => m.Name == Move4Name);
+
+
+    private List<Move> AllMoves => Pokemon.Moves.OrderBy(m => m.Name).ToList();
+
+    private string SelectedAbility { get; set; } = "";
+    private string SelectedNature { get; set; } = "";
+    private string SelectedItem { get; set; } = "";
+
+    private string[] StatNames = new[] { "HP", "Attack", "Defense", "SpAtk", "SpDef", "Speed" };
+    private Dictionary<string, int> EVs = new()
+    {
+        ["HP"] = 0, ["Attack"] = 0, ["Defense"] = 0,
+        ["SpAtk"] = 0, ["SpDef"] = 0, ["Speed"] = 0
+    };
+
+    private Dictionary<string, (string Up, string Down)> NatureEffects = new()
+    {
+        { "Adamant",  ("Attack", "SpAtk") },
+        { "Bashful",  ("", "") }, 
+        { "Bold",     ("Defense", "Attack") },
+        { "Brave",    ("Attack", "Speed") },
+        { "Calm",     ("SpDef", "Attack") },
+        { "Careful",  ("SpDef", "SpAtk") },
+        { "Docile",   ("", "") }, 
+        { "Gentle",   ("SpDef", "Defense") },
+        { "Hardy",    ("", "") }, 
+        { "Hasty",    ("Speed", "Defense") },
+        { "Impish",   ("Defense", "SpAtk") },
+        { "Jolly",    ("Speed", "SpAtk") },
+        { "Lax",      ("Defense", "SpDef") },
+        { "Lonely",   ("Attack", "Defense") },
+        { "Mild",     ("SpAtk", "Defense") },
+        { "Modest",   ("SpAtk", "Attack") },
+        { "Naive",    ("Speed", "SpDef") },
+        { "Naughty",  ("Attack", "SpDef") },
+        { "Quiet",    ("SpAtk", "Speed") },
+        { "Quirky",   ("", "") },
+        { "Rash",     ("SpAtk", "SpDef") },
+        { "Relaxed",  ("Defense", "Speed") },
+        { "Sassy",    ("SpDef", "Speed") },
+        { "Serious",  ("", "") }, 
+        { "Timid",    ("Speed", "Attack") }
+    };
+
+    private int TotalEVs => EVs.Values.Sum();
+
+    [Inject] private IJSRuntime JS { get; set; }
+
+    private string _lastSyncHash = "";
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        var currentHash = $"{SelectedItem}|{SelectedAbility}|{SelectedNature}|{string.Join(",", EVs.Values)}|{Move1Name}|{Move2Name}|{Move3Name}|{Move4Name}";
+
+        if (currentHash != _lastSyncHash)
+        {
+            Pokemon.SelectedItem = SelectedItem;
+            Pokemon.SelectedAbility = SelectedAbility;
+            Pokemon.SelectedNature = SelectedNature;
+            Pokemon.EVs = new Dictionary<string, int>(EVs);
+            Pokemon.SelectedMoves = new List<string> { Move1Name, Move2Name, Move3Name, Move4Name };
+
+            _lastSyncHash = currentHash;
+        }
+    }
+
+
+    private async Task CopyToClipboard(string text)
+    {
+        await JS.InvokeVoidAsync("copyToClipboard", text);
+    }
+
+    private void UpdateEV(string stat, string? value)
+    {
+        if (int.TryParse(value, out var val))
+        {
+            val = Math.Clamp(val, 0, 252);
+            EVs[stat] = val;
+        }
+    }
+
+    private string GetTypeClass(string type) =>
+        string.IsNullOrEmpty(type) ? "tb-no-type" : $"tb-type-{type.ToLower()}";
+
+    private async Task HandleClick() => await OnPokemonDeselected.InvokeAsync(Pokemon);
+    private async Task HandleHover() => await StartHover.InvokeAsync(Pokemon);
+    private async Task HandleMouse(MouseEventArgs e) => await UpdateMousePosition.InvokeAsync(e);
+    private async Task HandleCancel(MouseEventArgs e) => await CancelHover.InvokeAsync(e);
+
+    private async Task ExportToShowdown()
+    {
+        var showdownText = BuildShowdownText();
+        await CopyToClipboard(showdownText); 
+    }
+
+    private string BuildShowdownText()
+    {
+        var sb = new System.Text.StringBuilder();
+
+        // Nom + objet
+        sb.Append(Pokemon.Name);
+        if (!string.IsNullOrEmpty(SelectedItem))
+            sb.Append(" @ ").Append(SelectedItem);
+        sb.AppendLine();
+
+        // Ability
+        if (!string.IsNullOrEmpty(SelectedAbility))
+            sb.AppendLine($"Ability: {SelectedAbility}");
+
+        // Level
+        sb.AppendLine("Level: 100");
+
+        // Nature
+        sb.AppendLine($"{SelectedNature} Nature");
+
+        // EVs
+        var evParts = EVs.Where(ev => ev.Value > 0)
+                         .Select(ev => $"{ev.Value} {ev.Key}");
+        if (evParts.Any())
+            sb.AppendLine("EVs: " + string.Join(" / ", evParts));
+
+        sb.Replace("Speed", "Spe");
+        sb.Replace("Defense", "Def");
+        sb.Replace("SpDef","SpD");
+        sb.Replace("Attack", "Atk");
+        sb.Replace("SpAtk", "SpA");
+
+        // Moves
+        var moves = new[] { Move1Name, Move2Name, Move3Name, Move4Name }
+                    .Where(m => !string.IsNullOrWhiteSpace(m));
+        foreach (var move in moves)
+            sb.AppendLine($"- {move}");
+
+        return sb.ToString();
+    }
+
+
+}

@@ -1,0 +1,38 @@
+﻿@using PokéToolsThèque;
+
+<div class="card"
+     id="@Pokemon.Dex"
+    @onclick="@(() => OnClick.InvokeAsync(Pokemon))"
+    @onmouseover="@(() => StartHover.InvokeAsync(Pokemon))"
+    @onmouseout="@((e) => CancelHover.InvokeAsync(e))"
+    @onmousemove="UpdateMousePosition">
+    <img src="@Pokemon.IconUrl" alt="@Pokemon.Name" />
+    @if (HasResistanceModifyingAbility(Pokemon))
+    {
+        <span class="alert-icon" title="One of this pokemon's talent affects his resistances">⚠️</span>
+    }
+</div>
+
+@code {
+    [Parameter] public Pokemon Pokemon { get; set; }
+    [Parameter] public EventCallback<Pokemon> OnClick { get; set; }
+    [Parameter] public EventCallback<Pokemon> StartHover { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> CancelHover { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> UpdateMousePosition { get; set; }
+
+    private static readonly HashSet<string> ResistanceModifyingAbilities = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "levitate", "earth-eater",
+        "dry-skin", "water-absorb", "storm-drain",
+        "sap-sipper",
+        "lightning-rod", "volt-absorb", "motor-drive",
+        "wonder-guard",
+        "solid-rock", "filter", "prism-armor"
+    };
+
+    private bool HasResistanceModifyingAbility(Pokemon p)
+    {
+        var allAbilities = p.Abilities.Select(a => a.PokeApiIdentifier).ToList();
+        return allAbilities.Any(a => ResistanceModifyingAbilities.Contains(a));
+    }
+}

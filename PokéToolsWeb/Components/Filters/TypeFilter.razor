@@ -1,0 +1,33 @@
+﻿
+
+<div class="filter-section">
+    <div class="filter-header">
+        <h3>Filter by Type</h3>
+        <button @onclick="OnClearTypes">Unselect all</button>
+    </div>
+    <div class="type-checkboxes">
+        @foreach (var type in AvailableTypes)
+        {
+            <label class="type-filter-label">
+                <input type="checkbox"
+                       checked="@SelectedTypes.Contains(type)"
+                @onchange="@(() => HandleTypeClick(type))"
+                       disabled="@(SelectedTypes.Count >= 2 && !SelectedTypes.Contains(type))" />
+                <span class="tb-type-icon @GetTypeClass(type)">@type</span>
+            </label>
+        }
+    </div>
+</div>
+
+
+
+@code {
+    [Parameter] public List<string> AvailableTypes { get; set; } = new();
+    [Parameter] public HashSet<string> SelectedTypes { get; set; } = new();
+    [Parameter] public EventCallback<string> OnToggleType { get; set; }
+    [Parameter] public EventCallback OnClearTypes { get; set; }
+    [Parameter] public Func<string, string> GetTypeClass { get; set; } = _ => "";
+
+    private Task HandleTypeClick(string type) => OnToggleType.InvokeAsync(type);
+}
+

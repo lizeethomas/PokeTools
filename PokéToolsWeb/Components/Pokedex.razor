@@ -1,0 +1,41 @@
+﻿@using PokéToolsWeb.Components
+@using PokéToolsThèque
+
+<div class="pokedex">
+    <div class="pokedex-header">
+        <h3>Pokédex</h3>
+    </div>
+
+    <div class="pokemon-panel">
+        @if (Pokemons.Any())
+        {
+            <div class="card-container">
+                @foreach (var pokemon in Pokemons)
+                {
+                    <PokemonCard Pokemon="@pokemon"
+                                 CancelHover="CancelHover"
+                                 OnClick="OnPokemonSelected"
+                                 StartHover="StartHover"
+                                 UpdateMousePosition="UpdateMousePosition">
+                    </PokemonCard>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="no-pokemon">
+                <span>No Pokémon found with that filter!</span>
+            </div>
+        }
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public List<Pokemon> Pokemons { get; set; } = new();
+
+    [Parameter] public EventCallback<Pokemon> OnPokemonSelected { get; set; }
+    [Parameter] public EventCallback<Pokemon> StartHover { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> CancelHover { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> UpdateMousePosition { get; set; }
+}
