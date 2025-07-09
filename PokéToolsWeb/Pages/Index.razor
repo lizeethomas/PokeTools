@@ -53,7 +53,9 @@ else
                      OnPokemonSelected="OnPokemonSelected"
                      StartHover="StartHover"
                      CancelHover="CancelHover"
-                     UpdateMousePosition="UpdateMousePosition" />
+                     UpdateMousePosition="UpdateMousePosition"
+                     OnRandomizeTeam="GetRandomTeam"
+                     IsLoadingTeam="@isLoadingTeam" />
         </div>
     </div>
 
@@ -108,11 +110,11 @@ else
 
     private HashSet<string> selectedCategories = new() { "Non-Legendary", "Legendary & Mythical"};
     private bool showFullyEvolved = false;
-
+    private bool isLoadingTeam = false;
 
     private Dictionary<string, (int min, int max)> statFilters = new()
     {
-        { "Total", (200, 720) },
+        { "Total", (175, 720) },
         { "HP", (1, 255) },
         { "Attack", (5, 190) },
         { "Defense", (5, 230) },
@@ -123,7 +125,7 @@ else
 
     private Dictionary<string, (int min, int max)> statBounds = new()
     {
-        { "Total", (200, 720) },
+        { "Total", (175, 720) },
         { "HP", (1, 255) },
         { "Attack", (5, 190) },
         { "Defense", (5, 230) },
@@ -238,6 +240,28 @@ else
         showFullyEvolved = show;
         ApplyFilters();
         return Task.CompletedTask;
+    }
+
+    private async Task GetRandomTeam()
+    {
+        if (isLoadingTeam)
+            return;
+
+        isLoadingTeam = true;
+        StateHasChanged();
+
+        ClearTeam();
+
+        var pkmns = await Http.GetFromJsonAsync<List<Pokemon>>($"https://localhost:7206/api/Team/3000") ?? new List<Pokemon>();
+
+        foreach (var p in pkmns)
+        {
+            allPokemons.RemoveAll(x => x.PokeApiIdentifier == p.PokeApiIdentifier);
+            await OnPokemonSelected(p);
+        }
+
+        isLoadingTeam = false;
+        StateHasChanged();
     }
 
     private async Task OnPokemonSelected(Pokemon p)

@@ -510,14 +510,50 @@ h1 {
 }
 
 .pokedex-header {
-    padding: 0.5rem 0 0 2rem;
+    padding: 0.5rem 2rem;
     border-bottom: 1px solid #ddd;
     background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
     .pokedex-header h3 {
         font-weight: 600;
         color: #34495e;
+    }
+
+.pokedex-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.match-count {
+    font-size: 1rem;
+    color: #888;
+    font-weight: normal;
+}
+
+.randomize-button {
+    background-color: #2a75bb;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+}
+
+    .randomize-button:hover {
+        background-color: #1c4e8b;
+    }
+    .randomize-button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+        color: #666;
     }
 
 .pokemon-panel {
@@ -603,34 +639,36 @@ h1 {
 }
 
 /*Type Chart*/
-.team-builder-container {
-    padding: 20px;
+.type-chart-container {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     font-family: Arial, sans-serif;
-}
-
-.team-builder-container-header {
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    text-align: center;
-    user-select: none;
-    cursor: pointer;
-    font-weight: bold;
-    color: #34495e;
-    gap: 0.1rem;
-}
-
-.team-builder-table {
     width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
+}
+
+.type-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+}
+
+    .type-chart-header h3 {
+        font-weight: 600;
+        color: #34495e;
+    }
+
+.type-chart-table {
+    width: 100%;
+    padding: 20px;
     text-align: center;
 }
 
-    .team-builder-table th,
-    .team-builder-table td {
+    .type-chart-table th,
+    .type-chart-table td {
         border: 1px solid #ccc;
         padding: 4px;
         vertical-align: middle;
@@ -638,12 +676,12 @@ h1 {
         font-size: 0.95em;
     }
 
-    .team-builder-table thead th {
+    .type-chart-table thead th {
         background-color: #f8f8f8;
         font-weight: bold;
     }
 
-    .team-builder-table tbody tr:nth-child(even) {
+    .type-chart-table tbody tr:nth-child(even) {
         background-color: #f4f4f4;
     }
 
@@ -781,8 +819,8 @@ td {
 }
 
 .tb-weak-header, .tb-resist-header,
-.team-builder-table td:last-child,
-.team-builder-table td:nth-last-child(2) {
+.type-chart-table td:last-child,
+.type-chart-table td:nth-last-child(2) {
     text-align: center;
     font-weight: bold;
 }

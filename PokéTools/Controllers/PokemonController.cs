@@ -39,22 +39,10 @@ namespace PokéTools.Controllers
             return Ok(pokemon);
         }
 
-        [HttpGet("Team/Random")]
-        public ActionResult<List<Pokemon>> GetRandomTeam()
+        [HttpGet("Team/{budget}")]
+        public ActionResult<List<Pokemon>> GetRandomTeam(int budget)
         {
-            HashSet<string> selectedNames = new HashSet<string>();
-            List<Pokemon> team = new List<Pokemon>();
-
-            while (team.Count < 6)
-            {
-                Pokemon pokemon = _pokemonService.GetRandomPokemon();
-                if (selectedNames.Add(pokemon.Name))
-                {
-                    team.Add(pokemon);
-                }
-            }
-
-            return Ok(team);
+            return _pokemonService.GetRandomTeamWithBudget(budget);
         }
 
         [HttpGet("Pokemons")]

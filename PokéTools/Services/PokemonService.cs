@@ -28,6 +28,41 @@ namespace PokéTools.Services
             return _pokemons.FirstOrDefault(p => p.Dex == dex) ?? new Pokemon();
         }
 
+        public List<Pokemon> GetRandomTeamWithBudget(int statBudget)
+        {
+            var rnd = new Random();
+
+            int maxRetries = 50;
+            while (maxRetries-- > 0)
+            {
+                var candidates = _pokemons
+                    .Where(p => p.IsFullyEvolved)
+                    .OrderBy(_ => rnd.Next()) 
+                    .ToList();
+
+                var team = new List<Pokemon>();
+                int currentTotal = 0;
+
+                foreach (var p in candidates)
+                {
+                    if (team.Count >= 6)
+                        break;
+
+                    if (!team.Contains(p) && currentTotal + p.Total <= statBudget)
+                    {
+                        team.Add(p);
+                        currentTotal += p.Total;
+                    }
+                }
+
+                if (team.Count == 6)
+                    return team;
+            }
+
+            return new List<Pokemon>();
+        }
+
+
         private List<Pokemon> LoadPokemonsFromFile(string filePath)
         {
             var pokemons = new List<Pokemon>();

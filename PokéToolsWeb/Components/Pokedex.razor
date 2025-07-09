@@ -3,7 +3,14 @@
 
 <div class="pokedex">
     <div class="pokedex-header">
-        <h3>Pokédex</h3>
+        <div class="pokedex-title">
+            <h3>Pokédex</h3>
+            <span class="match-count">(@Pokemons.Count)</span>
+        </div>
+
+        <button class="randomize-button" @onclick="OnRandomizeTeam" disabled="@IsLoadingTeam">
+            @(IsLoadingTeam ? "Loading..." : "🎲 Randomize")
+        </button>
     </div>
 
     <div class="pokemon-panel">
@@ -38,4 +45,7 @@
     [Parameter] public EventCallback<Pokemon> StartHover { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> CancelHover { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> UpdateMousePosition { get; set; }
+
+    [Parameter] public EventCallback OnRandomizeTeam { get; set; }
+    [Parameter] public bool IsLoadingTeam { get; set; }
 }
