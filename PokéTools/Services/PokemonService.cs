@@ -120,6 +120,7 @@ namespace PokéTools.Services
                     PokeApiIdentifier = fields[17],
                     IsFullyEvolved = Convert.ToBoolean(fields[20]),
                     Category = fields[21],
+                    SmogonTier = fields[22],
                     Abilities = abilities
                 });
             }

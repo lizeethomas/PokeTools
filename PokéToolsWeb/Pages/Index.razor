@@ -27,7 +27,9 @@ else
                            SelectedCategories="@selectedCategories"
                            OnToggleCategory="@ToggleCategory"
                            ShowFullyEvolved="@showFullyEvolved"
-                           OnToggleFullyEvolved="@ToggleFullyEvolved" />
+                           OnToggleFullyEvolved="@ToggleFullyEvolved"
+                           ShowOUOnly="@ShowOUOnly"
+                           OnToggleOUOnly="@OnToggleOUOnly" />
 
                 <TypeFilter AvailableTypes="availableTypes"
                             SelectedTypes="selectedTypes"
@@ -67,8 +69,9 @@ else
                              OnPokemonDeselected="OnPokemonDeselected"
                              StartHover="StartHover"
                              CancelHover="CancelHover"
-                             UpdateMousePosition="UpdateMousePosition" 
-                             Items="@Items"/>
+                             UpdateMousePosition="UpdateMousePosition"
+                             Items="@Items" 
+                             OnClearTeam="ClearTeam" />
             </div>
             @if (team.Any() && team.Count == teamDefensiveTypeCharts.Count)
             {
@@ -111,6 +114,13 @@ else
     private HashSet<string> selectedCategories = new() { "Non-Legendary", "Legendary & Mythical"};
     private bool showFullyEvolved = false;
     private bool isLoadingTeam = false;
+    private bool ShowOUOnly = false;
+
+    private Pokemon? hoveredPokemon;
+    private bool showPopup = false;
+    private Timer? hoverTimer;
+    private string popupTopPx = "0px";
+    private string popupLeftPx = "0px";
 
     private Dictionary<string, (int min, int max)> statFilters = new()
     {
@@ -147,12 +157,6 @@ else
             }
         }
     }
-
-    private Pokemon? hoveredPokemon;
-    private bool showPopup = false;
-    private Timer? hoverTimer;
-    private string popupTopPx = "0px";
-    private string popupLeftPx = "0px";
 
     protected override async Task OnInitializedAsync()
     {
@@ -242,8 +246,16 @@ else
         return Task.CompletedTask;
     }
 
+    private Task OnToggleOUOnly(bool value)
+    {
+        ShowOUOnly = value;
+        ApplyFilters();
+        return Task.CompletedTask;
+    }
+
     private async Task GetRandomTeam()
     {
+
         if (isLoadingTeam)
             return;
 
@@ -252,9 +264,33 @@ else
 
         ClearTeam();
 
-        var pkmns = await Http.GetFromJsonAsync<List<Pokemon>>($"https://localhost:7206/api/Team/3000") ?? new List<Pokemon>();
+        var team = new List<Pokemon>();
+        var rnd = new Random();
+        int maxRetries = 50;
+        while (maxRetries-- > 0)
+        {
+            var candidates = pokemons
+                .Where(p => p.IsFullyEvolved)
+                .OrderBy(_ => rnd.Next())
+                .ToList();
 
-        foreach (var p in pkmns)
+            team = new List<Pokemon>();
+            int currentTotal = 0;
+
+            foreach (var p in candidates)
+            {
+                if (team.Count >= 6)
+                    break;
+
+                if (!team.Contains(p) && currentTotal + p.Total <= 4000)
+                {
+                    team.Add(p);
+                    currentTotal += p.Total;
+                }
+            }
+        }
+
+        foreach (var p in team)
         {
             allPokemons.RemoveAll(x => x.PokeApiIdentifier == p.PokeApiIdentifier);
             await OnPokemonSelected(p);
@@ -342,8 +378,13 @@ else
 
     private void ClearTeam()
     {
+        allPokemons.AddRange(team);
+        allPokemons = allPokemons.OrderBy(pkm => pkm.Dex).ToList();
         team.Clear();
         teamDefensiveTypeCharts.Clear();
+        CancelHover();
+        ApplyFilters();
+        StateHasChanged();
     }
 
     private async Task GetDefensiveTypeChart(string pokeId)
@@ -480,6 +521,11 @@ else
         if (showFullyEvolved)
         {
             filtered = filtered.Where(p => p.IsFullyEvolved);
+        }
+
+        if(ShowOUOnly)
+        {
+            filtered = filtered.Where(p => p.SmogonTier == "OU" || p.SmogonTier == "UUBL");
         }
 
         var filteredList = filtered.ToList();

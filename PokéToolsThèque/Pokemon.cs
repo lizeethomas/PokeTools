@@ -33,6 +33,7 @@ namespace PokéToolsThèque
         public List<Ability> Abilities { get; set; }
         public bool IsFullyEvolved { get; set; }
         public string Category { get; set; }
+        public string SmogonTier { get; set; }
         public Tiers? Tiers { get; set; }
 
 

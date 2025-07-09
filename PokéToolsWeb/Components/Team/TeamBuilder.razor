@@ -4,7 +4,10 @@
 <div class="team">
     <div class="team-header">
         <h3>Team (@(Team.Count)/6)</h3>
-        <button @onclick="ExportFullTeamToShowdown" class="export-team-button">Copy to Showdown !</button>
+        <div class="team-buttons">
+            <button @onclick="ClearTeam" class="clear-team-button">Clear Team</button>
+            <button @onclick="ExportFullTeamToShowdown" class="export-team-button">Copy to Showdown !</button>
+        </div>
     </div>
     <div class="mini-team full-team-preview">
         @for (int i = 0; i < 6; i++)
@@ -37,6 +40,7 @@
     [Parameter] public EventCallback<Pokemon> StartHover { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> UpdateMousePosition { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> CancelHover { get; set; }
+    [Parameter] public EventCallback OnClearTeam { get; set; }
 
     private string ImgUrl = "https://tinyurl.com/mrw7z944";
 
@@ -44,6 +48,11 @@
     private async Task HandleHover(Pokemon p) => await StartHover.InvokeAsync(p);
     private async Task HandleMouse(MouseEventArgs e) => await UpdateMousePosition.InvokeAsync(e);
     private async Task HandleCancel(MouseEventArgs e) => await CancelHover.InvokeAsync(e);
+
+    private async Task ClearTeam()
+    {
+        await OnClearTeam.InvokeAsync();
+    }
 
     private string GetTypeClass(string type)
     {

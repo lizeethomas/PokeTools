@@ -7,6 +7,14 @@
 
     [Parameter] public bool ShowFullyEvolved { get; set; }
     [Parameter] public EventCallback<bool> OnToggleFullyEvolved { get; set; }
+    [Parameter] public bool ShowOUOnly { get; set; }
+    [Parameter] public EventCallback<bool> OnToggleOUOnly { get; set; }
+
+    private async Task ToggleOUOnly(ChangeEventArgs e)
+    {
+        bool isChecked = (bool)e.Value!;
+        await OnToggleOUOnly.InvokeAsync(isChecked);
+    }
 
     private async Task OnInput(ChangeEventArgs e)
     {
@@ -52,6 +60,13 @@
                    checked="@ShowFullyEvolved"
             @onchange="ToggleFullyEvolved" />
             Fully Evolved
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox"
+                   checked="@ShowOUOnly"
+            @onchange="ToggleOUOnly" />
+            OU
         </label>
     </div>
 </div>

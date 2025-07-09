@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using PokéToolsThèque;
 
 namespace PokéTools.Services
@@ -491,6 +492,86 @@ namespace PokéTools.Services
             }
 
             await File.WriteAllLinesAsync(outputFilePath, lines);
+        }
+
+        public async Task AddSmogonTierFromLocalFileAsync(string inputTsvPath, string outputTsvPath, string showdownFilePath)
+        {
+            var tiers = ParseLocalShowdownTiers(showdownFilePath);
+            var lines = await File.ReadAllLinesAsync(inputTsvPath);
+            var output = new List<string> { lines[0] + "\tSmogonTier" };
+
+            for (int i = 1; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                var cols = line.Split('\t');
+                if (cols.Length < 18)
+                {
+                    output.Add(line + "\tUnknown");
+                    continue;
+                }
+
+                var pokeApiId = cols[17];
+                var showdownId = pokeApiId.Replace("-", "").ToLowerInvariant();
+                tiers.TryGetValue(showdownId, out var tier);
+                output.Add(line + "\t" + (tier ?? "Unknown"));
+            }
+
+            await File.WriteAllLinesAsync(outputTsvPath, output);
+        }
+
+
+        public Dictionary<string, string> ParseLocalShowdownTiers(string filePath)
+        {
+            var dict = new Dictionary<string, string>();
+            var text = File.ReadAllText(filePath);
+
+            var regex = new Regex(@"(?<id>[a-z0-9]+)\s*:\s*\{\s*[^}]*?tier\s*:\s*""(?<tier>[^""]+)""", RegexOptions.Compiled);
+
+            int count = 0;
+            foreach (Match m in regex.Matches(text))
+            {
+                var id = m.Groups["id"].Value.Trim();
+                var tier = m.Groups["tier"].Value.Trim();
+                dict[id] = tier;
+                count++;
+            }
+
+            Console.WriteLine($"✔ {count} Pokémon tiers extraits.");
+            return dict;
+        }
+
+
+        private async Task<Dictionary<string, string>> FetchShowdownTiersAsync()
+        {
+            var url = "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/formats-data.ts";
+            var txt = await _http.GetStringAsync(url);
+            var dict = new Dictionary<string, string>();
+            var regex = new Regex(@"[""'](?<id>[^""']+)[""']\s*:\s*\{\s*tier\s*:\s*[""'](?<tier>[^""']+)[""']");
+            foreach (Match m in regex.Matches(txt))
+            {
+                dict[m.Groups["id"].Value] = m.Groups["tier"].Value;
+            }
+            return dict;
+        }
+
+        private string ToShowdownId(string pokeApiIdentifier)
+            => pokeApiIdentifier.Replace("-", "").ToLowerInvariant();
+
+        public async Task AddSmogonTierToTsvAsync(string input, string output)
+        {
+            var tiers = await FetchShowdownTiersAsync();
+            var lines = await File.ReadAllLinesAsync(input);
+            var outLines = new List<string>();
+            outLines.Add(lines[0] + "\tSmogonTier");
+            foreach (var line in lines.Skip(1))
+            {
+                var cols = line.Split('\t');
+                var id = cols[17];
+                var sdId = ToShowdownId(id);
+                tiers.TryGetValue(sdId, out var tier);
+                outLines.Add(line + "\t" + (tier ?? "Unknown"));
+            }
+            await File.WriteAllLinesAsync(output, outLines);
         }
     }
 }

@@ -32,19 +32,6 @@ namespace PokéTools.Controllers
             return Ok(pokemon);
         }
 
-        [HttpGet("Pokemon/Random")]
-        public ActionResult<Pokemon> GetRandomPokemon()
-        {
-            var pokemon = _pokemonService.GetRandomPokemon();
-            return Ok(pokemon);
-        }
-
-        [HttpGet("Team/{budget}")]
-        public ActionResult<List<Pokemon>> GetRandomTeam(int budget)
-        {
-            return _pokemonService.GetRandomTeamWithBudget(budget);
-        }
-
         [HttpGet("Pokemons")]
         public ActionResult<List<Pokemon>> GetPokemons()
         {

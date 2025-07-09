@@ -8,16 +8,22 @@
             <span class="match-count">(@Pokemons.Count)</span>
         </div>
 
-        <button class="randomize-button" @onclick="OnRandomizeTeam" disabled="@IsLoadingTeam">
-            @(IsLoadingTeam ? "Loading..." : "🎲 Randomize")
-        </button>
+        <div class="pokedex-actions">
+            <button class="sort-button" @onclick="ToggleSort">
+                @(CurrentSort == SortMode.Dex ? "Sorted by Dex" : "Sorted by Name")
+            </button>
+
+            <button class="randomize-button" @onclick="OnRandomizeTeam" disabled="@IsLoadingTeam">
+                @(IsLoadingTeam ? "Loading..." : "🎲 Randomize")
+            </button>
+        </div>
     </div>
 
     <div class="pokemon-panel">
         @if (Pokemons.Any())
         {
             <div class="card-container">
-                @foreach (var pokemon in Pokemons)
+                @foreach (var pokemon in SortedPokemons)
                 {
                     <PokemonCard Pokemon="@pokemon"
                                  CancelHover="CancelHover"
@@ -48,4 +54,34 @@
 
     [Parameter] public EventCallback OnRandomizeTeam { get; set; }
     [Parameter] public bool IsLoadingTeam { get; set; }
+
+    private List<Pokemon> SortedPokemons = new();
+
+    public enum SortMode
+    {
+        Dex,
+        Name
+    }
+
+    private SortMode CurrentSort = SortMode.Dex;
+
+    private void ToggleSort()
+    {
+        CurrentSort = CurrentSort == SortMode.Dex ? SortMode.Name : SortMode.Dex;
+        SortPokemons();
+    }
+
+    protected override void OnParametersSet()
+    {
+        SortPokemons();
+    }
+
+    private void SortPokemons()
+    {
+        SortedPokemons = CurrentSort switch
+        {
+            SortMode.Name => Pokemons.OrderBy(p => p.Name).ToList(),
+            _ => Pokemons.OrderBy(p => p.Dex).ToList(),
+        };
+    }
 }

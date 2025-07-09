@@ -2,6 +2,7 @@
 using PokéTools.Services;
 using PokéTools.Tools;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PokéTools.Controllers
 {
@@ -29,7 +30,11 @@ namespace PokéTools.Controllers
         [HttpGet("updatetsv")]
         public async Task<ActionResult> Updatetsv()
         {
-            await _tsvService.AddCategoryToTsvAsync("E:\\Bureau\\CODE\\PokéTools\\Data\\pokemon.tsv", "E:\\Bureau\\CODE\\PokéTools\\Data\\pokemons.tsv");
+            await _tsvService.AddSmogonTierFromLocalFileAsync(
+            "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\pokemons.tsv",
+            "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\pokedex.tsv",
+            "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\format-data.ts"
+        );
             return Ok("");
         }
 
@@ -105,8 +110,8 @@ namespace PokéTools.Controllers
         [HttpGet("writemoves")]
         public async Task<IActionResult> WriteMoves()
         {
-            await _tsvService.FetchAllItems();
-            return Ok("done");
+            Console.WriteLine(_pokemonService.Pokemons.Count(p => p.SmogonTier == "Unknown"));
+            return Ok("");
         }
     }
 }
