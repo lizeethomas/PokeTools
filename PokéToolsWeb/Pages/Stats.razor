@@ -1,0 +1,42 @@
+﻿@page "/stats"
+@using PokéToolsThèque;
+@inject HttpClient Http;
+
+<h3>Stats</h3>
+<div>
+    @foreach(var stat in stats.OrderByDescending(s => s.Value))
+    {
+        <p>@stat.Key - @stat.Value</p>
+    }
+</div>
+
+
+@code {
+
+    Dictionary<string, int> stats = new Dictionary<string, int>();
+    List<Pokemon> allPokemons = new List<Pokemon>();
+    List<string> availableTypes = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        allPokemons = await GetPokemons();
+
+        availableTypes = allPokemons
+            .SelectMany(p => new[] { p.Type1, p.Type2 })
+            .Where(t => !string.IsNullOrWhiteSpace(t))
+            .Distinct()
+            .OrderBy(t => t)
+            .ToList();
+
+        availableTypes.ForEach(t =>
+        {
+            stats.Add(t, allPokemons.Count(p => p.Type1 == t || p.Type2 == t));
+        });
+        StateHasChanged();
+    }
+
+    private async Task<List<Pokemon>> GetPokemons()
+    {
+        return await Http.GetFromJsonAsync<List<Pokemon>>("https://localhost:7206/api/Pokemons") ?? new List<Pokemon>();
+    }
+}
