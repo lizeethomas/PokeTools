@@ -1,5 +1,6 @@
 ﻿using PokéTools.Services;
-using PokéToolsThèque;
+using PokéToolsThèque.Misc;
+using PokéToolsThèque.Pokemons;
 
 public class OffensiveAnalyzer
 {

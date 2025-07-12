@@ -1,4 +1,4 @@
-﻿using PokéToolsThèque;
+﻿using PokéToolsThèque.Misc;
 using System.Text;
 using System.Text.Json;
 

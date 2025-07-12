@@ -1,7 +1,8 @@
 ﻿using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using PokéToolsThèque;
+using PokéToolsThèque.Misc;
+using PokéToolsThèque.Pokemons;
 
 namespace PokéTools.Services
 {

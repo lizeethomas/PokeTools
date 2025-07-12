@@ -1,10 +1,9 @@
-﻿using PokéToolsThèque;
-using PokéTools.Services;
-using System.Text;
+﻿using System.Text;
+using PokéToolsThèque.Pokemons;
 
-namespace PokéTools.Tools
+namespace PokéTools.Services
 {
-    public static class PokeTools
+    public static class ToolService
     {
 
         private static TypeService typeService = new TypeService();
@@ -29,8 +28,8 @@ namespace PokéTools.Tools
         {
             var defensiveProfile = typeService.GetDefensiveProfile(pkmn.Type1, pkmn.Type2);
             double avgMultiplier = defensiveProfile.Values.Average();
-            double harmonicMean = (2.0 * pkmn.Defense * pkmn.SpDef)/(pkmn.Defense + pkmn.SpDef);
-            return pkmn.HP * (1.0/avgMultiplier) * harmonicMean;
+            double harmonicMean = 2.0 * pkmn.Defense * pkmn.SpDef / (pkmn.Defense + pkmn.SpDef);
+            return pkmn.HP * (1.0 / avgMultiplier) * harmonicMean;
         }
 
         public static double GetPhysicalBulk(Pokemon pkmn)
@@ -53,7 +52,7 @@ namespace PokéTools.Tools
             double avgMultiplier = offensiveCoverage.Values.Average();
             double attPower = pkmn.Attack / 120.0;
             double speAttPower = pkmn.SpAtk / 100.0;
-            return avgMultiplier * Math.Max(attPower, speAttPower); 
+            return avgMultiplier * Math.Max(attPower, speAttPower);
         }
 
         public static double GetPhysicalPower(Pokemon pkmn)
@@ -111,7 +110,7 @@ namespace PokéTools.Tools
                 >= 60 => 'D',
                 >= 40 => 'E',
                 _ => 'F'
-            } ;
+            };
         }
 
         public static string BuildIdentifier(string name, string form)

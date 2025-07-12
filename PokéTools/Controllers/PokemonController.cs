@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PokéToolsThèque;
 using PokéTools.Services;
+using PokéToolsThèque.Pokemons;
+using PokéToolsThèque.Misc;
 
 namespace PokéTools.Controllers
 {

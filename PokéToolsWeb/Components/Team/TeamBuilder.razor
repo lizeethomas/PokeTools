@@ -1,38 +1,42 @@
-﻿@using PokéToolsThèque;
+﻿
 @inject HttpClient Http;
 
 <div class="team">
     <div class="team-header">
-        <h3>
-            Team (@(Team.Count)/6)
-            @if (SuperCount + NotVeryCount + IneffectiveCount > 0)
-            {
-                <span class="offense-stats">
-                    (
-                    @if (SuperCount > 0)
-                    {
-                        <span class="super">@SuperCount super effective</span>
-                    }
-                    @if (NotVeryCount > 0)
-                    {
+        <div class="team-header-title">
+            <h3>
+                Team
+            </h3>
+            <div class="offensive-coverage">
+                @if (SuperCount + NotVeryCount + IneffectiveCount > 0)
+                {
+                    <span class="offense-stats">
+                        (
                         @if (SuperCount > 0)
                         {
-                            <text> - </text>
+                            <span class="super">@SuperCount super effective</span>
                         }
-                        <span class="notvery">@NotVeryCount not very effective</span>
-                    }
-                    @if (IneffectiveCount > 0)
-                    {
-                        @if (SuperCount + NotVeryCount > 0)
+                        @if (NotVeryCount > 0)
                         {
-                            <text> - </text>
+                            @if (SuperCount > 0)
+                            {
+                                <text> - </text>
+                            }
+                            <span class="notvery">@NotVeryCount not very effective</span>
                         }
-                        <span class="ineffective">@IneffectiveCount ineffective</span>
-                    }
-                    )
-                </span>
-            }
-        </h3>
+                        @if (IneffectiveCount > 0)
+                        {
+                            @if (SuperCount + NotVeryCount > 0)
+                            {
+                                <text> - </text>
+                            }
+                            <span class="ineffective">@IneffectiveCount ineffective</span>
+                        }
+                        )
+                    </span>
+                }
+            </div>
+        </div>  
         <div class="team-buttons">
             <button @onclick="ClearTeam" class="clear-team-button">Clear Team</button>
             <button @onclick="ExportFullTeamToShowdown" class="export-team-button">Copy to Showdown !</button>

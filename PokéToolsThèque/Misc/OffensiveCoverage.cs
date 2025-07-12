@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PokéToolsThèque.Pokemons;
 
-namespace PokéToolsThèque
+namespace PokéToolsThèque.Misc
 {
     public class OffensiveCoverage
     {

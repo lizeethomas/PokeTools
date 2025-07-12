@@ -1,6 +1,6 @@
-﻿using PokéToolsThèque;
-using PokéTools.Tools;
+﻿
 using System.Text;
+using PokéToolsThèque.Pokemons;
 
 namespace PokéTools.Services
 {

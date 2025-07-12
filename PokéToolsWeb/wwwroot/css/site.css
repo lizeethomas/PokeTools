@@ -306,6 +306,16 @@ h1 {
     background-color: #f9f9f9;
 }
 
+.team-header-title {
+    display: flex;
+    align-content:center;
+    align-items: center;
+}
+
+.offensive-coverage {
+    padding-left: 20px;
+}
+
 .export-team-button {
     background-color: #3498db;
     color: white;

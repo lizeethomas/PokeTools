@@ -1,6 +1,6 @@
-﻿using PokéToolsThèque;
-using PokéTools.Tools;
+﻿
 using System.Text;
+using PokéToolsThèque.Pokemons;
 
 namespace PokéTools.Services
 {
@@ -17,7 +17,7 @@ namespace PokéTools.Services
             _abilityService = new AbilityService();
             _pokemons = LoadPokemonsFromFile(_filePath);
             _pokemons.ForEach(p => {
-                p.Tiers = PokeTools.GetTiers(p);
+                p.Tiers = ToolService.GetTiers(p);
             });
         }
 
