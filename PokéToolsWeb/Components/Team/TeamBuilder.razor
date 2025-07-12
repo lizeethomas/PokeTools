@@ -3,7 +3,36 @@
 
 <div class="team">
     <div class="team-header">
-        <h3>Team (@(Team.Count)/6)</h3>
+        <h3>
+            Team (@(Team.Count)/6)
+            @if (SuperCount + NotVeryCount + IneffectiveCount > 0)
+            {
+                <span class="offense-stats">
+                    (
+                    @if (SuperCount > 0)
+                    {
+                        <span class="super">@SuperCount super effective</span>
+                    }
+                    @if (NotVeryCount > 0)
+                    {
+                        @if (SuperCount > 0)
+                        {
+                            <text> - </text>
+                        }
+                        <span class="notvery">@NotVeryCount not very effective</span>
+                    }
+                    @if (IneffectiveCount > 0)
+                    {
+                        @if (SuperCount + NotVeryCount > 0)
+                        {
+                            <text> - </text>
+                        }
+                        <span class="ineffective">@IneffectiveCount ineffective</span>
+                    }
+                    )
+                </span>
+            }
+        </h3>
         <div class="team-buttons">
             <button @onclick="ClearTeam" class="clear-team-button">Clear Team</button>
             <button @onclick="ExportFullTeamToShowdown" class="export-team-button">Copy to Showdown !</button>
@@ -41,6 +70,10 @@
     [Parameter] public EventCallback<MouseEventArgs> UpdateMousePosition { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> CancelHover { get; set; }
     [Parameter] public EventCallback OnClearTeam { get; set; }
+
+    [Parameter] public int SuperCount { get; set; }
+    [Parameter] public int NotVeryCount { get; set; }
+    [Parameter] public int IneffectiveCount { get; set; }
 
     private string ImgUrl = "https://tinyurl.com/mrw7z944";
 

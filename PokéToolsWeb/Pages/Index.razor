@@ -70,8 +70,11 @@ else
                              StartHover="StartHover"
                              CancelHover="CancelHover"
                              UpdateMousePosition="UpdateMousePosition"
-                             Items="@Items" 
-                             OnClearTeam="ClearTeam" />
+                             Items="@Items"
+                             OnClearTeam="ClearTeam"
+                             SuperCount="@offensiveCoverage.SuperEffective.Count"
+                             NotVeryCount="@offensiveCoverage.NotVeryEffective.Count"
+                             IneffectiveCount="@offensiveCoverage.Ineffective.Count" />
             </div>
             @if (team.Any() && team.Count == teamDefensiveTypeCharts.Count)
             {
@@ -111,6 +114,7 @@ else
     private HashSet<int> selectedGens = new();
     private List<int> availableGens = Enumerable.Range(1, 9).ToList();
 
+    private OffensiveCoverage offensiveCoverage = new();
     private HashSet<string> selectedCategories = new();
     private bool showFullyEvolved = false;
     private bool isLoadingTeam = false;
@@ -312,8 +316,37 @@ else
             ApplyFilters();
             team.Add(p);
             StateHasChanged();
+
+            await AnalyzeTeamOffense();
         }
     }
+
+    private async Task AnalyzeTeamOffense()
+    {
+        if (team.Count == 0)
+        {
+            offensiveCoverage = new();
+            return;
+        }
+
+        var identifiers = team
+            .Select(p => p.PokeApiIdentifier)
+            .Where(id => !string.IsNullOrEmpty(id))
+            .ToList();
+
+        var response = await Http.PostAsJsonAsync("https://localhost:7206/api/Type/team-offense", identifiers);
+        if (response.IsSuccessStatusCode)
+        {
+            offensiveCoverage = await response.Content.ReadFromJsonAsync<OffensiveCoverage>() ?? new();
+        }
+        else
+        {
+            offensiveCoverage = new();
+        }
+
+        StateHasChanged();
+    }
+
 
     private void TalentEffects(Pokemon p)
     {
@@ -361,7 +394,7 @@ else
         }
     }
 
-    private void OnPokemonDeselected(Pokemon p)
+    private async Task OnPokemonDeselected(Pokemon p)
     {
         var index = team.IndexOf(p);
         if (index >= 0)
@@ -374,6 +407,8 @@ else
         CancelHover();
         ApplyFilters();
         StateHasChanged();
+
+        await AnalyzeTeamOffense();
     }
 
     private void ClearTeam()

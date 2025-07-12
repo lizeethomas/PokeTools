@@ -5,6 +5,22 @@
 
         private readonly Dictionary<string, Dictionary<string, double>> _typeChart;
 
+        public enum OffensiveEffectivenessCategory
+        {
+            Ineffective,
+            NotVeryEffective,
+            Neutral,
+            SuperEffective
+        }
+
+        public class OffensiveAnalysisResult
+        {
+            public int Ineffective { get; set; }
+            public int NotVeryEffective { get; set; }
+            public int Neutral { get; set; }
+            public int SuperEffective { get; set; }
+        }
+
         public TypeService()
         {
             _typeChart = new Dictionary<string, Dictionary<string, double>>(StringComparer.OrdinalIgnoreCase)
@@ -190,7 +206,7 @@
         {
             double effectiveness = 1.0;
 
-            foreach (var defType in defendingTypes)
+            foreach (var defType in defendingTypes.Where(t => !string.IsNullOrEmpty(t)))
             {
                 if (_typeChart.TryGetValue(attackingType, out var innerDict) &&
                     innerDict.TryGetValue(defType, out var multiplier))
@@ -205,6 +221,7 @@
 
             return effectiveness;
         }
+
 
         public double GetResistance(string defendingType, params string[] attackingTypes)
         {
@@ -366,17 +383,19 @@
                 double mult1 = 1.0;
                 double mult2 = 1.0;
 
-                if (_typeChart[type1].TryGetValue(defendingType, out var m1))
+                if (_typeChart.TryGetValue(type1, out var dict1) && dict1.TryGetValue(defendingType, out var m1))
                     mult1 = m1;
 
-                if (!string.IsNullOrEmpty(type2) && _typeChart[type2].TryGetValue(defendingType, out var m2))
+                if (!string.IsNullOrEmpty(type2) && _typeChart.TryGetValue(type2, out var dict2) && dict2.TryGetValue(defendingType, out var m2))
                     mult2 = m2;
 
-                coverage[defendingType] = Math.Max(mult1, mult2);
+                coverage[defendingType] = string.IsNullOrEmpty(type2) ? mult1 : Math.Max(mult1, mult2);
             }
 
             return coverage;
         }
+
+
 
 
     }

@@ -114,5 +114,17 @@ namespace PokéTools.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("team-offense")]
+        public IActionResult GetTeamOffensiveCoverage([FromBody] List<string> team)
+        {
+            if (team == null || team.Count == 0)
+                return BadRequest("L'équipe doit contenir au moins un Pokémon.");
+
+            var analyzer = new OffensiveAnalyzer();
+            var coverage = analyzer.EvaluateOffensiveCoverage(team);
+
+            return Ok(coverage);
+        }
     }
 }
