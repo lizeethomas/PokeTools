@@ -71,16 +71,26 @@ else
                              UpdateMousePosition="UpdateMousePosition"
                              Items="@Items"
                              OnClearTeam="ClearTeam"
-                             SuperCount="@offensiveCoverage.SuperEffective.Count"
-                             NotVeryCount="@offensiveCoverage.NotVeryEffective.Count"
-                             IneffectiveCount="@offensiveCoverage.Ineffective.Count" />
+                             ShowTypeChart="@showTypeChart"
+                             OnToggleChartView="@ToggleChartView"/>
             </div>
             @if (team.Any() && team.Count == teamDefensiveTypeCharts.Count)
             {
                 <div class="type-chart-section">
-                    <TypeChart pokemons="@(team)"
-                               teamDefensiveTypeCharts="@(teamDefensiveTypeCharts)">
-                    </TypeChart>
+                    @if (showTypeChart)
+                    {
+                        <TypeChart pokemons="@(team)"
+                                   teamDefensiveTypeCharts="@(teamDefensiveTypeCharts)">
+                        </TypeChart>
+                    }
+                    else
+                    {
+                        <OffensiveTargets OffensiveCoverage="offensiveCoverage"
+                                          StartHover="StartHover"
+                                          CancelHover="CancelHover"
+                                          UpdateMousePosition="UpdateMousePosition"
+                                          OnPokemonSelected="OnPokemonSelected" />
+                    }
                 </div>
             }
         </div>
@@ -118,6 +128,7 @@ else
     private bool showFullyEvolved = false;
     private bool isLoadingTeam = false;
     private bool ShowOUOnly = false;
+    private bool showTypeChart = true;
 
     private Pokemon? hoveredPokemon;
     private bool showPopup = false;
@@ -229,6 +240,11 @@ else
         {
             StateHasChanged();
         }
+    }
+
+    private void ToggleChartView()
+    {
+        showTypeChart = !showTypeChart;
     }
 
     private Task ToggleCategory(string category)

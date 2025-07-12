@@ -1,0 +1,66 @@
+﻿<div class="offensive-coverage">
+    <div class="type-chart-header">
+        <h3>Offensive Coverage</h3>
+    </div>
+    <div class="offensive-coverage-table">
+        @if (OffensiveCoverage?.SuperEffective?.Any() == true)
+        {
+            <div class="offensive-row super">
+                <div class="offensive-header">Super Effective (@OffensiveCoverage.SuperEffective.Count)</div>
+                <div class="offensive-icons">
+                    @foreach (var poke in OffensiveCoverage.SuperEffective)
+                    {
+                        <PokemonCard Pokemon="poke"
+                                     StartHover="StartHover"
+                                     CancelHover="CancelHover"
+                                     UpdateMousePosition="UpdateMousePosition"
+                                     OnClick="() => OnPokemonSelected.InvokeAsync(poke)" />
+                    }
+                </div>
+            </div>
+        }
+
+        @if (OffensiveCoverage?.NotVeryEffective?.Any() == true)
+        {
+            <div class="offensive-row not-very">
+                <div class="offensive-header">Not Very Effective (@OffensiveCoverage.NotVeryEffective.Count)</div>
+                <div class="offensive-icons">
+                    @foreach (var poke in OffensiveCoverage.NotVeryEffective)
+                    {
+                        <PokemonCard Pokemon="poke"
+                                     StartHover="StartHover"
+                                     CancelHover="CancelHover"
+                                     UpdateMousePosition="UpdateMousePosition"
+                                     OnClick="() => OnPokemonSelected.InvokeAsync(poke)" />
+                    }
+                </div>
+            </div>
+        }
+
+        @if (OffensiveCoverage?.Ineffective?.Any() == true)
+        {
+            <div class="offensive-row ineffective">
+                <div class="offensive-header">Ineffective (@OffensiveCoverage.Ineffective.Count)</div>
+                <div class="offensive-icons">
+                    @foreach (var poke in OffensiveCoverage.Ineffective)
+                    {
+                        <PokemonCard Pokemon="poke"
+                                     StartHover="StartHover"
+                                     CancelHover="CancelHover"
+                                     UpdateMousePosition="UpdateMousePosition"
+                                     OnClick="() => OnPokemonSelected.InvokeAsync(poke)" />
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public OffensiveCoverage OffensiveCoverage { get; set; } = new();
+
+    [Parameter] public EventCallback<Pokemon> OnPokemonSelected { get; set; }
+    [Parameter] public EventCallback<Pokemon> StartHover { get; set; }
+    [Parameter] public EventCallback CancelHover { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> UpdateMousePosition { get; set; }
+}

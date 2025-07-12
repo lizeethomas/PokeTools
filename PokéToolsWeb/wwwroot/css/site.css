@@ -111,6 +111,7 @@ h1 {
     display: flex;
     gap: 20px;
     width: 100%;
+    height: 850px;
 }
 
     .showdown-section .team-section {
@@ -120,6 +121,11 @@ h1 {
 
     .showdown-section .type-chart-section {
         width: 40%;
+        display: flex;
+    }
+
+    .showdown-section .offensive-coverage {
+        width: 100%;
         display: flex;
     }
 
@@ -312,11 +318,7 @@ h1 {
     align-items: center;
 }
 
-.offensive-coverage {
-    padding-left: 20px;
-}
-
-.export-team-button {
+.export-team-button, .offensive-coverage-button {
     background-color: #3498db;
     color: white;
     border: none;
@@ -327,7 +329,7 @@ h1 {
     transition: background-color 0.2s ease-in-out;
 }
 
-    .export-team-button:hover {
+    .export-team-button:hover, .offensive-coverage-button:hover {
         background-color: #2980b9;
     }
 
@@ -421,6 +423,10 @@ h1 {
     cursor: pointer;
     font-weight: 600;
 }
+
+    .clear-team-button:hover {
+        background-color: #cc0000;
+    }
 
 .export-button-container {
     position: absolute;
@@ -750,6 +756,83 @@ h1 {
 td {
     padding: 0;
 }
+/* Offensive Coverage */
+.offensive-coverage
+{
+    display: flex;
+    flex-direction:column;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+
+.offensive-coverage-table {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.offensive-row {
+    margin-bottom: 2rem;
+}
+
+.offensive-header {
+    font-weight: bold;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    font-size: 0.95rem;
+    padding-left: 6px;
+    color: #34495e;
+}
+
+.offensive-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-height: 175px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+    .offensive-icons .card {
+        --card-size: 40px;
+        width: var(--card-size);
+        height: var(--card-size);
+        padding: 2px;
+    }
+
+    .offensive-icons .alert-icon {
+        font-size: 15px;
+        bottom: 2px;
+        right: 2px;
+        padding: 1px 2px;
+    }
+
+
+        .offensive-icons .card img {
+            height: var(--card-size);
+        }
+
+.offensive-row.super .offensive-header {
+    color: #2ecc71;
+}
+
+.offensive-row.not-very .offensive-header {
+    color: #e67e22;
+}
+
+.offensive-row.ineffective .offensive-header {
+    color: #e74c3c;
+}
+
 
 /* Couleurs par type */
 .tb-type-normal {

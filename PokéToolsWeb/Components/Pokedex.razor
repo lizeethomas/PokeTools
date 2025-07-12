@@ -9,7 +9,7 @@
 
         <div class="pokedex-actions">
             <button class="sort-button" @onclick="ToggleSort">
-                @(CurrentSort == SortMode.Dex ? "Sorted by Dex" : "Sorted by Name")
+                @(CurrentSort == SortMode.Dex ? "Sort by Name" : "Sort by Dex")
             </button>
 
             <button class="randomize-button" @onclick="OnRandomizeTeam" disabled="@IsLoadingTeam">
