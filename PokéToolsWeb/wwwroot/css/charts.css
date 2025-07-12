@@ -1,0 +1,268 @@
+﻿.type-chart-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+.type-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+}
+
+    .type-chart-header h3 {
+        font-weight: 600;
+        color: #34495e;
+    }
+
+.type-chart-table {
+    width: 100%;
+    padding: 20px;
+    padding-top:30px;
+    text-align: center;
+}
+
+    .type-chart-table th,
+    .type-chart-table td {
+        border: 1px solid #ccc;
+        padding: 4px;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 0.95em;
+    }
+
+    .type-chart-table thead th {
+        background-color: #f8f8f8;
+        font-weight: bold;
+    }
+
+    .type-chart-table tbody tr:nth-child(even) {
+        background-color: #f4f4f4;
+    }
+
+.tb-type-header {
+    width: 100px;
+    font-weight: bold;
+    background-color: #eaeaea;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.tb-type-icon {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.slot-pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    .slot-pokemon img {
+        max-width: 50px;
+        height: auto;
+    }
+
+.tb-pokemon-name {
+    margin-top: 4px;
+    font-size: 0.85em;
+}
+
+.tb-weak-header,
+.tb-resist-header {
+    background-color: #ffeaea;
+    font-weight: bold;
+    width: 60px;
+}
+
+.tb-weak-header {
+    color: #b00000;
+}
+
+.tb-resist-header {
+    color: #00cc00;
+}
+
+.tb-weak-header, .tb-resist-header,
+.type-chart-table td:last-child,
+.type-chart-table td:nth-last-child(2) {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+td {
+    padding: 0;
+}
+
+
+.weak-0 {
+    background-color: #ffffff;
+}
+
+.weak-1 {
+    background-color: #ffe0e0;
+}
+
+.weak-2 {
+    background-color: #ffb3b3;
+}
+
+.weak-3 {
+    background-color: #ff8080;
+}
+
+.weak-4 {
+    background-color: #ff4d4d;
+}
+
+.weak-5 {
+    background-color: #ff1a1a;
+}
+
+.weak-6, .weak-max {
+    background-color: #cc0000;
+    color: white;
+}
+
+.resist-0 {
+    background-color: #ffffff;
+}
+
+.resist-1 {
+    background-color: #e0ffe0;
+}
+
+.resist-2 {
+    background-color: #b3ffb3;
+}
+
+.resist-3 {
+    background-color: #80ff80;
+}
+
+.resist-4 {
+    background-color: #4dff4d;
+}
+
+.resist-5 {
+    background-color: #1aff1a;
+}
+
+.resist-6, .resist-max {
+    background-color: #00cc00;
+    color: white;
+}
+
+.type-x4, .type-x3 {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.type-x2, .type-x15 {
+    color: #cc0000;
+}
+
+.type-x0-5 {
+    color: #00cc00;
+}
+
+.type-x0-25 {
+    color: #00cc00;
+    font-weight: bold;
+}
+
+.type-x0 {
+    color: black;
+    font-weight: bold;
+}   
+    
+.offensive-coverage {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+
+.offensive-coverage-table {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.offensive-row {
+    margin-bottom: 2rem;
+}
+
+.offensive-header {
+    font-weight: bold;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    font-size: 0.95rem;
+    padding-left: 6px;
+    color: #34495e;
+}
+
+.offensive-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-height: 115px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+    .offensive-icons .card {
+        --card-size: 35px;
+        width: var(--card-size);
+        height: var(--card-size);
+        padding: 2px;
+    }
+
+    .offensive-icons .alert-icon {
+        font-size: 15px;
+        bottom: 2px;
+        right: 2px;
+        padding: 1px 2px;
+    }
+
+
+    .offensive-icons .card img {
+        height: var(--card-size);
+    }
+
+.offensive-row.super .offensive-header {
+    color: #2ecc71;
+}
+
+.offensive-row.neutral {
+    color: #34495e;
+}
+
+.offensive-row.not-very .offensive-header {
+    color: #e67e22;
+}
+
+.offensive-row.ineffective .offensive-header {
+    color: #e74c3c;
+}

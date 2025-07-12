@@ -1,4 +1,42 @@
-﻿@code {
+﻿
+<div class="filter-section">
+    <div class="filter-header">
+        <h3>Search</h3>
+    </div>
+    <div class="search-box-wrapper">
+        <input type="text"
+               class="search-box"
+               placeholder="Type a Pokémon name..."
+               value="@SearchText"
+               @oninput="OnInput" />
+    </div>
+    <div class="checkbox-row">
+        @foreach (var category in new[] { "Non-Legendary", "Legendary & Mythical" })
+        {
+            <label class="checkbox-item">
+                <input type="checkbox"
+                       checked="@SelectedCategories.Contains(category)"
+                       @onchange="e => ToggleCategory(e, category)" />
+                @category
+            </label>
+        }
+        <label class="checkbox-item">
+            <input type="checkbox"
+                   checked="@ShowFullyEvolved"
+                   @onchange="ToggleFullyEvolved" />
+            Fully Evolved
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox"
+                   checked="@ShowOUOnly"
+                   @onchange="ToggleOUOnly" />
+            OU/UUBL
+        </label>
+    </div>
+</div>
+
+@code {
     [Parameter] public string SearchText { get; set; } = string.Empty;
     [Parameter] public EventCallback<string> SearchTextChanged { get; set; }
 
@@ -34,39 +72,4 @@
     }
 }
 
-<div class="filter-section">
-    <div class="filter-header">
-        <h3>Search</h3>
-    </div>
-    <div class="search-box-wrapper">
-        <input type="text"
-               class="search-box"
-               placeholder="Type a Pokémon name..."
-               value="@SearchText"
-               @oninput="OnInput" />
-    </div>
-    <div class="checkbox-row">
-        @foreach (var category in new[] { "Non-Legendary", "Legendary & Mythical" })
-        {
-            <label class="checkbox-item">
-                <input type="checkbox"
-                       checked="@SelectedCategories.Contains(category)"
-                @onchange="e => ToggleCategory(e, category)" />
-                @category
-            </label>
-        }
-        <label class="checkbox-item">
-            <input type="checkbox"
-                   checked="@ShowFullyEvolved"
-            @onchange="ToggleFullyEvolved" />
-            Fully Evolved
-        </label>
 
-        <label class="checkbox-item">
-            <input type="checkbox"
-                   checked="@ShowOUOnly"
-            @onchange="ToggleOUOnly" />
-            OU
-        </label>
-    </div>
-</div>

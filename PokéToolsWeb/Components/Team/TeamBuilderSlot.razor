@@ -1,4 +1,4 @@
-﻿
+﻿@using PokéToolsWeb.Components.Pokemons
 @using Microsoft.AspNetCore.Components.Web
 
 <div class="team-slot">
@@ -145,40 +145,40 @@
     private string SelectedNature { get; set; } = "";
     private string SelectedItem { get; set; } = "";
 
-    private string[] StatNames = new[] { "HP", "Attack", "Defense", "SpAtk", "SpDef", "Speed" };
+    private string[] StatNames = new[] { "HP", "Atk", "Def", "SpA", "SpD", "Spe" };
     private Dictionary<string, int> EVs = new()
     {
-        ["HP"] = 0, ["Attack"] = 0, ["Defense"] = 0,
-        ["SpAtk"] = 0, ["SpDef"] = 0, ["Speed"] = 0
+        ["HP"] = 0, ["Atk"] = 0, ["Def"] = 0,
+        ["SpA"] = 0, ["SpD"] = 0, ["Spe"] = 0
     };
 
     private Dictionary<string, (string Up, string Down)> NatureEffects = new()
     {
-        { "Adamant",  ("Attack", "SpAtk") },
+        { "Adamant",  ("Atk", "SpA") },
         { "Bashful",  ("", "") }, 
-        { "Bold",     ("Defense", "Attack") },
-        { "Brave",    ("Attack", "Speed") },
-        { "Calm",     ("SpDef", "Attack") },
-        { "Careful",  ("SpDef", "SpAtk") },
+        { "Bold",     ("Def", "Atk") },
+        { "Brave",    ("Atk", "Spe") },
+        { "Calm",     ("SpD", "Atk") },
+        { "Careful",  ("SpD", "SpA") },
         { "Docile",   ("", "") }, 
-        { "Gentle",   ("SpDef", "Defense") },
+        { "Gentle",   ("SpD", "Def") },
         { "Hardy",    ("", "") }, 
-        { "Hasty",    ("Speed", "Defense") },
-        { "Impish",   ("Defense", "SpAtk") },
-        { "Jolly",    ("Speed", "SpAtk") },
-        { "Lax",      ("Defense", "SpDef") },
-        { "Lonely",   ("Attack", "Defense") },
-        { "Mild",     ("SpAtk", "Defense") },
-        { "Modest",   ("SpAtk", "Attack") },
-        { "Naive",    ("Speed", "SpDef") },
-        { "Naughty",  ("Attack", "SpDef") },
-        { "Quiet",    ("SpAtk", "Speed") },
+        { "Hasty",    ("Spe", "Def") },
+        { "Impish",   ("Def", "SpA") },
+        { "Jolly",    ("Spe", "SpA") },
+        { "Lax",      ("Def", "SpD") },
+        { "Lonely",   ("Atk", "Def") },
+        { "Mild",     ("SpA", "Def") },
+        { "Modest",   ("SpA", "Atk") },
+        { "Naive",    ("Spe", "SpD") },
+        { "Naughty",  ("Atk", "SpD") },
+        { "Quiet",    ("SpA", "Spe") },
         { "Quirky",   ("", "") },
-        { "Rash",     ("SpAtk", "SpDef") },
-        { "Relaxed",  ("Defense", "Speed") },
-        { "Sassy",    ("SpDef", "Speed") },
+        { "Rash",     ("SpA", "SpD") },
+        { "Relaxed",  ("Def", "Spe") },
+        { "Sassy",    ("SpD", "Spe") },
         { "Serious",  ("", "") }, 
-        { "Timid",    ("Speed", "Attack") }
+        { "Timid",    ("Spe", "Atk") }
     };
 
     private int TotalEVs => EVs.Values.Sum();
@@ -257,12 +257,6 @@
                          .Select(ev => $"{ev.Value} {ev.Key}");
         if (evParts.Any())
             sb.AppendLine("EVs: " + string.Join(" / ", evParts));
-
-        sb.Replace("Speed", "Spe");
-        sb.Replace("Defense", "Def");
-        sb.Replace("SpDef","SpD");
-        sb.Replace("Attack", "Atk");
-        sb.Replace("SpAtk", "SpA");
 
         // Moves
         var moves = new[] { Move1Name, Move2Name, Move3Name, Move4Name }
