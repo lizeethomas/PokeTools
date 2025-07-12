@@ -797,7 +797,7 @@ td {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    max-height: 175px;
+    max-height: 110px;
     overflow-y: auto;
     padding-right: 4px;
 }
@@ -823,6 +823,10 @@ td {
 
 .offensive-row.super .offensive-header {
     color: #2ecc71;
+}
+
+.offensive-row.neutral {
+    color: #34495e;
 }
 
 .offensive-row.not-very .offensive-header {

@@ -20,6 +20,23 @@
             </div>
         }
 
+        @if (NeutralPokemons.Any())
+        {
+            <div class="offensive-row neutral">
+                <div class="offensive-header">Neutral (@NeutralPokemons.Count)</div>
+                <div class="offensive-icons">
+                    @foreach (var poke in NeutralPokemons)
+                    {
+                        <PokemonCard Pokemon="poke"
+                                     StartHover="StartHover"
+                                     CancelHover="CancelHover"
+                                     UpdateMousePosition="UpdateMousePosition"
+                                     OnClick="() => OnPokemonSelected.InvokeAsync(poke)" />
+                    }
+                </div>
+            </div>
+        }
+
         @if (OffensiveCoverage?.NotVeryEffective?.Any() == true)
         {
             <div class="offensive-row not-very">
@@ -63,4 +80,26 @@
     [Parameter] public EventCallback<Pokemon> StartHover { get; set; }
     [Parameter] public EventCallback CancelHover { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> UpdateMousePosition { get; set; }
+
+    [Parameter] public List<Pokemon> AllPokemons { get; set; } = new();
+
+    private List<Pokemon> NeutralPokemons
+    {
+        get
+        {
+            var coveredIdentifiers = new HashSet<string>(
+                (OffensiveCoverage.SuperEffective ?? Enumerable.Empty<Pokemon>())
+                    .Concat(OffensiveCoverage.NotVeryEffective ?? Enumerable.Empty<Pokemon>())
+                    .Concat(OffensiveCoverage.Ineffective ?? Enumerable.Empty<Pokemon>())
+                    .Select(p => p.PokeApiIdentifier)
+                    .Where(id => !string.IsNullOrEmpty(id))
+            );
+
+            return AllPokemons
+                .Where(p => !string.IsNullOrEmpty(p.PokeApiIdentifier) &&
+                            !coveredIdentifiers.Contains(p.PokeApiIdentifier))
+                .ToList();
+        }
+    }
+
 }
