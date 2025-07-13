@@ -121,6 +121,7 @@ namespace PokéTools.Services
                     IsFullyEvolved = Convert.ToBoolean(fields[20]),
                     Category = fields[21],
                     SmogonTier = fields[22],
+                    RandomSet = Convert.ToBoolean(fields[23]),
                     Abilities = abilities
                 });
             }

@@ -210,6 +210,11 @@ else
         return await Http.GetFromJsonAsync<List<Move>>($"https://localhost:7206/api/Pokemon/{p.PokeApiIdentifier}/Moves") ?? new List<Move>();
     }
 
+    private async Task<RandomPokemon> GetRandomPokemon(Pokemon p)
+    {
+        return await Http.GetFromJsonAsync<RandomPokemon>($"https://localhost:7206/api/Pokemon/{p.Name}/RandomSet") ?? new RandomPokemon();
+    }
+
     private Task OnSearchTextChanged(string newText)
     {
         SearchText = newText;
@@ -301,7 +306,7 @@ else
         while (maxRetries-- > 0)
         {
             var candidates = pokemons
-                .Where(p => p.IsFullyEvolved)
+                .Where(p => p.RandomSet)
                 .OrderBy(_ => rnd.Next())
                 .ToList();
 
@@ -315,6 +320,18 @@ else
 
                 if (!team.Contains(p) && currentTotal + p.Total <= 4000)
                 {
+                    /*                    RandomPokemon rpkmn = await GetRandomPokemon(p);
+                    var set = rpkmn.Set.Roles?.Values.FirstOrDefault();
+                    var moves = await GetMoves(p);
+                    set.Moves.ForEach(m =>
+                    {
+                        Console.WriteLine(m);
+                        var move = moves.FirstOrDefault(n => n.Name == m);
+                        Console.WriteLine(move);
+                    });
+                    //p.Moves.Add(.)
+                    team.Add(p);
+                    currentTotal += p.Total;*/
                     team.Add(p);
                     currentTotal += p.Total;
                 }

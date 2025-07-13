@@ -34,6 +34,10 @@ namespace PokéToolsThèque.Pokemons
         public bool IsFullyEvolved { get; set; }
         public string Category { get; set; }
         public string SmogonTier { get; set; }
+        public bool RandomSet { get; set; } 
+
+
+
         public Tiers? Tiers { get; set; }
 
 

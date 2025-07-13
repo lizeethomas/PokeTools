@@ -2,6 +2,8 @@
 using PokéTools.Services;
 using PokéToolsThèque.Pokemons;
 using PokéToolsThèque.Misc;
+using PokeTools.Services;
+using PokéToolsThèque.RandomBattle;
 
 namespace PokéTools.Controllers
 {
@@ -13,6 +15,7 @@ namespace PokéTools.Controllers
         private readonly AbilityService _abilityService;
         private readonly MoveService _moveService;
         private readonly ItemService _itemService;
+        private readonly RandomBattleService _randomBattleService;
 
         public PokemonController()
         {
@@ -20,6 +23,7 @@ namespace PokéTools.Controllers
             _abilityService = new AbilityService();
             _moveService = new MoveService();
             _itemService = new ItemService();
+            _randomBattleService = new RandomBattleService();
         }
 
         [HttpGet("Pokemon/{dex}")]
@@ -67,6 +71,13 @@ namespace PokéTools.Controllers
         {
             var moves = await _moveService.GetLearnableMovesAsync(name);
             return Ok(moves);
+        }
+
+        [HttpGet("Pokemon/{name}/RandomSet")]
+        public ActionResult<RandomPokemon> GetRandomSet(string name)
+        {
+            var pkmn = _randomBattleService.GetPokemon(name);
+            return Ok(pkmn);
         }
     }
 }

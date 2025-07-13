@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PokéTools.Services;
+using PokeTools.Services;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -111,6 +112,15 @@ namespace PokéTools.Controllers
         {
             Console.WriteLine(_pokemonService.Pokemons.Count(p => p.SmogonTier == "Unknown"));
             return Ok("");
+        }
+
+        [HttpGet("export-tsv")]
+        public async Task<IActionResult> ExportRandomSetTsv()
+        {
+            var randomBattleService = new RandomBattleService();
+            await randomBattleService.AppendRandomSetColumnToTsv("E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\pokemons.tsv", "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\pokedex.tsv");
+
+            return NoContent();
         }
     }
 }

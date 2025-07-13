@@ -138,8 +138,9 @@
     private Move? Move3 => Pokemon.Moves.FirstOrDefault(m => m.Name == Move3Name);
     private Move? Move4 => Pokemon.Moves.FirstOrDefault(m => m.Name == Move4Name);
 
-
     private List<Move> AllMoves => Pokemon.Moves.OrderBy(m => m.Name).ToList();
+
+    private bool _initialized = false;
 
     private string SelectedAbility { get; set; } = "";
     private string SelectedNature { get; set; } = "";
@@ -203,6 +204,35 @@
         }
     }
 
+    protected override void OnParametersSet()
+    {
+        if (!_initialized && Pokemon != null)
+        {
+            SelectedItem = Pokemon.SelectedItem ?? "";
+            SelectedAbility = Pokemon.SelectedAbility ?? "";
+            SelectedNature = Pokemon.SelectedNature ?? "";
+
+            if (Pokemon.EVs != null)
+            {
+                foreach (var kvp in Pokemon.EVs)
+                {
+                    if (EVs.ContainsKey(kvp.Key))
+                        EVs[kvp.Key] = kvp.Value;
+                }
+            }
+
+            if (Pokemon.SelectedMoves != null)
+            {
+                var moves = Pokemon.SelectedMoves.Where(m => !string.IsNullOrWhiteSpace(m)).ToList();
+                if (moves.Count > 0) Move1Name = moves.ElementAtOrDefault(0) ?? "";
+                if (moves.Count > 1) Move2Name = moves.ElementAtOrDefault(1) ?? "";
+                if (moves.Count > 2) Move3Name = moves.ElementAtOrDefault(2) ?? "";
+                if (moves.Count > 3) Move4Name = moves.ElementAtOrDefault(3) ?? "";
+            }
+
+            _initialized = true;
+        }
+    }
 
     private async Task CopyToClipboard(string text)
     {
