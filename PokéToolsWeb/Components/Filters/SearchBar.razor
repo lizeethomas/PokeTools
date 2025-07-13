@@ -31,7 +31,14 @@
             <input type="checkbox"
                    checked="@ShowOUOnly"
                    @onchange="ToggleOUOnly" />
-            OU/UUBL
+            OU
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox"
+                   checked="@ShowMega"
+                   @onchange="ToggleMega" />
+            Mega
         </label>
     </div>
 </div>
@@ -47,11 +54,19 @@
     [Parameter] public EventCallback<bool> OnToggleFullyEvolved { get; set; }
     [Parameter] public bool ShowOUOnly { get; set; }
     [Parameter] public EventCallback<bool> OnToggleOUOnly { get; set; }
+    [Parameter] public bool ShowMega { get; set; }
+    [Parameter] public EventCallback<bool> OnToggleMega { get; set; }
 
     private async Task ToggleOUOnly(ChangeEventArgs e)
     {
         bool isChecked = (bool)e.Value!;
         await OnToggleOUOnly.InvokeAsync(isChecked);
+    }
+
+    private async Task ToggleMega(ChangeEventArgs e)
+    {
+        bool isChecked = (bool)e.Value!;
+        await OnToggleMega.InvokeAsync(isChecked);
     }
 
     private async Task OnInput(ChangeEventArgs e)

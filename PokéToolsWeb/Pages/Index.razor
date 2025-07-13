@@ -29,7 +29,9 @@ else
                            ShowFullyEvolved="@showFullyEvolved"
                            OnToggleFullyEvolved="@ToggleFullyEvolved"
                            ShowOUOnly="@ShowOUOnly"
-                           OnToggleOUOnly="@OnToggleOUOnly" />
+                           OnToggleOUOnly="@OnToggleOUOnly" 
+                           ShowMega="@ShowMega"
+                           OnToggleMega="OnToggleMega"/>
 
                 <TypeFilter AvailableTypes="availableTypes"
                             SelectedTypes="selectedTypes"
@@ -130,6 +132,7 @@ else
     private bool showFullyEvolved = false;
     private bool isLoadingTeam = false;
     private bool ShowOUOnly = false;
+    private bool ShowMega = false;
     private bool showTypeChart = true;
 
     private Pokemon? hoveredPokemon;
@@ -140,7 +143,7 @@ else
 
     private Dictionary<string, (int min, int max)> statFilters = new()
     {
-        { "Total", (175, 720) },
+        { "Total", (175, 780) },
         { "HP", (1, 255) },
         { "Attack", (5, 190) },
         { "Defense", (5, 230) },
@@ -151,7 +154,7 @@ else
 
     private Dictionary<string, (int min, int max)> statBounds = new()
     {
-        { "Total", (175, 720) },
+        { "Total", (175, 780) },
         { "HP", (1, 255) },
         { "Attack", (5, 190) },
         { "Defense", (5, 230) },
@@ -270,6 +273,13 @@ else
     private Task OnToggleOUOnly(bool value)
     {
         ShowOUOnly = value;
+        ApplyFilters();
+        return Task.CompletedTask;
+    }
+
+    private Task OnToggleMega(bool value)
+    {
+        ShowMega = value;
         ApplyFilters();
         return Task.CompletedTask;
     }
@@ -578,6 +588,10 @@ else
         if(ShowOUOnly)
         {
             filtered = filtered.Where(p => p.SmogonTier == "OU" || p.SmogonTier == "UUBL");
+        }
+        if(ShowMega)
+        {
+            filtered = filtered.Where(p => p.Category == "Mega");
         }
 
         var filteredList = filtered.ToList();
