@@ -138,9 +138,9 @@
     private Move? Move3 => Pokemon.Moves.FirstOrDefault(m => m.Name == Move3Name);
     private Move? Move4 => Pokemon.Moves.FirstOrDefault(m => m.Name == Move4Name);
 
-    private List<Move> AllMoves => Pokemon.Moves.OrderBy(m => m.Name).ToList();
+    private List<Move> AllMoves => Pokemon.Moves?.OrderBy(m => m.Name).ToList() ?? new();
 
-    private bool _initialized = false;
+    private bool _wasInitializedFromParent = false;
 
     private string SelectedAbility { get; set; } = "";
     private string SelectedNature { get; set; } = "";
@@ -206,33 +206,29 @@
 
     protected override void OnParametersSet()
     {
-        if (!_initialized && Pokemon != null)
+        if (Pokemon is not null)
         {
             SelectedItem = Pokemon.SelectedItem ?? "";
             SelectedAbility = Pokemon.SelectedAbility ?? "";
-            SelectedNature = Pokemon.SelectedNature ?? "";
+            SelectedNature = string.IsNullOrWhiteSpace(Pokemon.SelectedNature) ? "Bashful" : Pokemon.SelectedNature;
 
-            if (Pokemon.EVs != null)
+            foreach (var stat in StatNames)
             {
-                foreach (var kvp in Pokemon.EVs)
-                {
-                    if (EVs.ContainsKey(kvp.Key))
-                        EVs[kvp.Key] = kvp.Value;
-                }
+                EVs[stat] = Pokemon.EVs != null && Pokemon.EVs.ContainsKey(stat)
+                    ? Pokemon.EVs[stat]
+                    : 0;
             }
 
-            if (Pokemon.SelectedMoves != null)
-            {
-                var moves = Pokemon.SelectedMoves.Where(m => !string.IsNullOrWhiteSpace(m)).ToList();
-                if (moves.Count > 0) Move1Name = moves.ElementAtOrDefault(0) ?? "";
-                if (moves.Count > 1) Move2Name = moves.ElementAtOrDefault(1) ?? "";
-                if (moves.Count > 2) Move3Name = moves.ElementAtOrDefault(2) ?? "";
-                if (moves.Count > 3) Move4Name = moves.ElementAtOrDefault(3) ?? "";
-            }
-
-            _initialized = true;
+            var moves = Pokemon.SelectedMoves ?? new();
+            Move1Name = moves.ElementAtOrDefault(0) ?? "";
+            Move2Name = moves.ElementAtOrDefault(1) ?? "";
+            Move3Name = moves.ElementAtOrDefault(2) ?? "";
+            Move4Name = moves.ElementAtOrDefault(3) ?? "";
         }
     }
+
+
+
 
     private async Task CopyToClipboard(string text)
     {
