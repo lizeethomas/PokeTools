@@ -140,22 +140,34 @@
 
             if (set is not null)
             {
-                var clonedPoke = new Pokemon(poke)
-                {
-                    SelectedMoves = set.Moves?.Take(4).ToList() ?? new List<string>(),
-                    SelectedAbility = set.Abilities?.FirstOrDefault() ?? "",
-                    SelectedItem = set.Items?.FirstOrDefault() ?? "",
-                    EVs = set.EVs != null ? new Dictionary<string, int>(set.EVs) : new Dictionary<string, int>()
-                };
-
                 var index = Team.FindIndex(p => p.Name == poke.Name);
                 if (index >= 0)
                 {
-                    Team[index] = clonedPoke;
-                }
+                    var target = Team[index];
 
-                AlreadyLoaded.Add(poke.Name);
-                StateHasChanged();
+                    // Moves
+                    if (target.SelectedMoves == null || target.SelectedMoves.All(string.IsNullOrWhiteSpace))
+                        target.SelectedMoves = set.Moves?.Take(4).ToList() ?? new List<string>();
+
+                    // Ability
+                    if (string.IsNullOrWhiteSpace(target.SelectedAbility))
+                        target.SelectedAbility = set.Abilities?.FirstOrDefault() ?? "";
+
+                    // Item
+                    if (string.IsNullOrWhiteSpace(target.SelectedItem))
+                        target.SelectedItem = set.Items?.FirstOrDefault() ?? "";
+
+                    // EVs
+                    if (target.EVs == null || target.EVs.All(kvp => kvp.Value == 0))
+                        target.EVs = set.EVs != null ? new Dictionary<string, int>(set.EVs) : new Dictionary<string, int>();
+
+                    // Nature
+                    if (string.IsNullOrWhiteSpace(target.SelectedNature))
+                        target.SelectedNature = "Bashful";
+
+                    AlreadyLoaded.Add(poke.Name);
+                    StateHasChanged();
+                }
             }
         }
         catch (Exception ex)
@@ -163,6 +175,7 @@
             Console.WriteLine($"Erreur chargement set pour {poke.Name} : {ex.Message}");
         }
     }
+
 
 
     private async Task<RandomPokemon> GetRandomPokemon(Pokemon p)
