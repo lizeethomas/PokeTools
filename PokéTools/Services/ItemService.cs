@@ -8,14 +8,16 @@ namespace PokéTools.Services
     {
         private readonly List<Item> _items;
         public List<Item> Items => _items;
-        private static readonly string _filePath = "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\items.tsv";
+        private readonly string _filePath;
 
         public ItemService()
         {
+            string basePath = AppContext.BaseDirectory;
+            _filePath = Path.Combine(basePath, "Data", "items.tsv");
             _items = LoadItemsFromFile();
         }
 
-        private static List<Item> LoadItemsFromFile() 
+        private List<Item> LoadItemsFromFile() 
         { 
             var items = new List<Item>();
             var lines = File.ReadAllLines(_filePath, Encoding.UTF8);

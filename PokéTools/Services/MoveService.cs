@@ -9,10 +9,12 @@ namespace PokéTools.Services
         private readonly List<Move> _moves;
         public List<Move> Moves => _moves;
 
-        private static readonly string _filePath = "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\moves.tsv";
+        private  readonly string _filePath;
 
         public MoveService()
         {
+            string basePath = AppContext.BaseDirectory;
+            _filePath = Path.Combine(basePath, "Data", "pokemons.tsv");
             _moves = LoadMovesFromFile(_filePath);
         }
 

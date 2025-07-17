@@ -9,12 +9,14 @@ namespace PokéTools.Services
         private readonly List<Pokemon> _pokemons;
         public List<Pokemon> Pokemons => _pokemons;
 
-        private readonly string _filePath = "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\pokemons.tsv";
+        private readonly string _filePath;
         private readonly AbilityService _abilityService;
 
         public PokemonService()
         {
             _abilityService = new AbilityService();
+            string basePath = AppContext.BaseDirectory;
+            _filePath = Path.Combine(basePath, "Data", "pokemons.tsv");
             _pokemons = LoadPokemonsFromFile(_filePath);
             _pokemons.ForEach(p => {
                 p.Tiers = ToolService.GetTiers(p);

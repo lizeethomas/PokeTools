@@ -9,10 +9,12 @@ namespace PokéTools.Services
         private readonly List<Ability> _abilities;
         public List<Ability> Abilities => _abilities;
 
-        private static readonly string _filePath = "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\abilities.tsv";
+        private readonly string _filePath = "E:\\Bureau\\CODE\\PokéToolsProject\\PokéTools\\Data\\abilities.tsv";
 
         public AbilityService()
         {
+            string basePath = AppContext.BaseDirectory;
+            _filePath = Path.Combine(basePath, "Data", "abilities.tsv");
             _abilities = LoadAbilitiesFromFile(_filePath);
         }
 
