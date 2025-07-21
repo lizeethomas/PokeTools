@@ -1,10 +1,14 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using PokéToolsWeb.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<PokemonService>();
+builder.Services.AddScoped<ItemService>();
 
 var app = builder.Build();
 

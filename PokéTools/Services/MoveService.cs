@@ -14,7 +14,7 @@ namespace PokéTools.Services
         public MoveService()
         {
             string basePath = AppContext.BaseDirectory;
-            _filePath = Path.Combine(basePath, "Data", "pokemons.tsv");
+            _filePath = Path.Combine(basePath, "Data", "moves.tsv");
             _moves = LoadMovesFromFile(_filePath);
         }
 
