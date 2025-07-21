@@ -10,5 +10,20 @@
   <ItemGroup>
     <ProjectReference Include="..\PokéToolsThèque\PokéToolsThèque.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\abilities.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\items.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\moves.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\pokemons.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 	
 </Project>

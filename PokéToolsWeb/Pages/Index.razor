@@ -6,6 +6,11 @@
 @using PokéToolsWeb.Components.Chart
 @using PokéToolsWeb.Components.Team
 @using PokéToolsWeb.Components.Pokemons
+@inject PokemonService pokemonService
+@inject ItemService itemService
+@inject MoveService moveService
+@inject TypeService typeService
+@inject OffensiveAnalyzer offensiveAnalyzer
 
 <div class="header-bar">
     <img src="https://www.pokepedia.fr/images/0/01/Porygon-RFVF.png?20200407174707" />
@@ -179,7 +184,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        allPokemons = await GetPokemons();
+        allPokemons = GetPokemons();
 
         availableTypes = allPokemons
             .SelectMany(p => new[] { p.Type1, p.Type2 })
@@ -189,25 +194,28 @@ else
             .ToList();
 
         selectedGens = new HashSet<int>(availableGens);
-        Items = (await GetItems()).OrderBy(i => i.Name).ToList();
+        Items = (GetItems()).OrderBy(i => i.Name).ToList();
 
         ApplyFilters();
     }
 
-    private async Task<List<Item>> GetItems()
+    private List<Item> GetItems()
     {
-        return await Http.GetFromJsonAsync<List<Item>>($"https://localhost:7206/api/Items") ?? new List<Item>();
+        return itemService.Items;
+        //return await Http.GetFromJsonAsync<List<Item>>($"https://localhost:7206/api/Items") ?? new List<Item>();
     }
 
 
-    private async Task<List<Pokemon>> GetPokemons()
+    private List<Pokemon> GetPokemons()
     {
-        return await Http.GetFromJsonAsync<List<Pokemon>>("https://localhost:7206/api/Pokemons") ?? new List<Pokemon>();
+        return pokemonService.Pokemons;
+        //return await Http.GetFromJsonAsync<List<Pokemon>>("https://localhost:7206/api/Pokemons") ?? new List<Pokemon>();
     }
 
     private async Task<List<Move>> GetMoves(Pokemon p)
     {
-        return await Http.GetFromJsonAsync<List<Move>>($"https://localhost:7206/api/Pokemon/{p.PokeApiIdentifier}/Moves") ?? new List<Move>();
+        return await moveService.GetLearnableMovesAsync(p.PokeApiIdentifier);
+        //return await Http.GetFromJsonAsync<List<Move>>($"https://localhost:7206/api/Pokemon/{p.PokeApiIdentifier}/Moves") ?? new List<Move>();
     }
 
     private Task OnSearchTextChanged(string newText)
@@ -336,7 +344,7 @@ else
         if(team.Count() < 6)
         {
             allPokemons.Remove(p);
-            await GetDefensiveTypeChart(p.PokeApiIdentifier);
+            GetDefensiveTypeChart(p);
             p.Moves = await GetMoves(p);
             TalentEffects(p);
             CancelHover();
@@ -361,17 +369,20 @@ else
             .Where(id => !string.IsNullOrEmpty(id))
             .ToList();
 
+        offensiveCoverage = offensiveAnalyzer.EvaluateOffensiveCoverage(identifiers) ?? new();
+        /*
         var response = await Http.PostAsJsonAsync("https://localhost:7206/api/Type/team-offense", identifiers);
+
         if (response.IsSuccessStatusCode)
         {
             offensiveCoverage = await response.Content.ReadFromJsonAsync<OffensiveCoverage>() ?? new();
-        }
+            }
         else
         {
             offensiveCoverage = new();
-        }
-
-        StateHasChanged();
+            }
+        */
+                StateHasChanged();
     }
 
 
@@ -449,9 +460,10 @@ else
         StateHasChanged();
     }
 
-    private async Task GetDefensiveTypeChart(string pokeId)
+    private void GetDefensiveTypeChart(Pokemon poke)
     {
-        teamDefensiveTypeCharts.Add(await Http.GetFromJsonAsync<Dictionary<string, double>>($"https://localhost:7206/api/Type/defensiveById/{pokeId}") ?? new Dictionary<string, double>());
+        teamDefensiveTypeCharts.Add(typeService.GetDefensiveProfile(poke.Type1, poke.Type2));
+        //await Http.GetFromJsonAsync<Dictionary<string, double>>($"https://localhost:7206/api/Type/defensiveById/{pokeId}") ?? new Dictionary<string, double>());
     }
 
     string GetTypeClass(string type)

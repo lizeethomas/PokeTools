@@ -1,5 +1,6 @@
 ﻿@inject HttpClient Http
 @inject IJSRuntime JS
+@inject RandomBattleService randomBattleService
 
 <div class="team">
     <div class="team-header">
@@ -135,7 +136,7 @@
 
         try
         {
-            var randomPokemon = await GetRandomPokemon(poke);
+            var randomPokemon = GetRandomPokemon(poke);
             var set = randomPokemon?.Set?.Roles?.Values.FirstOrDefault();
 
             if (set is not null)
@@ -178,9 +179,10 @@
 
 
 
-    private async Task<RandomPokemon> GetRandomPokemon(Pokemon p)
+    private RandomPokemon GetRandomPokemon(Pokemon p)
     {
-        return await Http.GetFromJsonAsync<RandomPokemon>($"https://localhost:7206/api/Pokemon/{p.Name}/RandomSet")
-            ?? new RandomPokemon();
+        return randomBattleService.GetPokemon(p.Name) ?? new RandomPokemon();
+        //return await Http.GetFromJsonAsync<RandomPokemon>($"https://localhost:7206/api/Pokemon/{p.Name}/RandomSet")
+        //    ?? new RandomPokemon();
     }
 }
