@@ -9,6 +9,9 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<PokemonService>();
 builder.Services.AddScoped<ItemService>();
+builder.Services.AddScoped<MoveService>();
+builder.Services.AddScoped<TypeService>();
+builder.Services.AddScoped<RandomBattleService>();
 
 var app = builder.Build();
 

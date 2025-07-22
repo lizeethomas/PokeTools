@@ -6,15 +6,7 @@ namespace PokéToolsWeb.Services
 {
     public class RandomBattleService
     {
-        private readonly List<RandomPokemon> _randomPokemons;
-        //private readonly List<Pokemon> _pokemons;
-
-        public RandomBattleService()
-        {
-            var json = DownloadJsonAsync().GetAwaiter().GetResult();
-            _randomPokemons = ParseJsonToList(json);
-            //_pokemons = new PokemonService().Pokemons.ToList();
-        }
+        public List<RandomPokemon> _randomPokemons { get; set; } = new List<RandomPokemon>();
 
         private async Task<string> DownloadJsonAsync()
         {
@@ -22,8 +14,9 @@ namespace PokéToolsWeb.Services
             return await httpClient.GetStringAsync("https://pkmn.github.io/randbats/data/gen9randombattle.json");
         }
 
-        private List<RandomPokemon> ParseJsonToList(string json)
+        public async Task<List<RandomPokemon>> LoadSets()
         {
+            string json = await DownloadJsonAsync();
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
@@ -45,11 +38,13 @@ namespace PokéToolsWeb.Services
             return list;
         }
 
+        /*
         public RandomPokemon? GetPokemon(string name)
         {
             return _randomPokemons.Find(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 
         public List<RandomPokemon> GetAllPokemons() => _randomPokemons;
+        */
     }
 }

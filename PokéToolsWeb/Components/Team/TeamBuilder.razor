@@ -1,5 +1,6 @@
 ﻿@inject HttpClient Http
 @inject IJSRuntime JS
+@inject RandomBattleService randomBattleService;
 
 <div class="team">
     <div class="team-header">
@@ -51,9 +52,16 @@
     [Parameter] public bool ShowTypeChart { get; set; }
     [Parameter] public EventCallback OnToggleChartView { get; set; }
 
+    private List<RandomPokemon> randomPokemons = new();
+
     private HashSet<string> AlreadyLoaded = new();
     private bool _shouldLoadSets = false;
     private int _lastTeamCount = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        randomPokemons = await randomBattleService.LoadSets();
+    }
 
     protected override void OnParametersSet()
     {
@@ -64,7 +72,7 @@
         }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnAfterRender(bool firstRender)
     {
         if (_shouldLoadSets)
         {
@@ -72,7 +80,7 @@
 
             foreach (var poke in pokemonsToLoad)
             {
-                await LoadSetFromApiAsync(poke);
+                LoadSet(poke);
             }
 
             _shouldLoadSets = false;
@@ -129,13 +137,13 @@
         await JS.InvokeVoidAsync("copyToClipboard", showdownExport.ToString());
     }
 
-    private async Task LoadSetFromApiAsync(Pokemon poke)
+    private void LoadSet(Pokemon poke)
     {
         if (poke is null || AlreadyLoaded.Contains(poke.Name)) return;
 
         try
         {
-            var randomPokemon = await GetRandomPokemon(poke);
+            var randomPokemon = GetRandomPokemon(poke);
             var set = randomPokemon?.Set?.Roles?.Values.FirstOrDefault();
 
             if (set is not null)
@@ -176,11 +184,12 @@
         }
     }
 
-
-
-    private async Task<RandomPokemon> GetRandomPokemon(Pokemon p)
+    private RandomPokemon GetRandomPokemon(Pokemon pokemon)
     {
+        return randomPokemons.Find(p => string.Equals(p.Name, pokemon.Name, StringComparison.OrdinalIgnoreCase)) ?? new RandomPokemon();
+        /*
         return await Http.GetFromJsonAsync<RandomPokemon>($"https://localhost:7206/api/Pokemon/{p.Name}/RandomSet")
             ?? new RandomPokemon();
+        */
     }
 }

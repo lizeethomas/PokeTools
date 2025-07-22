@@ -89,7 +89,5 @@ namespace PokéTools.Services
 
             return learnableMoves;
         }
-
-
     }
 }
